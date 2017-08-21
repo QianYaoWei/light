@@ -9,9 +9,8 @@ import sched
 import threading
 from zeroless import Server
 
-import util
-
-conf = util.ScreenConf
+from util import ScreenConf as conf
+from screen_commander import ScreenCommander
 
 
 class DotsScreen(threading.Thread):
@@ -41,6 +40,10 @@ class DotsScreen(threading.Thread):
 
         curses.init_pair(1, curses.COLOR_GREEN, curses.COLOR_BLACK)
         curses.init_pair(2, curses.COLOR_RED, curses.COLOR_BLACK)
+
+    @property
+    def StdScreen(self):
+        return self._stdScreen
 
     @classmethod
     def UninitWin(cls):
@@ -79,6 +82,10 @@ class DotsScreen(threading.Thread):
     # def OnLoop(self):
     #     self._sched.enter(0.1, 1, self.OnLoop, ())
 
+    @property
+    def Sched(self):
+        return self._sched
+
     @staticmethod
     def DecodeMsg(msg):
         try:
@@ -88,9 +95,6 @@ class DotsScreen(threading.Thread):
             return None
 
         return m
-
-    def SchedRun(self):
-        self._sched.run()
 
     def run(self):
         '''thread run'''
@@ -175,7 +179,11 @@ def main():
 
         dots = DotsScreen()
         dots.start()
-        dots.SchedRun()
+
+        commander = ScreenCommander(dots.StdScreen)
+        commander.start()
+
+        dots.Sched.run()
 
     except Exception, e:
         print str(e)

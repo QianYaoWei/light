@@ -28,7 +28,7 @@ class ScreenConf(object):
 class ReaderConf(object):
     ShelfPath = "/tmp/reader"
 
-    DBPath = "/Users/terencewei/my_src/br/sql/reader.db"
+    DBPath = "/tmp/reader/reader.db"
 
 
 class BookConf(object):
