@@ -10,3 +10,5 @@ from conf import ReaderConf
 from conf import BookConf
 
 from orm_obj import OrmObj
+
+from curses_win import *

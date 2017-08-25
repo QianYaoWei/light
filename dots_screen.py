@@ -1,14 +1,15 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-
 import numpy as np
 import curses
 import time
 import sched
 import threading
 from zeroless import Server
+import sys
 
+import util
 from util import ScreenConf as conf
 from screen_commander import ScreenCommander
 
@@ -19,39 +20,15 @@ class DotsScreen(threading.Thread):
 
         self._dots = np.zeros(conf.ScreenRow * conf.ScreenColumn, dtype=np.bool).\
                     reshape(conf.ScreenRow, conf.ScreenColumn)
+
         self._sched = sched.scheduler(time.time, time.sleep)
         self._sched.enter(conf.RefreshInterval, 1, self.Show, ())
 
         self._curPoint = (0, 0)
-
         self._exit = False
 
         # self._win = curses.newwin(conf.ScreenRow, conf.ScreenColumn, 10, 10)
         # self._sched.enter(0.1, 1, self.OnLoop, ())
-
-    @classmethod
-    def InitWin(cls):
-        cls._stdScreen = curses.initscr()
-        cls._stdScreen.keypad(True)
-
-        curses.noecho()
-        curses.cbreak()
-        curses.start_color()
-
-        curses.init_pair(1, curses.COLOR_GREEN, curses.COLOR_BLACK)
-        curses.init_pair(2, curses.COLOR_RED, curses.COLOR_BLACK)
-
-    @property
-    def StdScreen(self):
-        return self._stdScreen
-
-    @classmethod
-    def UninitWin(cls):
-        curses.endwin()
-
-    @classmethod
-    def Refresh(cls):
-        cls._stdScreen.refresh()
 
     def Show(self):
         if self._exit:
@@ -60,27 +37,25 @@ class DotsScreen(threading.Thread):
         for i in range(0, conf.ScreenRow):
             for j in range(0, conf.ScreenColumn):
                 if self._curPoint == (i, j):
-                    DotsScreen._stdScreen.addstr(i + conf.BeginX,
+                    # import pudb; pudb.set_trace()  # XXX BREAKPOINT
+                    util.stdscr.addstr(i + conf.BeginX,
                                            j * conf.ColSpread + conf.BeginY,
                                            "x",
-                                           curses.color_pair(2) | curses.A_BOLD)
+                                           curses.color_pair(util.Color2) | curses.A_BOLD)
                     continue
 
                 if 0 == self._dots[i, j]:
-                    DotsScreen._stdScreen.addstr(i + conf.BeginX,
+                    util.stdscr.addstr(i + conf.BeginX,
                                            j * conf.ColSpread + conf.BeginY,
                                            "_",
-                                           curses.color_pair(1) | curses.A_BOLD)
+                                           curses.color_pair(util.Color1) | curses.A_BOLD)
                 else:
-                    DotsScreen._stdScreen.addstr(i + conf.BeginX,
+                    util.stdscr.addstr(i + conf.BeginX,
                                            j * conf.ColSpread + conf.BeginY,
                                            "*",
-                                           curses.color_pair(2) | curses.A_BOLD)
-        DotsScreen.Refresh()
+                                           curses.color_pair(util.Color1) | curses.A_BOLD)
+        util.stdscr.refresh()
         self._sched.enter(conf.RefreshInterval, 1, self.Show, ())
-
-    # def OnLoop(self):
-    #     self._sched.enter(0.1, 1, self.OnLoop, ())
 
     @property
     def Sched(self):
@@ -125,7 +100,6 @@ class DotsScreen(threading.Thread):
             reply("")
             if dealingFunc is None:
                 ret = DotsScreen.DecodeMsg(msg)
-                print(ret)
             else:
                 dealingFunc()
 
@@ -158,7 +132,7 @@ class DotsScreen(threading.Thread):
 
     def OnExit(self):
         self._exit = True
-        exit(0)
+        sys.exit(0)
 
     # def __str__(self):
     #     return str(self._dots)
@@ -175,12 +149,12 @@ class DotsScreen(threading.Thread):
 
 def main():
     try:
-        DotsScreen.InitWin()
+        util.set_win()
 
         dots = DotsScreen()
         dots.start()
 
-        commander = ScreenCommander(dots.StdScreen)
+        commander = ScreenCommander(util.stdscr)
         commander.start()
 
         dots.Sched.run()
@@ -189,8 +163,7 @@ def main():
         print str(e)
 
     finally:
-        DotsScreen.UninitWin()
-
+        util.unset_win()
 
 if __name__ == "__main__":
     main()
