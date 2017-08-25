@@ -6,9 +6,9 @@ RealMachine = 1
 Curses = 2
 
 class ScreenConf(object):
-    ScreenRow = 24
+    ScreenRow = 16
 
-    ScreenColumn = 48
+    ScreenColumn = 32
 
     ScreenMode = Curses
 

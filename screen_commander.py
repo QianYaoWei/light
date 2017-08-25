@@ -3,41 +3,37 @@
 
 import threading
 from zeroless import Client
-
-import util
-from util import ScreenConf as conf
+import util.curses as uc
 
 
 class ScreenCommander(threading.Thread):
-    def __init__(self, stdscr):
+    def __init__(self, port = None):
         super(ScreenCommander, self).__init__()
         self._channel = Client()
+        self._port = port
 
     def run(self):
-        self._channel.connect_local(port=conf.Port)
-        request, listen_for_reply = self._channel.request()
 
-        while True:
-            ch = util.stdscr.getch()
-            if ch == ord('e'):
-                print ch
-                # exit(0)
+        uc.set_win()
+        if self._port is not None:
+            self._channel.connect_local(port=self._port)
+            request, listen_for_reply = self._channel.request()
 
-            # request(chr(ch))
-            # response = next(listen_for_reply)
-            # print(response)
-
-def main():
-    try:
-        print "fuck"
-        # util.set_win()
-        commander = ScreenCommander(None)
-        commander.start()
-    except Exception, e:
-        print str(e)
-    finally:
-        pass
-        # util.unset_win()
+            while True:
+                ch = uc.stdscr.getch()
+                request(chr(ch))
+                response = next(listen_for_reply)
+                if ch == ord('q'):
+                    print "quit"
+                    break
+        else:
+            while True:
+                ch = uc.stdscr.getch()
+                if ch == ord('q'):
+                    print "quit"
+                    break
+        uc.unset_win()
 
 if __name__ == "__main__":
-    main()
+    commander = ScreenCommander()
+    commander.start()

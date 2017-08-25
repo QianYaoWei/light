@@ -2,9 +2,9 @@
 # -*- coding:utf-8 -*-
 
 import os
-import util
 
-conf = util.BookConf
+import util
+from util.conf import BookConf as conf
 
 class Book(util.OrmObj):
     # <<<<<<the book status<<<<<<
@@ -85,17 +85,20 @@ class Book(util.OrmObj):
             return msg
 
 if __name__ == "__main__":
-    b = Book(1, path = "/tmp/reader/jj")
-    print b.DBFields
-    b.Open()
-    print "CurPage: ", b.CurPage()
-    print "PageNext: ", b.PageNext()
-    print "PageNext: ", b.PageNext()
-    print "PageNext: ", b.PageNext()
-    print "PageNext: ", b.PageNext()
-    print "PagePre: ", b.PagePre()
-    print "PagePre: ", b.PagePre()
-    print "PageNext: ", b.PageNext()
-    print "PagePre: ", b.PagePre()
-    print "PagePre: ", b.PagePre()
-    print "PageNext: ", b.PageNext()
+    # b = Book(1, path = "/tmp/reader/jj")
+    # print b.DBFields
+    # b.Open()
+    # print "CurPage: ", b.CurPage()
+    # print "PageNext: ", b.PageNext()
+    # print "PageNext: ", b.PageNext()
+    # print "PageNext: ", b.PageNext()
+    # print "PageNext: ", b.PageNext()
+    # print "PagePre: ", b.PagePre()
+    # print "PagePre: ", b.PagePre()
+    # print "PageNext: ", b.PageNext()
+    # print "PagePre: ", b.PagePre()
+    # print "PagePre: ", b.PagePre()
+    # print "PageNext: ", b.PageNext()
+
+    for e in '今天，是一个大喜的日子今天，是一个大喜的日子':
+        print e,
