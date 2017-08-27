@@ -22,6 +22,12 @@ class Book(util.OrmObj):
         self._fd = None
         self._status = self.CLOSE
 
+    def Init(self, reciever):
+        reciever.MsgRegister('f', self.PageNext)
+        reciever.MsgRegister('b', self.PagePre)
+        # reciever.MsgRegister('g', self.JumpToPage)
+        # reciever.MsgRegister('G', self.JumpToPage)
+
     @property
     def Status(self):
         return self._status
@@ -85,20 +91,5 @@ class Book(util.OrmObj):
             return msg
 
 if __name__ == "__main__":
-    # b = Book(1, path = "/tmp/reader/jj")
-    # print b.DBFields
-    # b.Open()
-    # print "CurPage: ", b.CurPage()
-    # print "PageNext: ", b.PageNext()
-    # print "PageNext: ", b.PageNext()
-    # print "PageNext: ", b.PageNext()
-    # print "PageNext: ", b.PageNext()
-    # print "PagePre: ", b.PagePre()
-    # print "PagePre: ", b.PagePre()
-    # print "PageNext: ", b.PageNext()
-    # print "PagePre: ", b.PagePre()
-    # print "PagePre: ", b.PagePre()
-    # print "PageNext: ", b.PageNext()
-
     for e in '今天，是一个大喜的日子今天，是一个大喜的日子':
         print e,

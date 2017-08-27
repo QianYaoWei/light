@@ -2,9 +2,7 @@
 # -*- coding:utf-8 -*-
 
 import sqlite3
-from conf import ReaderConf
-
-conf = ReaderConf
+from conf import ReaderConf as conf
 
 try:
     g_conn = sqlite3.connect(conf.DBPath)

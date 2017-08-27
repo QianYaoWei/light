@@ -1,10 +1,8 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-import util
 from book import Book
-
-conf = util.ReaderConf
+from util.conf import ReaderConf as conf
 
 
 class BlindReader(object):

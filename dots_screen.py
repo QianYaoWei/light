@@ -5,27 +5,34 @@ import numpy as np
 import curses
 import time
 import sched
-import threading
-from zeroless import Server
 import sys
 
 from util.conf import ScreenConf as conf
-import util.curses as uc
-from screen_commander import ScreenCommander
+import util.curses_win as uc
+import util
 
 
-class DotsScreen(threading.Thread):
+class DotsScreen():
     def __init__(self):
-        super(DotsScreen, self).__init__()
-
         self._dots = np.zeros(conf.ScreenRow * conf.ScreenColumn, dtype=np.bool).\
-                    reshape(conf.ScreenRow, conf.ScreenColumn)
+                     reshape(conf.ScreenRow, conf.ScreenColumn)
 
         self._sched = sched.scheduler(time.time, time.sleep)
         self._sched.enter(conf.RefreshInterval, 1, self.Show, ())
 
         self._curPoint = (0, 0)
         self._exit = False
+
+    def Init(self, reciever):
+        reciever.MsgRegister(curses.KEY_UP, self.__OnKeyUp)
+        reciever.MsgRegister('k', self.__OnKeyUp)
+        reciever.MsgRegister(curses.KEY_DOWN, self.__OnKeyDown)
+        reciever.MsgRegister('j', self.__OnKeyDown)
+        reciever.MsgRegister(curses.KEY_LEFT, self.__OnKeyLeft)
+        reciever.MsgRegister('h', self.__OnKeyLeft)
+        reciever.MsgRegister(curses.KEY_RIGHT, self.__OnKeyRight)
+        reciever.MsgRegister('l', self.__OnKeyRight)
+        reciever.MsgRegister('q', self.__OnExit)
 
     def Show(self):
         if self._exit:
@@ -68,40 +75,6 @@ class DotsScreen(threading.Thread):
 
         return m
 
-    def run(self):
-        '''thread run'''
-
-        uc.set_win()
-        reply, listen_for_request = Server(port=conf.Port).reply()
-        for msg in listen_for_request:
-
-            ch = msg
-            dealingFunc = {
-                curses.KEY_UP: self.__OnKeyUp,
-                'k': self.__OnKeyUp,
-
-
-                curses.KEY_DOWN: self.__OnKeyDown,
-                'j': self.__OnKeyDown,
-
-
-                curses.KEY_LEFT: self.__OnKeyLeft,
-                'h': self.__OnKeyLeft,
-
-
-                curses.KEY_RIGHT: self.__OnKeyRight,
-                'l': self.__OnKeyRight,
-
-                'q': self.__OnExit,
-
-            }.get(ch, None)
-
-            reply("")
-            if dealingFunc is None:
-                ret = DotsScreen.DecodeMsg(msg)
-            else:
-                dealingFunc()
-
     def __OnKeyUp(self):
         index = self._curPoint[0] - 1
         if index < 0:
@@ -128,25 +101,26 @@ class DotsScreen(threading.Thread):
 
     def __OnExit(self):
         self._exit = True
-        uc.unset_win()
         sys.exit(0)
 
 
 def main():
     try:
+        uc.set_win()
+        reciever = util.CommandReciever()
         dots = DotsScreen()
-        dots.start()
+        dots.Init(reciever)
+        reciever.start()
 
-        commander = ScreenCommander(conf.Port)
-        commander.start()
+        sender = util.CommandSender()
+        sender.start()
 
         dots.Sched.run()
-
     except Exception, e:
         print str(e)
 
     finally:
-        pass
+        uc.unset_win()
 
 if __name__ == "__main__":
     main()

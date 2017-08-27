@@ -20,8 +20,9 @@ class ScreenConf(object):
 
     RefreshInterval = 0.01
 
-    ChannelAddress = "tcp://127.0.0.1:6666"
 
+class CommanderConf(object):
+    ChannelAddress = "tcp://127.0.0.1:6666"
     Port = 6666
 
 
