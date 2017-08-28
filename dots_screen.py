@@ -112,7 +112,7 @@ def main():
         dots.Init(reciever)
         reciever.start()
 
-        sender = util.CommandSender()
+        sender = uc.CursesSender()
         sender.start()
 
         dots.Sched.run()

@@ -11,14 +11,15 @@ class BlindReader(object):
         self._books = {}
         self._curBookID = 0
 
-    def AddBook(self, id, path):
-        if id in self._books:
+    def AddBook(self, book, syncToDB=False):
+        if book.Id in self._books:
             return
 
-        book = Book(id, path)
-        book.InsertIntoDB()
-        book.SyncToDB()
+        if syncToDB:
+            book.InsertIntoDB()
+            book.SyncToDB()
         self._books[id] = book
+
         return book
 
     def GetBook(self, id):

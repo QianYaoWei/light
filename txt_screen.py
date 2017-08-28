@@ -24,8 +24,6 @@ class TxtScreen():
     def Init(self, reciever):
         reciever.MsgRegister(curses.KEY_UP, self.__OnKeyUp)
         reciever.MsgRegister('k', self.__OnKeyUp)
-        reciever.MsgRegister(curses.KEY_UP, self.__OnKeyUp)
-        reciever.MsgRegister('k', self.__OnKeyUp)
         reciever.MsgRegister(curses.KEY_DOWN, self.__OnKeyDown)
         reciever.MsgRegister('j', self.__OnKeyDown)
         reciever.MsgRegister(curses.KEY_LEFT, self.__OnKeyLeft)
@@ -99,7 +97,7 @@ def main():
         ts.Init(reciever)
         reciever.start()
 
-        sender = util.CommandSender()
+        sender = uc.CursesSender()
         sender.start()
 
         ts.Sched.run()
