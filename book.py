@@ -22,12 +22,6 @@ class Book(util.OrmObj):
         self._fd = None
         self._status = self.CLOSE
 
-    def Init(self, reciever):
-        reciever.MsgRegister('f', self.PageNext)
-        reciever.MsgRegister('b', self.PagePre)
-        # reciever.MsgRegister('g', self.JumpToPage)
-        # reciever.MsgRegister('G', self.JumpToPage)
-
     @property
     def Status(self):
         return self._status
@@ -71,7 +65,7 @@ class Book(util.OrmObj):
             self._dbFields["cur_page"] += 1
             pagePos = self.GetPagePos(self._dbFields["cur_page"])
             msg = self.__GetPageMsg(pagePos)
-            self.SyncToDB()
+            # self.SyncToDB()
             return msg
 
     def PagePre(self):
@@ -79,7 +73,7 @@ class Book(util.OrmObj):
             self._dbFields["cur_page"] -= 1
             pagePos = self.GetPagePos(self._dbFields["cur_page"])
             msg = self.__GetPageMsg(pagePos)
-            self.SyncToDB()
+            # self.SyncToDB()
             return msg
 
     def JumpToPage(self, page):
@@ -87,7 +81,7 @@ class Book(util.OrmObj):
             self._dbFields["cur_page"] = page
             pagePos = self.GetPagePos(self._dbFields["cur_page"])
             msg = self.__GetPageMsg(pagePos)
-            self.SyncToDB()
+            # self.SyncToDB()
             return msg
 
 if __name__ == "__main__":

@@ -33,5 +33,5 @@ class ReaderConf(object):
 
 
 class BookConf(object):
-    PageRow = 5
-    PageCol = 2
+    PageRow = 16
+    PageCol = 32

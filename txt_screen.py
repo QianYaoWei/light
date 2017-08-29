@@ -11,7 +11,7 @@ import util
 
 
 class TxtScreen():
-    def __init__(self, txt):
+    def __init__(self, txt=""):
         # super(TxtScreen, self).__init__()
         self._width = 32
         self._height = conf.ScreenRow
@@ -84,6 +84,8 @@ class TxtScreen():
         sys.exit(0)
 
     def __OnTXT(self, txt):
+        # self._sched.enter(conf.RefreshInterval, 1, self.Show, ())
+
         self._curPos = 0
         self._txt = txt
 
