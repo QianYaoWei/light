@@ -16,3 +16,8 @@ create table book (
     path text,
     cur_page INTEGER DEFAULT 0
 );
+
+create table reader (
+    id integer primary key default 1,
+    cur_book_id integer default 1
+);

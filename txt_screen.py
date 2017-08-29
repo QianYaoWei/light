@@ -33,7 +33,6 @@ class TxtScreen():
         reciever.MsgRegister('q', self.__OnExit)
         reciever.MsgRegister('t', self.__OnTXT)
 
-
     def Show(self):
         if self._exit:
             return
@@ -44,7 +43,7 @@ class TxtScreen():
             for j in range(0, conf.ScreenColumn):
                 index = i * conf.ScreenColumn + j
                 if index >= ln:
-                    uc.stdscr.addstr(i + conf.BeginX, j + conf.BeginY, "_", curses.color_pair(uc.Color2) | curses.A_BOLD)
+                    uc.stdscr.addstr(i + conf.BeginX, j + conf.BeginY, "_", curses.color_pair(uc.Color1) | curses.A_BOLD)
                 else:
                     uc.stdscr.addstr(i + conf.BeginX, j + conf.BeginY, self._txt[curPos + index], curses.A_BOLD)
 
@@ -59,35 +58,41 @@ class TxtScreen():
     def TXT(self):
         return self._txt
 
+    def UpdateTXT(self, txt):
+        self._curPos = 0
+        self._txt = txt
+
     def __OnKeyUp(self):
-        index = self._curPos - self._width
-        self._curPos = index if index >= 0 else 0
-        # print self._curPos
+        def OnKeyUp(self):
+            index = self._curPos - self._width
+            self._curPos = index if index >= 0 else 0
+
+        self._sched.enter(0, 1, OnKeyUp, (self, ))
 
     def __OnKeyDown(self):
-        index = self._curPos + self._width
-        self._curPos = index if index < len(self._txt) else len(self._txt) - 1
-        # print self._curPos
+        def OnKeyDown(self):
+            index = self._curPos + self._width
+            self._curPos = index if index < len(self._txt) else len(self._txt) - 1
+        self._sched.enter(0, 1, OnKeyDown, (self, ))
 
     def __OnKeyLeft(self):
-        index = self._curPos - 1
-        self._curPos = index if index >= 0 else 0
-        # print self._curPos
+        def KeyLeft(self):
+            index = self._curPos - 1
+            self._curPos = index if index >= 0 else 0
+        self._sched.enter(0, 1, KeyLeft, (self, ))
 
     def __OnKeyRight(self):
-        index = self._curPos + 1
-        self._curPos = index if index < len(self._txt) else len(self._txt) - 1
-        # print self._curPos
+        def KeyRight(self):
+            index = self._curPos + 1
+            self._curPos = index if index < len(self._txt) else len(self._txt) - 1
+        self._sched.enter(0, 1, KeyRight, (self, ))
 
     def __OnExit(self):
         self._exit = True
         sys.exit(0)
 
     def __OnTXT(self, txt):
-        # self._sched.enter(conf.RefreshInterval, 1, self.Show, ())
-
-        self._curPos = 0
-        self._txt = txt
+        self._sched.enter(0, 1, self.UpdateTXT, (txt, ))
 
 
 def main():

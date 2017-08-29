@@ -44,11 +44,12 @@ class OrmObj(object):
             cursor.execute(sql)
             ret = cursor.fetchone()
             if ret is None:
-                return
+                return False
 
             for i, el in enumerate(ret):
                 self._dbFields[keys[i]] = el
 
+            return True
         except Exception, e:
             print(str(e))
         finally:

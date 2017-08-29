@@ -10,11 +10,13 @@ import util.curses_win as uc
 from txt_screen import TxtScreen
 
 
-class BlindReader(object):
-    def __init__(self, recieverPort=None):
+class BlindReader(util.OrmObj):
+    def __init__(self, id=1, recieverPort=None, **kargs):
+        super(BlindReader, self).__init__(id, "reader")
+        self._dbFields["cur_book_id"] = kargs.get("cur_book_id", 0)
+
         self.curDir = conf.ReaderConf.ShelfPath
         self._books = {}
-        self._curBookID = 0
 
         self._client = Client()
         self._port = recieverPort if recieverPort is not None else conf.CommanderConf.Port
@@ -22,13 +24,16 @@ class BlindReader(object):
     def Init(self, reciever):
         reciever.MsgRegister('f', self.__PageNext)
         reciever.MsgRegister('b', self.__PagePre)
-        self._client.connect_local(self._port)
-
         # reciever.MsgRegister('g', self.JumpToPage)
         # reciever.MsgRegister('G', self.JumpToPage)
+        self._client.connect_local(self._port)
+
+        # books = book.SelectAllFromDB()
+        # for el in books:
+        #     AddBook(self, el)
 
     def GetCurBook(self):
-        return self._books.get(self._curBookID, None)
+        return self._books.get(self.GetField("cur_book_id"), None)
 
     def __SendMsg(self, msgID, msg):
         request, listen_for_reply = self._client.request()
@@ -64,29 +69,26 @@ class BlindReader(object):
         return self._books.get(id, None)
 
     def CloseBook(self, id):
-        if id != self._curBookID:
+        if id != self.GetField("cur_book_id"):
             return
 
         book = self._books.get(id, None)
-        if book is not None and \
-           book.Status == book.OPEN:
+        if book is not None and book.Status == book.OPEN:
 
             book.SyncToDB()
             book.Close()
-            self._curBookID = 0
+            self.SyncToDB()
 
     def OpenBook(self, id):
-        if 0 != self._curBookID:
+        if 0 != self.GetField("cur_book_id"):
             # 当前已经打开其它书
             return
 
         book = self._books.get(id, None)
-        if book is not None and \
-           book.Status == book.CLOSE:
-
+        if book is not None and book.Status == book.CLOSE:
             book.Open()
-
-            self._curBookID = id
+            self.DBFields["cur_book_id"] = id
+            self.SyncToDB()
 
     def DelBook(self, id):
         book = self._books.get(id, None)
@@ -96,8 +98,9 @@ class BlindReader(object):
             book.DelFromDB()
             self._books.pop(id)
 
-            if id == self._curBookID:
-                self._curBookID = 0
+            if id == self.GetField("cur_book_id"):
+                self.DBFields["cur_book_id"] = 0
+
 
 if __name__ == "__main__":
     # book = Book(1, path="/tmp1", page=1)
@@ -110,10 +113,21 @@ if __name__ == "__main__":
     # book.InsertIntoDB()
     # book.SyncToDB()
 
+    r = BlindReader()
+    reader = None
+    ret = r.SelectAllFromDB()
+    print ret
+    if not ret:
+        r.InsertIntoDB()
+        r.SyncToDB()
+        reader = r
+    else:
+        reader = ret[0]
+    print reader
+
     reciever = util.CommandReciever()
 
-    book = Book(1, path="/Users/terencewei/my_src/br/book_mark.py", cur_page=0)
-    reader = BlindReader()
+    book = Book(1, path="/home/wei/gitsrc/light/book_mark.py", cur_page=0)
     reader.Init(reciever)
     reader.AddBook(book)
     reader.OpenBook(1)
@@ -128,6 +142,3 @@ if __name__ == "__main__":
     sender.start()
 
     ts.Sched.run()
-    # li = book.SelectAllFromDB()
-    # for el in li:
-    #     print el
