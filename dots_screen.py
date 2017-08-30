@@ -13,11 +13,11 @@ import util
 
 
 class DotsScreen():
-    def __init__(self):
+    def __init__(self, Sched=None):
         self._dots = np.zeros(conf.ScreenRow * conf.ScreenColumn, dtype=np.bool).\
                      reshape(conf.ScreenRow, conf.ScreenColumn)
 
-        self._sched = sched.scheduler(time.time, time.sleep)
+        self._sched = Sched if Sched else sched.scheduler(time.time, time.sleep)
         self._sched.enter(conf.RefreshInterval, 1, self.Show, ())
 
         self._curPoint = (0, 0)

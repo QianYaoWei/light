@@ -11,14 +11,16 @@ import util
 
 
 class TxtScreen():
-    def __init__(self, txt=""):
+    def __init__(self, txt="", Sched=None):
         # super(TxtScreen, self).__init__()
         self._width = 32
         self._height = conf.ScreenRow
         self._txt = txt
         self._curPos = 0
-        self._sched = sched.scheduler(time.time, time.sleep)
+
+        self._sched = Sched if Sched else sched.scheduler(time.time, time.sleep)
         self._sched.enter(conf.RefreshInterval, 1, self.Show, ())
+
         self._exit = False
 
     def Init(self, reciever):

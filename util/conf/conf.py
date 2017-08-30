@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
+import os
+
 RealMachine = 1
 
 Curses = 2
@@ -27,9 +29,11 @@ class CommanderConf(object):
 
 
 class ReaderConf(object):
-    ShelfPath = "/tmp/reader"
+    ShelfPath = os.path.dirname(__file__) + "/../../"
 
-    DBPath = "/tmp/reader/reader.db"
+    DBPath = os.path.dirname(__file__) + "/../../sql/reader.db"
+
+print ReaderConf.DBPath
 
 
 class BookConf(object):
