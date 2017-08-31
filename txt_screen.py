@@ -17,10 +17,8 @@ class TxtScreen():
         self._height = conf.ScreenRow
         self._txt = txt
         self._curPos = 0
-
         self._sched = Sched if Sched else sched.scheduler(time.time, time.sleep)
         self._sched.enter(conf.RefreshInterval, 1, self.Show, ())
-
         self._exit = False
 
     def Init(self, reciever):
@@ -41,13 +39,28 @@ class TxtScreen():
 
         curPos = self._curPos
         ln = len(self._txt[curPos:])
+        curIndex = 0
         for i in range(0, conf.ScreenRow):
+            changeLine = False
             for j in range(0, conf.ScreenColumn):
-                index = i * conf.ScreenColumn + j
-                if index >= ln:
+                # index = i * conf.ScreenColumn + j
+                if curIndex >= ln:
                     uc.stdscr.addstr(i + conf.BeginX, j + conf.BeginY, "_", curses.color_pair(uc.Color1) | curses.A_BOLD)
+                elif self._txt[curPos + curIndex] != '\n':
+                    uc.stdscr.addstr(i + conf.BeginX, j + conf.BeginY, self._txt[curPos + curIndex], curses.A_BOLD)
+                    curIndex += 1
                 else:
-                    uc.stdscr.addstr(i + conf.BeginX, j + conf.BeginY, self._txt[curPos + index], curses.A_BOLD)
+                    uc.stdscr.addstr(i + conf.BeginX, j + conf.BeginY, "_", curses.color_pair(uc.Color1) | curses.A_BOLD)
+                    changeLine = True
+                    continue
+            if changeLine:
+                curIndex += 1
+
+                # index = i * conf.ScreenColumn + j
+                # if index >= ln:
+                #     uc.stdscr.addstr(i + conf.BeginX, j + conf.BeginY, "_", curses.color_pair(uc.Color1) | curses.A_BOLD)
+                # else:
+                #     uc.stdscr.addstr(i + conf.BeginX, j + conf.BeginY, self._txt[curPos + index], curses.A_BOLD)
 
         uc.stdscr.refresh()
         self._sched.enter(conf.RefreshInterval, 1, self.Show, ())

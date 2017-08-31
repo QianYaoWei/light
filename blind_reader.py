@@ -95,17 +95,18 @@ class BlindReader(util.OrmObj):
         return self._books.get(id, None)
 
     def OpenBook(self, id):
-        if 0 != self.GetField("cur_book_id"):
+        curID = self.GetField("cur_book_id")
+        if 0 != curID and id != curID:
             # 当前已经打开其它书
             return
 
         book = self._books.get(id, None)
         if book is not None and book.Status == book.CLOSE:
             book.Open()
-            self.SyncToDB()
-
-            self.DBFields["cur_book_id"] = id
             self._readingType = BookReading
+            if id != curID:
+                self.DBFields["cur_book_id"] = id
+                self.SyncToDB()
 
     def DelBook(self, id):
         book = self._books.get(id, None)
@@ -121,7 +122,6 @@ class BlindReader(util.OrmObj):
 
 
 if __name__ == "__main__":
-
     reciever = util.CommandReciever()
     reader = BlindReader()
     reader.Init(reciever)

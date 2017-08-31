@@ -47,56 +47,57 @@ class OrmObj(object):
         return self._dbFields.get(field, None)
 
     def SelectFromDB(self):
-        def Select(self):
-            keys = self._dbFields.keys()
-            sql = "select %s from %s where id=%d;" \
-                % (",".join(keys), self.__tableName, self.__id)
-            try:
-                cursor = self._dbCon.cursor()
-                cursor.execute(sql)
-                ret = cursor.fetchone()
-                if ret is None:
-                    return False
+        # def Select(self):
+        keys = self._dbFields.keys()
+        sql = "select %s from %s where id=%d;" \
+            % (",".join(keys), self.__tableName, self.__id)
+        try:
+            cursor = self._dbCon.cursor()
+            cursor.execute(sql)
+            ret = cursor.fetchone()
+            if ret is None:
+                return False
 
-                for i, el in enumerate(ret):
-                    self._dbFields[keys[i]] = el
+            for i, el in enumerate(ret):
+                self._dbFields[keys[i]] = el
 
-                return True
-            except Exception, e:
-                print(str(e))
-            finally:
-                cursor.close()
-        self._sched.enter(0, 1, Select, (self, ))
+            return True
+        except Exception, e:
+            print(str(e))
+        finally:
+            cursor.close()
+        # self._sched.enter(0, 1, Select, (self, ))
 
-    def SelectAllFromDB(self, func):
-        def SelectAll(self, func):
-            objList = []
-            if not self._dbFields:
-                func(objList)
-                return
+    def SelectAllFromDB(self):
+        # def SelectAll(self, func):
+        objList = []
+        if not self._dbFields:
+            # func(objList)
+            return objList
 
-            keys = ["id"]
-            keys.extend(self._dbFields.keys())
-            sql = "select %s from %s;" \
-                % (",".join(keys), self.__tableName)
-            try:
-                cursor = self._dbCon.cursor()
-                cursor.execute(sql)
-                retList = cursor.fetchall()
-                for row in retList:
-                    dbFields = {}
-                    id = row[0]
-                    for i, el in enumerate(row):
-                        if i != 0:
-                            dbFields[keys[i]] = el
-                    objList.append(self.__class__(id, **dbFields))
-            except Exception, e:
-                print(str(e))
-            finally:
-                cursor.close()
+        keys = ["id"]
+        keys.extend(self._dbFields.keys())
+        sql = "select %s from %s;" \
+            % (",".join(keys), self.__tableName)
+        try:
+            cursor = self._dbCon.cursor()
+            cursor.execute(sql)
+            retList = cursor.fetchall()
+            for row in retList:
+                dbFields = {}
+                id = row[0]
+                for i, el in enumerate(row):
+                    if i != 0:
+                        dbFields[keys[i]] = el
+                objList.append(self.__class__(id, **dbFields))
+        except Exception, e:
+            print(str(e))
+        finally:
+            cursor.close()
 
-            func(objList)
-        self._sched.enter(0, 1, SelectAll, (self, func))
+        # func(objList)
+        return objList
+        # self._sched.enter(0, 1, SelectAll, (self, func))
 
     def InsertIntoDB(self):
         def Insert(self):
