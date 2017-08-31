@@ -1,55 +1,19 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-class BookMark(util.OrmObj):
-    # def __init__(self, path, page = 0, offsetPos = 0, desc = ""):
-    def __init__(self, id, bookID, page = 0):
-        super(BookMark, self).__init__(id, "book_mark")
-        self._id = id
-        self._bookID = bookID
-        self._page = page
-        # self._offsetPage = offsetPos
-#!/usr/bin/env python
-# -*- coding:utf-8 -*-
+import curses
+import util
 
-class BookMark(util.OrmObj):
-    # def __init__(self, path, page = 0, offsetPos = 0, desc = ""):
-    def __init__(self, id, bookID, page = 0):
-        super(BookMark, self).__init__(id, "book_mark")
-        self._id = id
-        self._bookID = bookID
-        self._page = page
-        # self._offsetPage = offsetPos
-#!/usr/bin/env python
-# -*- coding:utf-8 -*-
 
-class BookMark(util.OrmObj):
-    # def __init__(self, path, page = 0, offsetPos = 0, desc = ""):
-    def __init__(self, id, bookID, page = 0):
-        super(BookMark, self).__init__(id, "book_mark")
-        self._id = id
-        self._bookID = bookID
-        self._page = page
-        # self._offsetPage = offsetPos
-#!/usr/bin/env python
-# -*- coding:utf-8 -*-
+def main(stdscr):
+    sender = util.CursesSender(stdscr)
+    sender.start()
 
-class BookMark(util.OrmObj):
-    # def __init__(self, path, page = 0, offsetPos = 0, desc = ""):
-    def __init__(self, id, bookID, page = 0):
-        super(BookMark, self).__init__(id, "book_mark")
-        self._id = id
-        self._bookID = bookID
-        self._page = page
-        # self._offsetPage = offsetPos
-#!/usr/bin/env python
-# -*- coding:utf-8 -*-
+    reciever = util.CommandReciever()
+    reciever.start()
 
-class BookMark(util.OrmObj):
-    # def __init__(self, path, page = 0, offsetPos = 0, desc = ""):
-    def __init__(self, id, bookID, page = 0):
-        super(BookMark, self).__init__(id, "book_mark")
-        self._id = id
-        self._bookID = bookID
-        self._page = page
-        # self._offsetPage = offsetPos
+    sender.join()
+    reciever.join()
+
+if __name__ == "__main__":
+    curses.wrapper(main)

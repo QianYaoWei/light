@@ -33,8 +33,6 @@ class ReaderConf(object):
 
     DBPath = os.path.dirname(__file__) + "/../../sql/reader.db"
 
-print ReaderConf.DBPath
-
 
 class BookConf(object):
     PageRow = 16

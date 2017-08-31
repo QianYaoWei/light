@@ -3,13 +3,12 @@
 
 import sys
 import os
+import curses
 from book import Book
 from zeroless import Client
 import util
 from util import conf
 from util import Message
-
-import util.curses_win as uc
 from txt_screen import TxtScreen
 
 
@@ -25,8 +24,6 @@ class BlindReader(util.OrmObj):
 
     def Init(self, reciever, Sched=None, conn=None):
         super(BlindReader, self).Init(Sched, conn)
-        uc.set_win()
-
         reciever.MsgRegister('f', self.__PageNext)
         reciever.MsgRegister('b', self.__PagePre)
         reciever.MsgRegister('c', self.__CloseBook)
@@ -42,7 +39,6 @@ class BlindReader(util.OrmObj):
 
     def __OnExit(self):
         def OnExit():
-            uc.unset_win()
             sys.exit(0)
         self._sched.enter(1, 1, OnExit, ())
 
@@ -123,7 +119,7 @@ class BlindReader(util.OrmObj):
                 self.DBFields["cur_book_id"] = 0
 
 
-if __name__ == "__main__":
+def main(stdscr):
     reciever = util.CommandReciever()
     reader = BlindReader()
     reader.Init(reciever)
@@ -132,7 +128,7 @@ if __name__ == "__main__":
         reader.InsertIntoDB()
         reader.SyncToDB()
 
-    f = os.path.dirname(__file__) + "/book_mark.py"
+    f = os.path.dirname(__file__) + "/blind_reader.py"
     book = Book(1, path=f, cur_page=0)
     reader.AddBook(book)
     book = Book(2, path=f, cur_page=0)
@@ -144,12 +140,15 @@ if __name__ == "__main__":
     book = reader.GetBook(1)
     page = book.CurPage()
 
-    ts = TxtScreen(page, reader.Sched)
+    ts = TxtScreen(stdscr, page, reader.Sched)
     ts.Init(reciever)
 
     reciever.start()
 
-    sender = uc.CursesSender()
+    sender = util.CommandSender(stdscr)
     sender.start()
 
     reader.Sched.run()
+
+if __name__ == "__main__":
+    curses.wrapper(main)

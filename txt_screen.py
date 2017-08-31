@@ -6,7 +6,6 @@ import sched
 import time
 from util.conf import ScreenConf as conf
 import util
-import util.curses_win as uc
 
 Color1 = 1
 
@@ -21,6 +20,7 @@ class TxtScreen(object):
         self._sched = Sched if Sched else sched.scheduler(time.time, time.sleep)
         self._sched.enter(conf.RefreshInterval, 1, self.Show, ())
         self._stdscr = stdscr
+        self._exit = False
 
 
         curses.init_pair(Color1, curses.COLOR_GREEN, curses.COLOR_BLACK)
@@ -39,6 +39,8 @@ class TxtScreen(object):
         reciever.MsgRegister('q', self.__OnExit)
 
     def Show(self):
+        if self._exit:
+            return
         curPos = self._curPos
         ln = len(self._txt[curPos:])
         for i in range(0, conf.ScreenRow):
@@ -145,17 +147,23 @@ class TxtScreen(object):
         self._sched.enter(0, 1, self.UpdateTXT, (txt, ))
 
     def __OnExit(self):
-        exit(0)
+        self._exit = True
 
 
-def main():
-    ts = curses.wrapper(TxtScreen, txt='welcome here...')
+def main(stdscr):
+    ts = TxtScreen(stdscr, txt='welcome here...')
+
     reciever = util.CommandReciever()
     ts.Init(reciever)
     reciever.start()
-    sender = uc.CursesSender(ts.StdScr)
+
+    sender = util.CommandSender(stdscr)
     sender.start()
+
     ts.Sched.run()
 
+    reciever.join()
+    sender.join()
+
 if __name__ == "__main__":
-    main()
+    curses.wrapper(main)

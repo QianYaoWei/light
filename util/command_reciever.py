@@ -4,7 +4,7 @@
 import threading
 from zeroless import Server
 from conf import CommanderConf as conf
-from message import Message
+import util
 
 class CommandReciever(threading.Thread):
     def __init__(self, port=None):
@@ -18,7 +18,7 @@ class CommandReciever(threading.Thread):
         reply, listen_for_request = self._server.reply()
         for msg in listen_for_request:
             reply("")
-            m = Message.DecodeMsg(msg)
+            m = util.Message.DecodeMsg(msg)
             funs = self._msgCallBack.get(m.MsgID, None)
             if funs:
                 for f in funs:
