@@ -5,32 +5,25 @@ import threading
 from zeroless import Client
 from .. import Message
 from ..conf import CommanderConf as conf
-from curses_win import *
+import curses
 
 class CursesSender(threading.Thread):
-    def __init__(self, port=None):
+    def __init__(self, stdscr, port=None):
         super(CursesSender, self).__init__()
         self._client = Client()
         self._port = port if port is not None else conf.Port
+        self._stdscr = stdscr
 
     def run(self):
-
-        set_win()
+        # def Run(self):
         self._client.connect_local(port=self._port)
         request, listen_for_reply = self._client.request()
 
         while True:
-            ch = stdscr.getch()
+            ch = self._stdscr.getch()
             m = Message(chr(ch))
             request(m.EncodeMsg())
             response = next(listen_for_reply)
             if m.MsgID == 'q':
                 print "sender quit"
                 break
-        # else:
-        #     while True:
-        #         ch = stdscr.getch()
-        #         if ch == ord('q'):
-        #             print "sender quit"
-        #             break
-        unset_win()
