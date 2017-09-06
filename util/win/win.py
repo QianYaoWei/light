@@ -63,20 +63,21 @@ class Win(object):
         pass
 
     def IsInRange(self, x, y):
-        if self._x <= x < self._x + height and self._y <= y < self._y + width:
+        if self._x <= x < self._x + self._height and self._y <= y < self._y + self._width:
             return True
         else:
             return False
 
-    def Draw(self):
-        rectangle(self._stdscr, self._x, self._y, self._x + self._height, self._y + self._width)
-
+    def Draw(self, x, y):
         for w in self._subWins:
-            w.Draw()
+            w.Draw(x, y)
 
         # TODO
         for k in self._points:
-            self._points[k].Draw()
+            if self.IsInRange(x, y):
+                self._points[k].Draw('.')
+            else:
+                self._points[k].Draw('x')
 
     def Close(self):
         # TODO

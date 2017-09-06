@@ -56,7 +56,7 @@ class Point(object):
     def InActivate(self):
         self._status = False
 
-    def Draw(self):
-        self._stdscr.addch(self._rx + self._x, self._ry + self._y, '.')
+    def Draw(self, ch='.'):
+        self._stdscr.addch(self._rx + self._x, self._ry + self._y, ch)
         # TODO
         pass
