@@ -2,7 +2,9 @@
 # -*- coding:utf-8 -*-
 
 import curses
-from win_desc import Wins
+from point import *
+from wins import Wins
+
 
 def rectangle(win, ulx, uly, lrx, lry):
     """Draw a rectangle with corners at the provided upper-left
@@ -27,11 +29,23 @@ class Win(object):
         self._height = height
         self._width = width
         self._subWins = []
-        self._points = []
+        self._points = {}
         self._stdscr = stdscr
+        self._parent = None
 
     def __str__(self):
         return ",".join([str(self._x), str(self._y), str(self._height), str(self._width)])
+
+    @property
+    def Parent(self):
+        return self._parent
+
+    @Parent.setter
+    def Parent(self, win):
+        self._parent = win
+
+    def AddPoint(self, point):
+        self._points[point.Key] = point
 
     @property
     def X(self):
@@ -57,18 +71,22 @@ class Win(object):
     def Draw(self):
         rectangle(self._stdscr, self._x, self._y, self._x + self._height, self._y + self._width)
 
-        # TODO
-        for p in self._points:
-            p.Draw()
-
         for w in self._subWins:
             w.Draw()
+
+        # TODO
+        for k in self._points:
+            self._points[k].Draw()
 
     def Close(self):
         # TODO
         for w in self._subWins:
             w.Close()
 
+    def RelativePosForPoints(self, rx, ry):
+        g_ps = ScreenPoints(self._stdscr)
+        for k, p in g_ps.Points.items():
+            p.RelativePos(rx, ry)
 
     @staticmethod
     def CreateWin(stdscr, name):
@@ -76,19 +94,14 @@ class Win(object):
         if win:
             w = Win(stdscr, win["x"], win["y"], win["height"], win["width"])
             for s in win["subwins"]:
-                w._subWins.append(Win(stdscr, w.X + s["x"], w.Y + s["y"], s["height"], s["width"]))
+                subwin = Win(stdscr, w.X + s["x"], w.Y + s["y"], s["height"], s["width"])
+                w._subWins.append(subwin)
+                subwin.Parent = w
+
+                points = s.get("points", [])
+                for p in points:
+                    xy = p.split(',')
+                    g_ps = ScreenPoints(stdscr)
+                    point = g_ps.GetPoint(int(xy[0]), int(xy[1]))
+                    subwin.AddPoint(point)
             return w
-
-
-def main(stdscr):
-    w = Win.CreateWin(stdscr, "win1")
-    w.Draw()
-    stdscr.refresh()
-    len(w.SubWins)
-    # print w
-    # for s in w.SubWins:
-    #     print s
-
-
-if __name__ == "__main__":
-    curses.wrapper(main)
