@@ -2,11 +2,10 @@
 # -*- coding:utf-8 -*-
 from braille_square_win import *
 
-ReaderWin = {
-
-    "x": 10,
-    "y": 10,
-    "height": 15,
+LineWin0 = {
+    "x": 0,
+    "y": 0,
+    "height": 3,
     "width": 32,
 
     "subwins": [
@@ -26,6 +25,16 @@ ReaderWin = {
         BrailleSquare0_13,
         BrailleSquare0_14,
         BrailleSquare0_15,
+   ] 
+}
+
+LineWin1 = {
+    "x": 3,
+    "y": 0,
+    "height": 3,
+    "width": 32,
+
+    "subwins": [
         BrailleSquare1_0,
         BrailleSquare1_1,
         BrailleSquare1_2,
@@ -42,6 +51,16 @@ ReaderWin = {
         BrailleSquare1_13,
         BrailleSquare1_14,
         BrailleSquare1_15,
+   ] 
+}
+
+LineWin2 = {
+    "x": 6,
+    "y": 0,
+    "height": 3,
+    "width": 32,
+
+    "subwins": [
         BrailleSquare2_0,
         BrailleSquare2_1,
         BrailleSquare2_2,
@@ -58,6 +77,16 @@ ReaderWin = {
         BrailleSquare2_13,
         BrailleSquare2_14,
         BrailleSquare2_15,
+   ] 
+}
+
+LineWin3 = {
+    "x": 9,
+    "y": 0,
+    "height": 3,
+    "width": 32,
+
+    "subwins": [
         BrailleSquare3_0,
         BrailleSquare3_1,
         BrailleSquare3_2,
@@ -74,6 +103,16 @@ ReaderWin = {
         BrailleSquare3_13,
         BrailleSquare3_14,
         BrailleSquare3_15,
+   ] 
+}
+
+LineWin4 = {
+    "x": 12,
+    "y": 0,
+    "height": 3,
+    "width": 32,
+
+    "subwins": [
         BrailleSquare4_0,
         BrailleSquare4_1,
         BrailleSquare4_2,
@@ -90,5 +129,5 @@ ReaderWin = {
         BrailleSquare4_13,
         BrailleSquare4_14,
         BrailleSquare4_15,
-    ]
+   ] 
 }
