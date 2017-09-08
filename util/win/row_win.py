@@ -8,10 +8,10 @@ RowWin = {
     "width": 32,
 
     "subwins": [
-        LineWin0,
-        LineWin1,
-        LineWin2,
-        LineWin3,
-        LineWin4,
+        "LineWin0",
+        "LineWin1",
+        "LineWin2",
+        "LineWin3",
+        "LineWin4",
     ]
 }

@@ -89,20 +89,24 @@ class Win(object):
         for k, p in g_ps.Points.items():
             p.RelativePos(rx, ry)
 
-    @staticmethod
-    def CreateWin(stdscr, name):
+    @classmethod
+    def CreateWin(cls, stdscr, name):
         win = Wins.get(name, None)
         if win:
             w = Win(stdscr, win["x"], win["y"], win["height"], win["width"])
-            for s in win["subwins"]:
-                subwin = Win(stdscr, w.X + s["x"], w.Y + s["y"], s["height"], s["width"])
-                w._subWins.append(subwin)
-                subwin.Parent = w
+            for s in win.get("subwins", []):
+                if type(s) == str:
+                    subwin = cls.CreateWin(stdscr, s)
+                    w._subWins.append(subwin)
+                    subwin.Parent = w
+                elif type(s) == dict:
+                    subwin = Win(stdscr, w.X + s["x"], w.Y + s["y"], s["height"], s["width"])
+                    w._subWins.append(subwin)
+                    subwin.Parent = w
 
-                points = s.get("points", [])
-                for p in points:
-                    xy = p.split(',')
-                    g_ps = ScreenPoints(stdscr)
-                    point = g_ps.GetPoint(int(xy[0]), int(xy[1]))
-                    subwin.AddPoint(point)
+                    for p in s.get("points", []):
+                        xy = p.split(',')
+                        g_ps = ScreenPoints(stdscr)
+                        point = g_ps.GetPoint(int(xy[0]), int(xy[1]))
+                        subwin.AddPoint(point)
             return w
