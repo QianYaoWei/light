@@ -83,7 +83,9 @@ class Screen(object):
 
 
 def main(stdscr):
-    ts = Screen(stdscr, "RowWin")
+    # ts = Screen(stdscr, "BrailleSquareWin")
+    # ts = Screen(stdscr, "RowWin")
+    ts = Screen(stdscr, "X8x8Win")
 
     reciever = util.CommandReciever()
     ts.Init(reciever)

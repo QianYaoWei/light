@@ -1,14 +1,15 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-from braille_square_win import *
-from line_win import *
-from reader_win import ReaderWin
+from win_elem.braille_square import *
+from win_elem.line import *
+from win_elem.square_8x8 import *
+
+from braille_square_win import BrailleSquareWin
 from row_win import RowWin
+from x8x8_win import X8x8Win
 
 Wins = {
-    "ReaderWin": ReaderWin,
-
     "BrailleSquare0_0":  BrailleSquare0_0,
     "BrailleSquare0_1":  BrailleSquare0_1,
     "BrailleSquare0_2":  BrailleSquare0_2,
@@ -90,11 +91,22 @@ Wins = {
     "BrailleSquare4_14": BrailleSquare4_14,
     "BrailleSquare4_15": BrailleSquare4_15,
 
-    "LineWin0": LineWin0,
-    "LineWin1": LineWin1,
-    "LineWin2": LineWin2,
-    "LineWin3": LineWin3,
-    "LineWin4": LineWin4,
+    "Square8x8_0_0":  Square8x8_0_0,
+    "Square8x8_0_8":  Square8x8_0_8,
+    "Square8x8_0_16":  Square8x8_0_16,
+    "Square8x8_0_24": Square8x8_0_24,
+    "Square8x8_8_0":  Square8x8_8_0,
+    "Square8x8_8_8":  Square8x8_8_8,
+    "Square8x8_8_16":  Square8x8_8_16,
+    "Square8x8_8_24": Square8x8_8_24,
+
+    "Line0": Line0,
+    "Line1": Line1,
+    "Line2": Line2,
+    "Line3": Line3,
+    "Line4": Line4,
 
     "RowWin": RowWin,
+    "BrailleSquareWin": BrailleSquareWin,
+    "X8x8Win": X8x8Win,
 }

@@ -46,15 +46,15 @@ class Point(object):
     def Status(self):
         return self._status
 
-    @property
-    def Key(self):
-        return Key(self._x, self._y)
-
     def Activate(self):
         self._status = True
 
     def InActivate(self):
         self._status = False
+
+    @property
+    def Key(self):
+        return Key(self._x, self._y)
 
     def Draw(self, ch='.'):
         self._stdscr.addch(self._rx + self._x, self._ry + self._y, ch)

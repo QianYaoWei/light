@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-LineWin0 = {
+Line0 = {
     "x": 0,
     "y": 0,
     "height": 3,
@@ -27,7 +27,7 @@ LineWin0 = {
    ]
 }
 
-LineWin1 = {
+Line1 = {
     "x": 3,
     "y": 0,
     "height": 3,
@@ -53,7 +53,7 @@ LineWin1 = {
    ]
 }
 
-LineWin2 = {
+Line2 = {
     "x": 6,
     "y": 0,
     "height": 3,
@@ -79,7 +79,7 @@ LineWin2 = {
    ]
 }
 
-LineWin3 = {
+Line3 = {
     "x": 9,
     "y": 0,
     "height": 3,
@@ -105,7 +105,7 @@ LineWin3 = {
    ]
 }
 
-LineWin4 = {
+Line4 = {
     "x": 12,
     "y": 0,
     "height": 3,
