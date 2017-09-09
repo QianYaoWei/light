@@ -6,6 +6,7 @@ import sched
 from util.conf import ScreenConf as conf
 import util
 from util.win import WinMgr
+from util.win.font8x8 import Font8x8Basic
 
 
 class Screen(object):
@@ -19,8 +20,7 @@ class Screen(object):
         self._win = g_scr.CreateWin(stdscr, winName)
         self._curPosX = self._win.X
         self._curPosY = self._win.Y
-
-        self._testID = 1;
+        self._testID = 1
 
     def Init(self, reciever):
         reciever.MsgRegister(curses.KEY_UP, self.__OnKeyUp)
@@ -32,7 +32,7 @@ class Screen(object):
         reciever.MsgRegister(curses.KEY_RIGHT, self.__OnKeyRight)
         reciever.MsgRegister('l', self.__OnKeyRight)
         reciever.MsgRegister('q', self.__OnExit)
-        # reciever.MsgRegister('t', self.__OnTest)
+        reciever.MsgRegister('t', self.__OnTest)
 
     def Show(self):
         if self._exit:
@@ -101,6 +101,15 @@ def main(stdscr):
     # ts = Screen(stdscr, "RowScr")
     ts = Screen(stdscr, "X8x8Scr")
     ts.Win.Disable()
+
+    ts.Win.SubWins["Square8x8_0_0"].OnMessage(Font8x8Basic[ord('W')])
+    ts.Win.SubWins["Square8x8_0_8"].OnMessage(Font8x8Basic[ord('e')])
+    ts.Win.SubWins["Square8x8_0_16"].OnMessage(Font8x8Basic[ord('l')])
+    ts.Win.SubWins["Square8x8_0_24"].OnMessage(Font8x8Basic[ord('c')])
+    ts.Win.SubWins["Square8x8_8_0"].OnMessage(Font8x8Basic[ord('o')])
+    ts.Win.SubWins["Square8x8_8_8"].OnMessage(Font8x8Basic[ord('m')])
+    ts.Win.SubWins["Square8x8_8_16"].OnMessage(Font8x8Basic[ord('e')])
+    ts.Win.SubWins["Square8x8_8_24"].OnMessage(Font8x8Basic[ord('!')])
 
     reciever = util.CommandReciever()
     ts.Init(reciever)
