@@ -1,12 +1,11 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
-
 import curses
 import time
 import sched
 from util.conf import ScreenConf as conf
 import util
-from util.win import win
+from util.win import WinMgr
 
 
 class Screen(object):
@@ -16,11 +15,12 @@ class Screen(object):
         self._stdscr = stdscr
         self._exit = False
 
-        self._win = win.Win.CreateWin(stdscr, winName)
-        self._win.RelativePosForPoints(self._win.X, self._win.Y)
-
+        g_scr = WinMgr(self._stdscr)
+        self._win = g_scr.CreateWin(stdscr, winName)
         self._curPosX = self._win.X
         self._curPosY = self._win.Y
+
+        self._testID = 1;
 
     def Init(self, reciever):
         reciever.MsgRegister(curses.KEY_UP, self.__OnKeyUp)
@@ -32,10 +32,12 @@ class Screen(object):
         reciever.MsgRegister(curses.KEY_RIGHT, self.__OnKeyRight)
         reciever.MsgRegister('l', self.__OnKeyRight)
         reciever.MsgRegister('q', self.__OnExit)
+        # reciever.MsgRegister('t', self.__OnTest)
 
     def Show(self):
         if self._exit:
             return
+        self._stdscr.clear()
         self._win.Draw(self._curPosX, self._curPosY)
         self._stdscr.addch(self._curPosX, self._curPosY, '*')
 
@@ -52,6 +54,18 @@ class Screen(object):
     @property
     def StdScr(self):
         return self._stdscr
+
+    @property
+    def Win(self):
+        return self._win
+
+    def __OnTest(self):
+        def OnTest(self):
+            w = self._win.SubWins.get("Square8x8_0_8", None)
+            if w:
+                w.OnMessage(2 ** self._testID)
+                self._testID += 1
+        self._sched.enter(0, 1, OnTest, (self, ))
 
     def __OnKeyUp(self):
         def OnKeyUp(self):
@@ -83,9 +97,10 @@ class Screen(object):
 
 
 def main(stdscr):
-    # ts = Screen(stdscr, "BrailleSquareWin")
-    # ts = Screen(stdscr, "RowWin")
-    ts = Screen(stdscr, "X8x8Win")
+    # ts = Screen(stdscr, "BrailleSquareScr")
+    # ts = Screen(stdscr, "RowScr")
+    ts = Screen(stdscr, "X8x8Scr")
+    ts.Win.Disable()
 
     reciever = util.CommandReciever()
     ts.Init(reciever)

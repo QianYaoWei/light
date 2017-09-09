@@ -57,6 +57,9 @@ class Point(object):
         return Key(self._x, self._y)
 
     def Draw(self, ch='.'):
-        self._stdscr.addch(self._rx + self._x, self._ry + self._y, ch)
-        # TODO
-        pass
+        if self._status:
+            self._stdscr.addch(self._rx + self._x, self._ry + self._y, ch)
+        else:
+            # TODO
+            self._stdscr.addch(self._rx + self._x, self._ry + self._y, '_')
+            pass

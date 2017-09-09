@@ -157,7 +157,7 @@ def main(stdscr):
     ts.Init(reciever)
     reciever.start()
 
-    sender = util.CommandSender(stdscr)
+    sender = util.CursesSender(stdscr)
     sender.start()
 
     ts.Sched.run()

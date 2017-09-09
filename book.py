@@ -12,7 +12,7 @@ class Book(util.OrmObj):
     OPEN = 1
     # >>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-    def __init__(self, id=1, **kargs):
+    def __init__(self, id, **kargs):
         super(Book, self).__init__(id, "book")
 
         self._dbFields["path"] = kargs.get("path", "")

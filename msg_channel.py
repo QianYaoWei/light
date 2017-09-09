@@ -2,19 +2,15 @@
 # -*- coding:utf-8 -*-
 
 import curses
-import util.win as win
-
+import util
 
 def main(stdscr):
-    w = win.Win.CreateWin(stdscr, "ReaderWin")
-    w.RelativePosForPoints(w.X, w.Y)
-    w.Draw()
-    stdscr.refresh()
+    sender = util.CommandSender(stdscr)
+    sender.start()
 
 if __name__ == "__main__":
+    curses.wrapper(main)
     # reciever = util.CommandReciever()
     # reciever.start()
 
-    # sender = uc.CursesSender()
-    # sender.start()
-    curses.wrapper(main)
+    # curses.wrapper(main)

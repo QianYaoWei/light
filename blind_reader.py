@@ -128,7 +128,7 @@ def main(stdscr):
         reader.InsertIntoDB()
         reader.SyncToDB()
 
-    f = os.path.dirname(__file__) + "/blind_reader.py"
+    f = os.path.dirname(__file__) + "/blind_reader.py*"
     book = Book(1, path=f, cur_page=0)
     reader.AddBook(book)
     book = Book(2, path=f, cur_page=0)

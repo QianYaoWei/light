@@ -3,6 +3,7 @@
 
 BrailleSquare0_0 = {
     # 0,0
+    "name": "BrailleSquare0_0",
     "x": 0,
     "y": 0,
     "height": 3,
@@ -14,6 +15,7 @@ BrailleSquare0_0 = {
 
 BrailleSquare0_1 = {
     # 0,1
+    "name": "BrailleSquare0_1",
     "x": 0,
     "y": 2,
     "height": 3,
@@ -25,6 +27,7 @@ BrailleSquare0_1 = {
 
 BrailleSquare0_2 = {
     # 0,2
+    "name": "BrailleSquare0_2",
     "x": 0,
     "y": 4,
     "height": 3,
@@ -36,6 +39,7 @@ BrailleSquare0_2 = {
 
 BrailleSquare0_3 = {
     # 0,3
+    "name": "BrailleSquare0_3",
     "x": 0,
     "y": 6,
     "height": 3,
@@ -47,6 +51,7 @@ BrailleSquare0_3 = {
 
 BrailleSquare0_4 = {
     # 0,4
+    "name": "BrailleSquare0_4",
     "x": 0,
     "y": 8,
     "height": 3,
@@ -58,6 +63,7 @@ BrailleSquare0_4 = {
 
 BrailleSquare0_5 = {
     # 0,5
+    "name": "BrailleSquare0_5",
     "x": 0,
     "y": 10,
     "height": 3,
@@ -69,6 +75,7 @@ BrailleSquare0_5 = {
 
 BrailleSquare0_6 = {
     # 0,6
+    "name": "BrailleSquare0_6",
     "x": 0,
     "y": 12,
     "height": 3,
@@ -80,6 +87,7 @@ BrailleSquare0_6 = {
 
 BrailleSquare0_7 = {
     # 0,7
+    "name": "BrailleSquare0_7",
     "x": 0,
     "y": 14,
     "height": 3,
@@ -91,6 +99,7 @@ BrailleSquare0_7 = {
 
 BrailleSquare0_8 = {
     # 0,8
+    "name": "BrailleSquare0_8",
     "x": 0,
     "y": 16,
     "height": 3,
@@ -102,6 +111,7 @@ BrailleSquare0_8 = {
 
 BrailleSquare0_9 = {
     # 0,9
+    "name": "BrailleSquare0_9",
     "x": 0,
     "y": 18,
     "height": 3,
@@ -113,6 +123,7 @@ BrailleSquare0_9 = {
 
 BrailleSquare0_10 = {
     # 0,10
+    "name": "BrailleSquare0_10",
     "x": 0,
     "y": 20,
     "height": 3,
@@ -124,6 +135,7 @@ BrailleSquare0_10 = {
 
 BrailleSquare0_11 = {
     # 0,11
+    "name": "BrailleSquare0_11",
     "x": 0,
     "y": 22,
     "height": 3,
@@ -135,6 +147,7 @@ BrailleSquare0_11 = {
 
 BrailleSquare0_12 = {
     # 0,12
+    "name": "BrailleSquare0_12",
     "x": 0,
     "y": 24,
     "height": 3,
@@ -146,6 +159,7 @@ BrailleSquare0_12 = {
 
 BrailleSquare0_13 = {
     # 0,13
+    "name": "BrailleSquare0_13",
     "x": 0,
     "y": 26,
     "height": 3,
@@ -157,6 +171,7 @@ BrailleSquare0_13 = {
 
 BrailleSquare0_14 = {
     # 0,14
+    "name": "BrailleSquare0_14",
     "x": 0,
     "y": 28,
     "height": 3,
@@ -168,6 +183,7 @@ BrailleSquare0_14 = {
 
 BrailleSquare0_15 = {
     # 0,15
+    "name": "BrailleSquare0_15",
     "x": 0,
     "y": 30,
     "height": 3,
@@ -180,6 +196,7 @@ BrailleSquare0_15 = {
 
 BrailleSquare1_0 = {
     # 1,0
+    "name": "BrailleSquare1_0",
     "x": 3,
     "y": 0,
     "height": 3,
@@ -191,6 +208,7 @@ BrailleSquare1_0 = {
 
 BrailleSquare1_1 = {
     # 1,1
+    "name": "BrailleSquare1_1",
     "x": 3,
     "y": 2,
     "height": 3,
@@ -202,6 +220,7 @@ BrailleSquare1_1 = {
 
 BrailleSquare1_2 = {
     # 1,2
+    "name": "BrailleSquare1_2",
     "x": 3,
     "y": 4,
     "height": 3,
@@ -213,6 +232,7 @@ BrailleSquare1_2 = {
 
 BrailleSquare1_3 = {
     # 1,3
+    "name": "BrailleSquare1_3",
     "x": 3,
     "y": 6,
     "height": 3,
@@ -225,6 +245,7 @@ BrailleSquare1_3 = {
 
 BrailleSquare1_4 = {
     # 1,4
+    "name": "BrailleSquare1_4",
     "x": 3,
     "y": 8,
     "height": 3,
@@ -236,6 +257,7 @@ BrailleSquare1_4 = {
 
 BrailleSquare1_5 = {
     # 1,5
+    "name": "BrailleSquare1_5",
     "x": 3,
     "y": 10,
     "height": 3,
@@ -247,6 +269,7 @@ BrailleSquare1_5 = {
 
 BrailleSquare1_6 = {
     # 1,6
+    "name": "BrailleSquare1_6",
     "x": 3,
     "y": 12,
     "height": 3,
@@ -258,6 +281,7 @@ BrailleSquare1_6 = {
 
 BrailleSquare1_7 = {
     # 1,7
+    "name": "BrailleSquare1_7",
     "x": 3,
     "y": 14,
     "height": 3,
@@ -269,6 +293,7 @@ BrailleSquare1_7 = {
 
 BrailleSquare1_8 = {
     # 1,8
+    "name": "BrailleSquare1_8",
     "x": 3,
     "y": 16,
     "height": 3,
@@ -280,6 +305,7 @@ BrailleSquare1_8 = {
 
 BrailleSquare1_9 = {
     # 1,9
+    "name": "BrailleSquare1_9",
     "x": 3,
     "y": 18,
     "height": 3,
@@ -291,6 +317,7 @@ BrailleSquare1_9 = {
 
 BrailleSquare1_10 = {
     # 1,10
+    "name": "BrailleSquare1_10",
     "x": 3,
     "y": 20,
     "height": 3,
@@ -302,6 +329,7 @@ BrailleSquare1_10 = {
 
 BrailleSquare1_11 = {
     # 1,11
+    "name": "BrailleSquare1_11",
     "x": 3,
     "y": 22,
     "height": 3,
@@ -313,6 +341,7 @@ BrailleSquare1_11 = {
 
 BrailleSquare1_12 = {
     # 1,12
+    "name": "BrailleSquare1_12",
     "x": 3,
     "y": 24,
     "height": 3,
@@ -324,6 +353,7 @@ BrailleSquare1_12 = {
 
 BrailleSquare1_13 = {
     # 1,13
+    "name": "BrailleSquare1_13",
     "x": 3,
     "y": 26,
     "height": 3,
@@ -335,6 +365,7 @@ BrailleSquare1_13 = {
 
 BrailleSquare1_14 = {
     # 1,14
+    "name": "BrailleSquare1_14",
     "x": 3,
     "y": 28,
     "height": 3,
@@ -346,6 +377,7 @@ BrailleSquare1_14 = {
 
 BrailleSquare1_15 = {
     # 1,15
+    "name": "BrailleSquare1_15",
     "x": 3,
     "y": 30,
     "height": 3,
@@ -358,6 +390,7 @@ BrailleSquare1_15 = {
 
 BrailleSquare2_0 = {
     # 2,0
+    "name": "BrailleSquare2_0",
     "x": 6,
     "y": 0,
     "height": 3,
@@ -369,6 +402,7 @@ BrailleSquare2_0 = {
 
 BrailleSquare2_1 = {
     # 2,1
+    "name": "BrailleSquare2_1",
     "x": 6,
     "y": 2,
     "height": 3,
@@ -380,6 +414,7 @@ BrailleSquare2_1 = {
 
 BrailleSquare2_2 = {
     # 2,2
+    "name": "BrailleSquare2_2",
     "x": 6,
     "y": 4,
     "height": 3,
@@ -391,6 +426,7 @@ BrailleSquare2_2 = {
 
 BrailleSquare2_3 = {
     # 2,3
+    "name": "BrailleSquare2_3",
     "x": 6,
     "y": 6,
     "height": 3,
@@ -402,6 +438,7 @@ BrailleSquare2_3 = {
 
 BrailleSquare2_4 = {
     # 2,4
+    "name": "BrailleSquare2_4",
     "x": 6,
     "y": 8,
     "height": 3,
@@ -413,6 +450,7 @@ BrailleSquare2_4 = {
 
 BrailleSquare2_5 = {
     # 2,5
+    "name": "BrailleSquare2_5",
     "x": 6,
     "y": 10,
     "height": 3,
@@ -424,6 +462,7 @@ BrailleSquare2_5 = {
 
 BrailleSquare2_6 = {
     # 2,6
+    "name": "BrailleSquare2_6",
     "x": 6,
     "y": 12,
     "height": 3,
@@ -435,6 +474,7 @@ BrailleSquare2_6 = {
 
 BrailleSquare2_7 = {
     # 2,7
+    "name": "BrailleSquare2_7",
     "x": 6,
     "y": 14,
     "height": 3,
@@ -446,6 +486,7 @@ BrailleSquare2_7 = {
 
 BrailleSquare2_8 = {
     # 2,8
+    "name": "BrailleSquare2_8",
     "x": 6,
     "y": 16,
     "height": 3,
@@ -457,6 +498,7 @@ BrailleSquare2_8 = {
 
 BrailleSquare2_9 = {
     # 2,9
+    "name": "BrailleSquare2_9",
     "x": 6,
     "y": 18,
     "height": 3,
@@ -468,6 +510,7 @@ BrailleSquare2_9 = {
 
 BrailleSquare2_10 = {
     # 2,10
+    "name": "BrailleSquare2_10",
     "x": 6,
     "y": 20,
     "height": 3,
@@ -479,6 +522,7 @@ BrailleSquare2_10 = {
 
 BrailleSquare2_11 = {
     # 2,11
+    "name": "BrailleSquare2_11",
     "x": 6,
     "y": 22,
     "height": 3,
@@ -490,6 +534,7 @@ BrailleSquare2_11 = {
 
 BrailleSquare2_12 = {
     # 2,12
+    "name": "BrailleSquare2_12",
     "x": 6,
     "y": 24,
     "height": 3,
@@ -501,6 +546,7 @@ BrailleSquare2_12 = {
 
 BrailleSquare2_13 = {
     # 2,13
+    "name": "BrailleSquare2_13",
     "x": 6,
     "y": 26,
     "height": 3,
@@ -512,6 +558,7 @@ BrailleSquare2_13 = {
 
 BrailleSquare2_14 = {
     # 2,14
+    "name": "BrailleSquare2_14",
     "x": 6,
     "y": 28,
     "height": 3,
@@ -523,6 +570,7 @@ BrailleSquare2_14 = {
 
 BrailleSquare2_15 = {
     # 2,15
+    "name": "BrailleSquare2_15",
     "x": 6,
     "y": 30,
     "height": 3,
@@ -535,6 +583,7 @@ BrailleSquare2_15 = {
 
 BrailleSquare3_0 = {
     # 3,0
+    "name": "BrailleSquare3_0",
     "x": 9,
     "y": 0,
     "height": 3,
@@ -546,6 +595,7 @@ BrailleSquare3_0 = {
 
 BrailleSquare3_1 = {
     # 3,1
+    "name": "BrailleSquare3_1",
     "x": 9,
     "y": 2,
     "height": 3,
@@ -557,6 +607,7 @@ BrailleSquare3_1 = {
 
 BrailleSquare3_2 = {
     # 3,2
+    "name": "BrailleSquare3_2",
     "x": 9,
     "y": 4,
     "height": 3,
@@ -568,6 +619,7 @@ BrailleSquare3_2 = {
 
 BrailleSquare3_3 = {
     # 3,3
+    "name": "BrailleSquare3_3",
     "x": 9,
     "y": 6,
     "height": 3,
@@ -580,6 +632,7 @@ BrailleSquare3_3 = {
 
 BrailleSquare3_4 = {
     # 3,4
+    "name": "BrailleSquare3_4",
     "x": 9,
     "y": 8,
     "height": 3,
@@ -591,6 +644,7 @@ BrailleSquare3_4 = {
 
 BrailleSquare3_5 = {
     # 3,5
+    "name": "BrailleSquare3_5",
     "x": 9,
     "y": 10,
     "height": 3,
@@ -602,6 +656,7 @@ BrailleSquare3_5 = {
 
 BrailleSquare3_6 = {
     # 3,6
+    "name": "BrailleSquare3_6",
     "x": 9,
     "y": 12,
     "height": 3,
@@ -613,6 +668,7 @@ BrailleSquare3_6 = {
 
 BrailleSquare3_7 = {
     # 3,7
+    "name": "BrailleSquare3_7",
     "x": 9,
     "y": 14,
     "height": 3,
@@ -624,6 +680,7 @@ BrailleSquare3_7 = {
 
 BrailleSquare3_8 = {
     # 3,8
+    "name": "BrailleSquare3_8",
     "x": 9,
     "y": 16,
     "height": 3,
@@ -635,6 +692,7 @@ BrailleSquare3_8 = {
 
 BrailleSquare3_9 = {
     # 3,9
+    "name": "BrailleSquare3_9",
     "x": 9,
     "y": 18,
     "height": 3,
@@ -646,6 +704,7 @@ BrailleSquare3_9 = {
 
 BrailleSquare3_10 = {
     # 3,10
+    "name": "BrailleSquare3_10",
     "x": 9,
     "y": 20,
     "height": 3,
@@ -657,6 +716,7 @@ BrailleSquare3_10 = {
 
 BrailleSquare3_11 = {
     # 3,11
+    "name": "BrailleSquare3_11",
     "x": 9,
     "y": 22,
     "height": 3,
@@ -668,6 +728,7 @@ BrailleSquare3_11 = {
 
 BrailleSquare3_12 = {
     # 3,12
+    "name": "BrailleSquare3_12",
     "x": 9,
     "y": 24,
     "height": 3,
@@ -679,6 +740,7 @@ BrailleSquare3_12 = {
 
 BrailleSquare3_13 = {
     # 3,13
+    "name": "BrailleSquare3_13",
     "x": 9,
     "y": 26,
     "height": 3,
@@ -690,6 +752,7 @@ BrailleSquare3_13 = {
 
 BrailleSquare3_14 = {
     # 3,14
+    "name": "BrailleSquare3_14",
     "x": 9,
     "y": 28,
     "height": 3,
@@ -701,6 +764,7 @@ BrailleSquare3_14 = {
 
 BrailleSquare3_15 = {
     # 3,15
+    "name": "BrailleSquare3_15",
     "x": 9,
     "y": 30,
     "height": 3,
@@ -713,6 +777,7 @@ BrailleSquare3_15 = {
 
 BrailleSquare4_0 = {
     # 4,0
+    "name": "BrailleSquare4_0",
     "x": 12,
     "y": 0,
     "height": 3,
@@ -724,6 +789,7 @@ BrailleSquare4_0 = {
 
 BrailleSquare4_1 = {
     # 4,1
+    "name": "BrailleSquare4_1",
     "x": 12,
     "y": 2,
     "height": 3,
@@ -735,6 +801,7 @@ BrailleSquare4_1 = {
 
 BrailleSquare4_2 = {
     # 4,2
+    "name": "BrailleSquare4_2",
     "x": 12,
     "y": 4,
     "height": 3,
@@ -746,6 +813,7 @@ BrailleSquare4_2 = {
 
 BrailleSquare4_3 = {
     # 4,3
+    "name": "BrailleSquare4_3",
     "x": 12,
     "y": 6,
     "height": 3,
@@ -758,6 +826,7 @@ BrailleSquare4_3 = {
 
 BrailleSquare4_4 = {
     # 4,4
+    "name": "BrailleSquare4_4",
     "x": 12,
     "y": 8,
     "height": 3,
@@ -769,6 +838,7 @@ BrailleSquare4_4 = {
 
 BrailleSquare4_5 = {
     # 4,5
+    "name": "BrailleSquare4_5",
     "x": 12,
     "y": 10,
     "height": 3,
@@ -780,6 +850,7 @@ BrailleSquare4_5 = {
 
 BrailleSquare4_6 = {
     # 4,6
+    "name": "BrailleSquare4_6",
     "x": 12,
     "y": 12,
     "height": 3,
@@ -791,6 +862,7 @@ BrailleSquare4_6 = {
 
 BrailleSquare4_7 = {
     # 4,7
+    "name": "BrailleSquare4_7",
     "x": 12,
     "y": 14,
     "height": 3,
@@ -802,6 +874,7 @@ BrailleSquare4_7 = {
 
 BrailleSquare4_8 = {
     # 4,8
+    "name": "BrailleSquare4_8",
     "x": 12,
     "y": 16,
     "height": 3,
@@ -813,6 +886,7 @@ BrailleSquare4_8 = {
 
 BrailleSquare4_9 = {
     # 4,9
+    "name": "BrailleSquare4_9",
     "x": 12,
     "y": 18,
     "height": 3,
@@ -824,6 +898,7 @@ BrailleSquare4_9 = {
 
 BrailleSquare4_10 = {
     # 4,10
+    "name": "BrailleSquare4_10",
     "x": 12,
     "y": 20,
     "height": 3,
@@ -835,6 +910,7 @@ BrailleSquare4_10 = {
 
 BrailleSquare4_11 = {
     # 4,11
+    "name": "BrailleSquare4_11",
     "x": 12,
     "y": 22,
     "height": 3,
@@ -846,6 +922,7 @@ BrailleSquare4_11 = {
 
 BrailleSquare4_12 = {
     # 4,12
+    "name": "BrailleSquare4_12",
     "x": 12,
     "y": 24,
     "height": 3,
@@ -857,6 +934,7 @@ BrailleSquare4_12 = {
 
 BrailleSquare4_13 = {
     # 4,13
+    "name": "BrailleSquare4_13",
     "x": 12,
     "y": 26,
     "height": 3,
@@ -868,6 +946,7 @@ BrailleSquare4_13 = {
 
 BrailleSquare4_14 = {
     # 4,14
+    "name": "BrailleSquare4_14",
     "x": 12,
     "y": 28,
     "height": 3,
@@ -879,6 +958,7 @@ BrailleSquare4_14 = {
 
 BrailleSquare4_15 = {
     # 4,15
+    "name": "BrailleSquare4_15",
     "x": 12,
     "y": 30,
     "height": 3,

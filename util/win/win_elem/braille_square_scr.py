@@ -1,11 +1,10 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
-
-Line0 = {
-    "name": "Line0",
-    "x": 0,
-    "y": 0,
-    "height": 3,
+BrailleSquareScr = {
+    "name": "BrailleSquareScr",
+    "x": 10,
+    "y": 10,
+    "height": 16,
     "width": 32,
 
     "subwins": [
@@ -25,17 +24,6 @@ Line0 = {
         "BrailleSquare0_13",
         "BrailleSquare0_14",
         "BrailleSquare0_15",
-   ]
-}
-
-Line1 = {
-    "name": "Line1",
-    "x": 3,
-    "y": 0,
-    "height": 3,
-    "width": 32,
-
-    "subwins": [
         "BrailleSquare1_0",
         "BrailleSquare1_1",
         "BrailleSquare1_2",
@@ -52,17 +40,6 @@ Line1 = {
         "BrailleSquare1_13",
         "BrailleSquare1_14",
         "BrailleSquare1_15",
-   ]
-}
-
-Line2 = {
-    "name": "Line2",
-    "x": 6,
-    "y": 0,
-    "height": 3,
-    "width": 32,
-
-    "subwins": [
         "BrailleSquare2_0",
         "BrailleSquare2_1",
         "BrailleSquare2_2",
@@ -79,17 +56,6 @@ Line2 = {
         "BrailleSquare2_13",
         "BrailleSquare2_14",
         "BrailleSquare2_15",
-   ]
-}
-
-Line3 = {
-    "name": "Line3",
-    "x": 9,
-    "y": 0,
-    "height": 3,
-    "width": 32,
-
-    "subwins": [
         "BrailleSquare3_0",
         "BrailleSquare3_1",
         "BrailleSquare3_2",
@@ -106,17 +72,6 @@ Line3 = {
         "BrailleSquare3_13",
         "BrailleSquare3_14",
         "BrailleSquare3_15",
-   ]
-}
-
-Line4 = {
-    "name": "Line4",
-    "x": 12,
-    "y": 0,
-    "height": 3,
-    "width": 32,
-
-    "subwins": [
         "BrailleSquare4_0",
         "BrailleSquare4_1",
         "BrailleSquare4_2",
@@ -133,5 +88,5 @@ Line4 = {
         "BrailleSquare4_13",
         "BrailleSquare4_14",
         "BrailleSquare4_15",
-   ]
+    ]
 }
