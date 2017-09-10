@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
-from . import Win
+from win import Win
 
 
 class BrailleSquareWin(Win):

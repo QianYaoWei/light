@@ -2,6 +2,8 @@
 # -*- coding:utf-8 -*-
 
 import sys
+sys.path.append("..")
+
 import os
 import curses
 from book import Book

@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 from point import *
+from win_event import *
 
 def rectangle(win, ulx, uly, lrx, lry):
     """Draw a rectangle with corners at the provided upper-left
@@ -38,6 +39,9 @@ class Win(object):
         self._stdscr = stdscr
         self._disable = False
 
+        self._winEventList = []
+        self._cursorEntered = False
+
     def __str__(self):
         return ",".join([str(self._x), str(self._y),
                          str(self._height), str(self._width)])
@@ -53,6 +57,9 @@ class Win(object):
     @Parent.setter
     def Parent(self, win):
         self._parent = win
+
+    def AddWinEvent(self, we):
+        self._winEventList.append(we)
 
     def Disable(self):
         self._disable = True
@@ -108,15 +115,13 @@ class Win(object):
         '''override it to update the points status'''
         pass
 
-    def OnTouch(self):
-        '''override it to implement logics when click the win'''
-        pass
-
     def OnClick(self, x, y):
         for _, w in self._subWins.items():
             if w.IsInRange(x, y):
                 w.OnClick(x, y)
-                w.OnTouch()
+                for we in self._winEventList:
+                    if we.EventID == eClickTheWin:
+                        we.OnCallBack()
 
     def IsInRange(self, x, y):
         if self._x <= x < self._x + self._height and\
@@ -135,8 +140,20 @@ class Win(object):
             # TODO
             for k in self._points:
                 if self.IsInRange(x, y):
+                    if not self._cursorEntered:
+                        self._cursorEntered = True
+                        for we in self._winEventList:
+                            if we.EventID == eEnterTheWin:
+                                we.OnCallBack()
+
                     self._points[k].Draw('.')
                 else:
+                    if self._cursorEntered:
+                        self._cursorEntered = False
+                        for we in self._winEventList:
+                            if we.EventID == eLeaveTheWin:
+                                we.OnCallBack()
+
                     self._points[k].Draw('x')
 
     def Close(self):
