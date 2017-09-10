@@ -44,4 +44,11 @@ class X8x8Win(Win):
             if (byte_8 & m) != 0:
                 self._points[self._sortedKeys[i]].Activate()
             else:
-                self._points[self._sortedKeys[i]].InActivate()
+                self._points[self._sortedKeys[i]].Inactivate()
+
+    def OnTouch(self):
+        for w, p in self._points.items():
+            if p.Status:
+                p.Inactivate()
+            else:
+                p.Activate()

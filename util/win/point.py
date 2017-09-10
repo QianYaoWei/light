@@ -49,7 +49,7 @@ class Point(object):
     def Activate(self):
         self._status = True
 
-    def InActivate(self):
+    def Inactivate(self):
         self._status = False
 
     @property

@@ -10,14 +10,14 @@ from util.win.font8x8 import Font8x8Basic
 
 
 class Screen(object):
-    def __init__(self, stdscr, winName="", Sched=None):
+    def __init__(self, stdscr, winID=0, Sched=None):
         self._sched = Sched if Sched else sched.scheduler(time.time, time.sleep)
         self._sched.enter(conf.RefreshInterval, 1, self.Show, ())
         self._stdscr = stdscr
         self._exit = False
 
         g_scr = WinMgr(self._stdscr)
-        self._win = g_scr.CreateWin(stdscr, winName)
+        self._win = g_scr.CreateWin(stdscr, winID)
         self._curPosX = self._win.X
         self._curPosY = self._win.Y
         self._testID = 1
@@ -25,14 +25,14 @@ class Screen(object):
     def Init(self, reciever):
         reciever.MsgRegister(curses.KEY_UP, self.__OnKeyUp)
         reciever.MsgRegister('k', self.__OnKeyUp)
-        reciever.MsgRegister(curses.KEY_DOWN, self.__OnKeyDown)
+        # reciever.MsgRegister(curses.KEY_DOWN, self.__OnKeyDown)
         reciever.MsgRegister('j', self.__OnKeyDown)
-        reciever.MsgRegister(curses.KEY_LEFT, self.__OnKeyLeft)
+        # reciever.MsgRegister(curses.KEY_LEFT, self.__OnKeyLeft)
         reciever.MsgRegister('h', self.__OnKeyLeft)
-        reciever.MsgRegister(curses.KEY_RIGHT, self.__OnKeyRight)
+        # reciever.MsgRegister(curses.KEY_RIGHT, self.__OnKeyRight)
         reciever.MsgRegister('l', self.__OnKeyRight)
         reciever.MsgRegister('q', self.__OnExit)
-        reciever.MsgRegister('t', self.__OnTest)
+        reciever.MsgRegister('e', self.__OnClick)
 
     def Show(self):
         if self._exit:
@@ -46,6 +46,12 @@ class Screen(object):
 
     def __OnExit(self):
         self._exit = True
+
+    def __OnClick(self):
+        def OnClick(self):
+            if self._win.IsInRange(self._curPosX, self._curPosY):
+                self._win.OnClick(self._curPosX, self._curPosY)
+        self._sched.enter(0, 1, OnClick, (self, ))
 
     @property
     def Sched(self):
@@ -99,17 +105,17 @@ class Screen(object):
 def main(stdscr):
     # ts = Screen(stdscr, "BrailleSquareScr")
     # ts = Screen(stdscr, "RowScr")
-    ts = Screen(stdscr, "X8x8Scr")
+    ts = Screen(stdscr, util.win.X8x8Scr_id)
     ts.Win.Disable()
 
-    ts.Win.SubWins["Square8x8_0_0"].OnMessage(Font8x8Basic[ord('W')])
-    ts.Win.SubWins["Square8x8_0_8"].OnMessage(Font8x8Basic[ord('e')])
-    ts.Win.SubWins["Square8x8_0_16"].OnMessage(Font8x8Basic[ord('l')])
-    ts.Win.SubWins["Square8x8_0_24"].OnMessage(Font8x8Basic[ord('c')])
-    ts.Win.SubWins["Square8x8_8_0"].OnMessage(Font8x8Basic[ord('o')])
-    ts.Win.SubWins["Square8x8_8_8"].OnMessage(Font8x8Basic[ord('m')])
-    ts.Win.SubWins["Square8x8_8_16"].OnMessage(Font8x8Basic[ord('e')])
-    ts.Win.SubWins["Square8x8_8_24"].OnMessage(Font8x8Basic[ord('!')])
+    ts.Win.SubWins[util.win.Square8x8_0_0_id].OnMessage(Font8x8Basic[ord('X')])
+    ts.Win.SubWins[util.win.Square8x8_0_8_id].OnMessage(Font8x8Basic[ord('I')])
+    ts.Win.SubWins[util.win.Square8x8_0_16_id].OnMessage(Font8x8Basic[ord('A')])
+    ts.Win.SubWins[util.win.Square8x8_0_24_id].OnMessage(Font8x8Basic[ord('O')])
+    ts.Win.SubWins[util.win.Square8x8_8_0_id].OnMessage(Font8x8Basic[ord('B')])
+    ts.Win.SubWins[util.win.Square8x8_8_8_id].OnMessage(Font8x8Basic[ord('I')])
+    ts.Win.SubWins[util.win.Square8x8_8_16_id].OnMessage(Font8x8Basic[ord('N')])
+    ts.Win.SubWins[util.win.Square8x8_8_24_id].OnMessage(Font8x8Basic[ord('G')])
 
     reciever = util.CommandReciever()
     ts.Init(reciever)

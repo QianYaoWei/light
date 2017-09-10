@@ -19,8 +19,8 @@ def rectangle(win, ulx, uly, lrx, lry):
 
 
 class Win(object):
-    def __init__(self, stdscr, name, oriX, oriY, height, width):
-        self._name = name
+    def __init__(self, stdscr, id, oriX, oriY, height, width):
+        self._id = id
         self._originX = oriX
         self._originY = oriY
         self._x = oriX
@@ -43,8 +43,8 @@ class Win(object):
                          str(self._height), str(self._width)])
 
     @property
-    def Name(self):
-        return self._name
+    def ID(self):
+        return self._id
 
     @property
     def Parent(self):
@@ -108,8 +108,15 @@ class Win(object):
         '''override it to update the points status'''
         pass
 
-    def Touch(self):
+    def OnTouch(self):
+        '''override it to implement logics when click the win'''
         pass
+
+    def OnClick(self, x, y):
+        for _, w in self._subWins.items():
+            if w.IsInRange(x, y):
+                w.OnClick(x, y)
+                w.OnTouch()
 
     def IsInRange(self, x, y):
         if self._x <= x < self._x + self._height and\
