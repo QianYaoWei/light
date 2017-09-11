@@ -13,4 +13,4 @@ class LineWin(Win):
         li = msg.split(',')
         m = min(len(subwins), len(li))
         for i in range(0, m):
-            subwins[i].OnMessage(li[i])
+            subwins[i].OnMessage(int(li[i]))
