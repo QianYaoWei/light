@@ -22,4 +22,4 @@ class BrailleSquareWin(Win):
             if (byte & m) != 0:
                 self._points[self._sortedKeys[i]].Activate()
             else:
-                self._points[self._sortedKeys[i]].InActivate()
+                self._points[self._sortedKeys[i]].Inactivate()

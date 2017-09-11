@@ -10,13 +10,13 @@ def rectangle(win, ulx, uly, lrx, lry):
     win.vline(ulx + 1, uly, '|', lrx - ulx - 1)
     win.vline(ulx + 1, lry, '|', lrx - ulx - 1)
 
-    win.hline(ulx, uly + 1, '-', lry - uly - 1)
-    win.hline(lrx, uly + 1, '-', lry - uly - 1)
+    #win.hline(ulx, uly + 1, '-', lry - uly - 1)
+    #win.hline(lrx, uly + 1, '-', lry - uly - 1)
 
-    win.addch(ulx, uly, '+')
-    win.addch(ulx, lry, '+')
-    win.addch(lrx, uly, '+')
-    win.addch(lrx, lry, '+')
+    #win.addch(ulx, uly, '+')
+    #win.addch(ulx, lry, '+')
+    #win.addch(lrx, uly, '+')
+    #win.addch(lrx, lry, '+')
 
 
 class Win(object):
@@ -119,9 +119,9 @@ class Win(object):
         for _, w in self._subWins.items():
             if w.IsInRange(x, y):
                 w.OnClick(x, y)
-                for we in self._winEventList:
-                    if we.EventID == eClickTheWin:
-                        we.OnCallBack()
+        for we in self._winEventList:
+            if we.EventID == eClickTheWin:
+                we.OnCallBack()
 
     def IsInRange(self, x, y):
         if self._x <= x < self._x + self._height and\
@@ -131,8 +131,8 @@ class Win(object):
             return False
 
     def Draw(self, x, y):
-        # rectangle(self._stdscr,  self._x,  self._y,
-        #           self._x + self._height, self._y + self._width)
+        rectangle(self._stdscr,  self._x,  self._y,
+                  self._x + self._height, self._y + self._width)
         for _, w in self._subWins.items():
             w.Draw(x, y)
 

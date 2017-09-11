@@ -61,5 +61,5 @@ class Point(object):
             self._stdscr.addch(self._rx + self._x, self._ry + self._y, ch)
         else:
             # TODO
-            # self._stdscr.addch(self._rx + self._x, self._ry + self._y, '_')
+            self._stdscr.addch(self._rx + self._x, self._ry + self._y, '_')
             pass

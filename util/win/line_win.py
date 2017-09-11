@@ -9,8 +9,8 @@ class LineWin(Win):
 
     def OnMessage(self, msg):
         '''override'''
-        subwins = self._subWins
+        ks = sorted(self._subWins.keys())
         li = msg.split(',')
-        m = min(len(subwins), len(li))
+        m = min(len(ks), len(li))
         for i in range(0, m):
-            subwins[i].OnMessage(int(li[i]))
+            self._subWins[ks[i]].OnMessage(ord(li[i]))
