@@ -3,16 +3,10 @@
 
 import os
 
-RealMachine = 1
-
-Curses = 2
-
 class ScreenConf(object):
     ScreenRow = 16
 
     ScreenColumn = 32
-
-    ScreenMode = Curses
 
     BeginX = 5
 
@@ -37,3 +31,16 @@ class ReaderConf(object):
 class BookConf(object):
     PageRow = 16
     PageCol = 32
+
+
+class WinConf(object):
+
+    ShowWinBorder = False
+
+    # 1 dot mode
+    # 2 txt mode
+    ShowMode = 2
+
+    DotUp_Ch = '.'
+
+    DotDown_Ch = 'x'

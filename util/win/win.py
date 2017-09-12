@@ -1,7 +1,10 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
-from point import *
+
+import curses
+from dot import *
 from win_event import *
+from ..conf import WinConf
 
 def rectangle(win, ulx, uly, lrx, lry):
     """Draw a rectangle with corners at the provided upper-left
@@ -10,13 +13,13 @@ def rectangle(win, ulx, uly, lrx, lry):
     win.vline(ulx + 1, uly, '|', lrx - ulx - 1)
     win.vline(ulx + 1, lry, '|', lrx - ulx - 1)
 
-    #win.hline(ulx, uly + 1, '-', lry - uly - 1)
-    #win.hline(lrx, uly + 1, '-', lry - uly - 1)
+    win.hline(ulx, uly + 1, '-', lry - uly - 1)
+    win.hline(lrx, uly + 1, '-', lry - uly - 1)
 
-    #win.addch(ulx, uly, '+')
-    #win.addch(ulx, lry, '+')
-    #win.addch(lrx, uly, '+')
-    #win.addch(lrx, lry, '+')
+    win.addch(ulx, uly, '+')
+    win.addch(ulx, lry, '+')
+    win.addch(lrx, uly, '+')
+    win.addch(lrx, lry, '+')
 
 
 class Win(object):
@@ -33,14 +36,21 @@ class Win(object):
         # one win has only one parent win
         self._parent = None
         self._subWins = {}
-        # all the points that the win can conctrol, include those belong to
+
+        # all the dots that the win can conctrol, include those belong to
         # subwins
-        self._points = {}
+        self._dots = {}
         self._stdscr = stdscr
         self._disable = False
 
         self._winEventList = []
         self._cursorEntered = False
+
+        self._cursorEntered = False
+
+        self._txt = None
+
+        self._color = 0
 
     def __str__(self):
         return ",".join([str(self._x), str(self._y),
@@ -58,6 +68,14 @@ class Win(object):
     def Parent(self, win):
         self._parent = win
 
+    @property
+    def Color(self):
+        return self._color
+
+    @Color.setter
+    def Color(self, color):
+        self._color = color
+
     def AddWinEvent(self, we):
         self._winEventList.append(we)
 
@@ -68,12 +86,12 @@ class Win(object):
         self._disable = False
 
     @property
-    def Points(self):
-        return self._points
+    def Dots(self):
+        return self._dots
 
-    def AddPoint(self, point):
-        if point:
-            self._points[point.Key] = point
+    def AddDot(self, dot):
+        if dot:
+            self._dots[dot.Key] = dot
 
     @property
     def X(self):
@@ -112,7 +130,7 @@ class Win(object):
         return self._subWins
 
     def OnMessage(self, msg):
-        '''override it to update the points status'''
+        '''override it to update the dots status'''
         pass
 
     def OnClick(self, x, y):
@@ -131,30 +149,37 @@ class Win(object):
             return False
 
     def Draw(self, x, y):
-        rectangle(self._stdscr,  self._x,  self._y,
-                  self._x + self._height, self._y + self._width)
+        if WinConf.ShowWinBorder:
+            rectangle(self._stdscr,  self._x,  self._y,
+                      self._x + self._height, self._y + self._width)
+
         for _, w in self._subWins.items():
             w.Draw(x, y)
 
         if not self._disable:
-            # TODO
-            for k in self._points:
-                if self.IsInRange(x, y):
-                    if not self._cursorEntered:
-                        self._cursorEntered = True
-                        for we in self._winEventList:
-                            if we.EventID == eEnterTheWin:
-                                we.OnCallBack()
+            if WinConf.ShowMode == 1:
+                # TODO
+                for k in self._dots:
+                    if self.IsInRange(x, y):
+                        if not self._cursorEntered:
+                            self._cursorEntered = True
+                            for we in self._winEventList:
+                                if we.EventID == eEnterTheWin:
+                                    we.OnCallBack()
 
-                    self._points[k].Draw('.')
-                else:
-                    if self._cursorEntered:
-                        self._cursorEntered = False
-                        for we in self._winEventList:
-                            if we.EventID == eLeaveTheWin:
-                                we.OnCallBack()
+                        self._dots[k].Draw()
+                    else:
+                        if self._cursorEntered:
+                            self._cursorEntered = False
+                            for we in self._winEventList:
+                                if we.EventID == eLeaveTheWin:
+                                    we.OnCallBack()
 
-                    self._points[k].Draw('x')
+                        self._dots[k].Draw()
+            elif WinConf.ShowMode == 2:
+                if self._txt:
+                    self._stdscr.addch(self.X, self.Y, self._txt, curses.color_pair(self._color))
+
 
     def Close(self):
         # TODO

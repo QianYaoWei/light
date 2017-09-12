@@ -14,3 +14,6 @@ class LineWin(Win):
         m = min(len(ks), len(li))
         for i in range(0, m):
             self._subWins[ks[i]].OnMessage(ord(li[i]))
+
+        for k in ks[m:]:
+            self._subWins[k].OnMessage(None)

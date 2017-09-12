@@ -11,7 +11,7 @@ from braille_square_win import BrailleSquareWin
 from line_win import LineWin
 from x8x8_square_win import X8x8Win
 from win import Win
-from point import *
+from dot import *
 from win_event import *
 from .. import singleton
 
@@ -155,16 +155,16 @@ class WinMgr(object):
                     subwin.X = subwin.OriginX + topWinPos[0]
                     subwin.Y = subwin.OriginY + topWinPos[1]
 
-            for p in winConf.get("points", []):
+            for p in winConf.get("dots", []):
                 xy = p.split(',')
-                g_ps = ScreenPoints(stdscr)
-                point = g_ps.GetPoint(int(xy[0]), int(xy[1]))
-                point.RelativePos(topWinPos[0], topWinPos[1])
-                w.AddPoint(point)
+                g_ps = ScreenDots(stdscr)
+                dot = g_ps.GetDot(int(xy[0]), int(xy[1]))
+                dot.RelativePos(topWinPos[0], topWinPos[1])
+                w.AddDot(dot)
 
             for _, s in w._subWins.items():
-                for k, p in s.Points.items():
-                    w.AddPoint(p)
+                for k, p in s.Dots.items():
+                    w.AddDot(p)
             self._wins[id] = w
             if winEventList:
                 for we in winEventList:

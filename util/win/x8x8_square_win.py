@@ -32,22 +32,22 @@ class X8x8Win(Win):
     def __init__(self, stdscr, name, oriX, oriY, height, width):
         super(X8x8Win, self).__init__(stdscr, name, oriX, oriY,
                                       height, width)
-        self._sortedKeys = None
+        self._dotKeys = None
 
     def OnMessage(self, byte_8):
         '''override'''
-        # definitely the win has 64 points
-        if not self._sortedKeys:
-            self._sortedKeys = sorted(self._points.keys())
+        # definitely the win has 64 dots
+        if not self._dotKeys:
+            self._dotKeys = sorted(self._dots.keys())
 
         for i, m in enumerate(self.__byteMask):
             if (byte_8 & m) != 0:
-                self._points[self._sortedKeys[i]].Activate()
+                self._dots[self._dotKeys[i]].Activate()
             else:
-                self._points[self._sortedKeys[i]].Inactivate()
+                self._dots[self._dotKeys[i]].Inactivate()
 
     def OnTouch(self):
-        for w, p in self._points.items():
+        for w, p in self._dots.items():
             if p.Status:
                 p.Inactivate()
             else:

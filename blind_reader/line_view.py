@@ -10,6 +10,23 @@ import util
 import util.win as win
 
 
+
+NoColor = 0
+
+Red = 1
+
+Green = 2
+
+Blue = 3
+
+def InitColor():
+    curses.init_pair(Red, curses.COLOR_RED, curses.COLOR_BLACK)
+
+    curses.init_pair(Green, curses.COLOR_GREEN, curses.COLOR_BLACK)
+
+    curses.init_pair(Blue, curses.COLOR_BLUE, curses.COLOR_BLACK)
+
+
 class LineInfo(object):
     def __init__(self, path, txt):
         self._path = path
@@ -24,23 +41,25 @@ class LineInfo(object):
 
     def Open(self, view):
         '''override this func'''
-        # import pudb; pudb.set_trace()  # XXX BREAKPOINT
         pass
 
 
 class DirInfo(LineInfo):
+    global Blue
+    Color = Blue
     def __init__(self, path, txt):
         super(DirInfo, self).__init__(path, txt)
 
     def Open(self, view):
         '''override this func'''
-        # import pudb; pudb.set_trace()  # XXX BREAKPOINT
         view.CurDir = self._path
         view.RefreshCurDir()
         view.RefreshWin()
 
 
 class BookInfo(LineInfo):
+    global NoColor
+    Color = NoColor
     def __init__(self, path, txt):
         super(BookInfo, self).__init__(path, txt)
 
@@ -108,8 +127,9 @@ class LineView(win.View):
     def RefreshWin(self):
         for i, li in enumerate(self.CurPage):
             # TODO
-            # txt = ','.join(list(li.Txt))
-            txt = ','.join(['1', '2', '3', '4', '5', '6', '7', '8', '9'])
+            txt = ','.join(list(li.Txt))
+            for _, w in self._win.SubWins[win.Line0_id + i].SubWins.items():
+                w.Color = li.Color
             self._win.SubWins[win.Line0_id + i].OnMessage(txt)
 
     def NextLine(self):
@@ -144,8 +164,28 @@ class LineView(win.View):
             self._curLine = 0
         self.RefreshWin()
 
+    @before_operation
+    def _OnForward(self):
+        '''implement this func'''
+        self.NextPage()
+
+    def _OnBackward(self):
+        '''implement this func'''
+        self.PrePage()
+
+    def _OnUp(self):
+        '''implement this func'''
+        self.PreLine()
+
+    def _OnDown(self):
+        '''implement this func'''
+        self.NextLine()
+
+
 
 def main(stdscr):
+    InitColor()
+
     view = LineView(stdscr, ".")
     view.RefreshCurDir()
     view.RefreshWin()
@@ -154,13 +194,13 @@ def main(stdscr):
     view.Init(reciever)
     reciever.start()
 
-    # sender = util.CommandSender(stdscr)
-    # sender.start()
+    sender = util.CommandSender(stdscr)
+    sender.start()
 
     view.Sched.run()
 
     reciever.join()
-    # sender.join()
+    sender.join()
 
 
 if __name__ == "__main__":

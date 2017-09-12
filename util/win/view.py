@@ -3,6 +3,7 @@
 import curses
 import time
 import sched
+from functools import wraps
 from ..conf import ScreenConf as conf
 from ..win import WinMgr
 
@@ -32,13 +33,23 @@ class View(object):
         reciever.MsgRegister('q', self.__OnExit)
         reciever.MsgRegister('e', self.__OnClick)
 
-        reciever.MsgRegister('f', self.__OnNextPage)
-        reciever.MsgRegister('b', self.__OnPrePage)
+        reciever.MsgRegister('f', self._OnForward)
+        reciever.MsgRegister('b', self._OnBackward)
+        reciever.MsgRegister('u', self._OnUp)
+        reciever.MsgRegister('d', self._OnDown)
+
+    def before_operation(func):
+        @wraps(func)
+        def wrapper(self):
+            # import pudb; pudb.set_trace()  # XXX BREAKPOINT
+            stdscr = self.StdScr
+            stdscr.clear()
+            return func(self)
+        return wrapper
 
     def Show(self):
         if self._exit:
             return
-        self._stdscr.clear()
         self._win.Draw(self._curPosX, self._curPosY)
         self._stdscr.addch(self._curPosX, self._curPosY, '*')
 
@@ -74,6 +85,7 @@ class View(object):
                 self._testID += 1
         self._sched.enter(0, 1, OnTest, (self, ))
 
+    @before_operation
     def __OnKeyUp(self):
         def OnKeyUp(self):
             self._curPosX -= 1
@@ -81,6 +93,7 @@ class View(object):
                 self._curPosX = self._win.X
         self._sched.enter(0, 1, OnKeyUp, (self, ))
 
+    @before_operation
     def __OnKeyDown(self):
         def OnKeyDown(self):
             self._curPosX += 1
@@ -88,6 +101,7 @@ class View(object):
                 self._curPosX = self._win.X + conf.ScreenRow - 1
         self._sched.enter(0, 1, OnKeyDown, (self, ))
 
+    @before_operation
     def __OnKeyLeft(self):
         def KeyLeft(self):
             self._curPosY -= 1
@@ -95,9 +109,27 @@ class View(object):
                 self._curPosY = self._win.Y
         self._sched.enter(0, 1, KeyLeft, (self, ))
 
+    @before_operation
     def __OnKeyRight(self):
         def KeyRight(self):
             self._curPosY += 1
             if self._curPosY > self._win.Y + conf.ScreenColumn - 1:
                 self._curPosY = self._win.Y + conf.ScreenColumn - 1
         self._sched.enter(0, 1, KeyRight, (self, ))
+
+    def _OnForward(self):
+        '''override this func'''
+        pass
+
+    def _OnBackward(self):
+
+        '''override this func'''
+        pass
+
+    def _OnUp(self):
+        '''override this func'''
+        pass
+
+    def _OnDown(self):
+        '''override this func'''
+        pass
