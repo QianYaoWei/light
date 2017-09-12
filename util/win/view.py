@@ -8,6 +8,14 @@ from ..conf import ScreenConf as conf
 from ..win import WinMgr
 
 
+def view_clear(func):
+    @wraps(func)
+    def wrapper(self):
+        self.StdScr.clear()
+        return func(self)
+    return wrapper
+
+
 class View(object):
     def __init__(self, stdscr, winID=0, Sched=None):
         self._sched = Sched if Sched else sched.scheduler(time.time, time.sleep)
@@ -22,7 +30,7 @@ class View(object):
         self._testID = 1
 
     def Init(self, reciever):
-        reciever.MsgRegister(curses.KEY_UP, self.__OnKeyUp)
+        # reciever.MsgRegister(curses.KEY_UP, self.__OnKeyUp)
         reciever.MsgRegister('k', self.__OnKeyUp)
         # reciever.MsgRegister(curses.KEY_DOWN, self.__OnKeyDown)
         reciever.MsgRegister('j', self.__OnKeyDown)
@@ -37,15 +45,6 @@ class View(object):
         reciever.MsgRegister('b', self._OnBackward)
         reciever.MsgRegister('u', self._OnUp)
         reciever.MsgRegister('d', self._OnDown)
-
-    def before_operation(func):
-        @wraps(func)
-        def wrapper(self):
-            # import pudb; pudb.set_trace()  # XXX BREAKPOINT
-            stdscr = self.StdScr
-            stdscr.clear()
-            return func(self)
-        return wrapper
 
     def Show(self):
         if self._exit:
@@ -85,7 +84,7 @@ class View(object):
                 self._testID += 1
         self._sched.enter(0, 1, OnTest, (self, ))
 
-    @before_operation
+    @view_clear
     def __OnKeyUp(self):
         def OnKeyUp(self):
             self._curPosX -= 1
@@ -93,7 +92,7 @@ class View(object):
                 self._curPosX = self._win.X
         self._sched.enter(0, 1, OnKeyUp, (self, ))
 
-    @before_operation
+    @view_clear
     def __OnKeyDown(self):
         def OnKeyDown(self):
             self._curPosX += 1
@@ -101,7 +100,7 @@ class View(object):
                 self._curPosX = self._win.X + conf.ScreenRow - 1
         self._sched.enter(0, 1, OnKeyDown, (self, ))
 
-    @before_operation
+    @view_clear
     def __OnKeyLeft(self):
         def KeyLeft(self):
             self._curPosY -= 1
@@ -109,7 +108,7 @@ class View(object):
                 self._curPosY = self._win.Y
         self._sched.enter(0, 1, KeyLeft, (self, ))
 
-    @before_operation
+    @view_clear
     def __OnKeyRight(self):
         def KeyRight(self):
             self._curPosY += 1

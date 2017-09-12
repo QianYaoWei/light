@@ -6,5 +6,5 @@
 from win import Win
 from win_elem.win_ids import *
 from win_mgr import WinMgr
-from view import View
+from view import (View, view_clear)
 from win_event import *

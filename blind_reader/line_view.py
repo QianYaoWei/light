@@ -108,19 +108,19 @@ class LineView(win.View):
         self._curDir = dir
 
     def RefreshCurDir(self):
+        self._curLine = 0
         li = os.listdir(self._curDir)
-        if self._curLine >= len(li):
-            self._curLine = len(li) - 1
 
         del self._lineList[:]
         # os.path.sep
         for el in li:
-            if os.path.isdir(el):
-                info = DirInfo(el, el)
+            path = self._curDir + os.path.sep + el
+            if os.path.isdir(path):
+                info = DirInfo(path, el)
                 self._lineList.append(info)
                 continue
-            if os.path.isfile(el):
-                info = BookInfo(el, el)
+            if os.path.isfile(path):
+                info = BookInfo(path, el)
                 self._lineList.append(info)
                 continue
 
@@ -164,19 +164,22 @@ class LineView(win.View):
             self._curLine = 0
         self.RefreshWin()
 
-    @before_operation
+    @win.view_clear
     def _OnForward(self):
         '''implement this func'''
         self.NextPage()
 
+    @win.view_clear
     def _OnBackward(self):
         '''implement this func'''
         self.PrePage()
 
+    @win.view_clear
     def _OnUp(self):
         '''implement this func'''
         self.PreLine()
 
+    @win.view_clear
     def _OnDown(self):
         '''implement this func'''
         self.NextLine()
