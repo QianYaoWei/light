@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
+
 import sys
 sys.path.append("..")
 
@@ -26,21 +27,29 @@ class TxtView(win.View):
     def Book(self, book):
         self._book = book
         del self._txtList[:]
-        self._txtList.extend(list(book.CurPage()))
+        msg = self.Book.CurPage()
+        if msg:
+            self._txtList.extend(list(msg))
 
     @win.view_clear
     def _OnForward(self):
         '''implement this func'''
-        del self._txtList[:]
-        self._txtList.extend(list(book.PageNext()))
-        self.RefreshWin()
+        msg = self.Book.PageNext()
+        if msg:
+            del self._txtList[:]
+            self._curPost = 0
+            self._txtList.extend(list(msg))
+            self.RefreshWin()
 
     @win.view_clear
     def _OnBackward(self):
         '''implement this func'''
-        del self._txtList[:]
-        self._txtList.extend(list(book.PagePre()))
-        self.RefreshWin()
+        msg = self.Book.PagePre()
+        if msg:
+            del self._txtList[:]
+            self._curPost = 0
+            self._txtList.extend(list(msg))
+            self.RefreshWin()
 
     @win.view_clear
     def _OnUp(self):
@@ -67,11 +76,14 @@ class TxtView(win.View):
         m = min(len(self.Win.SubwinKeys), len(self._txtList[self._curPost:]))
         for i in range(0, m):
             k = self.Win.SubwinKeys[i]
-            self.SubWins[k].OnMessage(self._txtList[self._curPost + i])
+            self.Win.SubWins[k].OnMessage(self._txtList[self._curPost + i])
 
 
 def main(stdscr):
     view = TxtView(stdscr)
+    b = Book(1, path="blind_reader.py")
+    b.Open()
+    view.Book = b
     view.RefreshWin()
 
     reciever = util.CommandReciever()
