@@ -150,7 +150,7 @@ class WinMgr(object):
                 else:
                     continue
                 if subwin:
-                    w._subWins[subwin.ID] = subwin
+                    w.SubWins[subwin.ID] = subwin
                     subwin.Parent = w
                     subwin.X = subwin.OriginX + topWinPos[0]
                     subwin.Y = subwin.OriginY + topWinPos[1]
@@ -162,7 +162,7 @@ class WinMgr(object):
                 dot.RelativePos(topWinPos[0], topWinPos[1])
                 w.AddDot(dot)
 
-            for _, s in w._subWins.items():
+            for _, s in w.SubWins.items():
                 for k, p in s.Dots.items():
                     w.AddDot(p)
             self._wins[id] = w
@@ -170,4 +170,5 @@ class WinMgr(object):
                 for we in winEventList:
                     if we.WinID == id:
                         w.AddWinEvent(we)
+            w.Init()
             return w

@@ -52,9 +52,16 @@ class Win(object):
 
         self._color = 0
 
+        self._subWinSortedKeys = []
+        self._dotsSortedKeys = []
+
     def __str__(self):
         return ",".join([str(self._x), str(self._y),
                          str(self._height), str(self._width)])
+
+    def Init(self):
+        self._subWinSortedKeys.extend(sorted(self.SubWins.keys()))
+        self._dotsSortedKeys.extend(sorted(self._dots.keys()))
 
     @property
     def ID(self):
@@ -75,6 +82,14 @@ class Win(object):
     @Color.setter
     def Color(self, color):
         self._color = color
+
+    @property
+    def SubwinKeys(self):
+        return self._subWinSortedKeys
+
+    @property
+    def DotsKeys(self):
+        return self._dotsSortedKeys
 
     def AddWinEvent(self, we):
         self._winEventList.append(we)
@@ -178,7 +193,8 @@ class Win(object):
                         self._dots[k].Draw()
             elif WinConf.ShowMode == 2:
                 if self._txt:
-                    self._stdscr.addch(self.X, self.Y, self._txt, curses.color_pair(self._color))
+                    self._stdscr.addch(self.X, self.Y, self._txt,
+                            curses.color_pair(self._color) | curses.A_BOLD)
 
 
     def Close(self):

@@ -10,9 +10,9 @@ from ..win import WinMgr
 
 def view_clear(func):
     @wraps(func)
-    def wrapper(self):
+    def wrapper(self, *args):
         self.StdScr.clear()
-        return func(self)
+        return func(self, *args)
     return wrapper
 
 

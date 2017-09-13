@@ -8,6 +8,7 @@ import curses
 import os
 import util
 import util.win as win
+from util.conf import ReaderConf
 
 
 
@@ -28,16 +29,15 @@ def InitColor():
 
 
 class LineInfo(object):
-    def __init__(self, path, txt):
-        self._path = path
-        self._txt = txt
+    def __init__(self, name):
+        self._name = name
 
     def __str__(self):
-        return ",".join([str(self._path), str(self._txt)])
+        return self._name
 
     @property
-    def Txt(self):
-        return self._txt
+    def Name(self):
+        return self._name
 
     def Open(self, view):
         '''override this func'''
@@ -47,12 +47,25 @@ class LineInfo(object):
 class DirInfo(LineInfo):
     global Blue
     Color = Blue
-    def __init__(self, path, txt):
-        super(DirInfo, self).__init__(path, txt)
+    def __init__(self, name):
+        super(DirInfo, self).__init__(name)
 
     def Open(self, view):
         '''override this func'''
-        view.CurDir = self._path
+        view.LowerDir(self._name)
+        view.RefreshCurDir()
+        view.RefreshWin()
+
+
+class UpperDir(LineInfo):
+    global Blue
+    Color = Blue
+    def __init__(self):
+        super(UpperDir, self).__init__('..')
+
+    def Open(self, view):
+        '''override this func'''
+        view.UpperDir()
         view.RefreshCurDir()
         view.RefreshWin()
 
@@ -60,8 +73,8 @@ class DirInfo(LineInfo):
 class BookInfo(LineInfo):
     global NoColor
     Color = NoColor
-    def __init__(self, path, txt):
-        super(BookInfo, self).__init__(path, txt)
+    def __init__(self, name):
+        super(BookInfo, self).__init__(name)
 
     def Open(self, view):
         '''override this func'''
@@ -73,24 +86,30 @@ class LineView(win.View):
 
     def __init__(self, stdscr, dir):
         super(LineView, self).__init__(stdscr, win.RowScr_id)
-        self._curDir = dir
+        self._dirList = [dir, ]
         self._curLine = 0
         self._lineList = []
         self.__RegisterWinEvent()
 
     def __RegisterWinEvent(self):
-        self._win.AddWinEvent(win.WinEvent(win.Line0_id, win.eClickTheWin,
-                                           self.__OnWinClick, 0))
-        self._win.AddWinEvent(win.WinEvent(win.Line1_id, win.eClickTheWin,
-                                           self.__OnWinClick, 1))
-        self._win.AddWinEvent(win.WinEvent(win.Line2_id, win.eClickTheWin,
-                                           self.__OnWinClick, 2))
-        self._win.AddWinEvent(win.WinEvent(win.Line3_id, win.eClickTheWin,
-                                           self.__OnWinClick, 3))
-        self._win.AddWinEvent(win.WinEvent(win.Line4_id, win.eClickTheWin,
-                                           self.__OnWinClick, 4))
+        self.Win.SubWins[win.Line0_id].AddWinEvent(
+            win.WinEvent(win.eClickTheWin, self.__OnWinClick, 0))
 
+        self.Win.SubWins[win.Line1_id].AddWinEvent(win.WinEvent(
+            win.eClickTheWin, self.__OnWinClick, 1))
+
+        self.Win.SubWins[win.Line2_id].AddWinEvent(win.WinEvent(
+            win.eClickTheWin, self.__OnWinClick, 2))
+
+        self.Win.SubWins[win.Line3_id].AddWinEvent(win.WinEvent(
+            win.eClickTheWin, self.__OnWinClick, 3))
+
+        self.Win.SubWins[win.Line4_id].AddWinEvent(win.WinEvent(
+            win.eClickTheWin, self.__OnWinClick, 4))
+
+    @win.view_clear
     def __OnWinClick(self, pos):
+        print pos
         cp = self.CurPage
         if 0 <= pos < len(cp):
             cp[pos].Open(self)
@@ -101,36 +120,50 @@ class LineView(win.View):
 
     @property
     def CurDir(self):
-        return self._curDir
+        return os.path.sep.join(self._dirList)
 
-    @CurDir.setter
-    def CurDir(self, dir):
-        self._curDir = dir
+    def IsTopDir(self):
+        return len(self._dirList) == 1
+
+    def LowerDir(self, dir):
+        print dir
+        self._dirList.append(dir)
+
+    def UpperDir(self):
+        if len(self._dirList) >= 1:
+            self._dirList.pop()
 
     def RefreshCurDir(self):
+        curDir = self.CurDir
         self._curLine = 0
-        li = os.listdir(self._curDir)
+        li = os.listdir(curDir)
 
         del self._lineList[:]
-        # os.path.sep
+
+        if not self.IsTopDir():
+            self._lineList.append(UpperDir())
+
         for el in li:
-            path = self._curDir + os.path.sep + el
+            path = curDir + os.path.sep + el
             if os.path.isdir(path):
-                info = DirInfo(path, el)
+                info = DirInfo(el)
                 self._lineList.append(info)
                 continue
             if os.path.isfile(path):
-                info = BookInfo(path, el)
+                info = BookInfo(el)
                 self._lineList.append(info)
                 continue
 
     def RefreshWin(self):
+        for _, w in self.Win.SubWins.items():
+            w.OnMessage(None)
+
         for i, li in enumerate(self.CurPage):
             # TODO
-            txt = ','.join(list(li.Txt))
-            for _, w in self._win.SubWins[win.Line0_id + i].SubWins.items():
+            txt = ','.join(list(li.Name))
+            for _, w in self.Win.SubWins[win.Line0_id + i].SubWins.items():
                 w.Color = li.Color
-            self._win.SubWins[win.Line0_id + i].OnMessage(txt)
+            self.Win.SubWins[win.Line0_id + i].OnMessage(txt)
 
     def NextLine(self):
         if len(self._lineList[self._curLine + 1:]) < self.__rowCount:
@@ -188,8 +221,10 @@ class LineView(win.View):
 
 def main(stdscr):
     InitColor()
+    path = os.path.realpath(ReaderConf.ShelfPath)
+    view = LineView(stdscr, path)
+    # print view .CurDir
 
-    view = LineView(stdscr, ".")
     view.RefreshCurDir()
     view.RefreshWin()
 
