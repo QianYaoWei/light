@@ -14,8 +14,6 @@ class TxtView(win.View):
     def __init__(self, stdscr):
         super(TxtView, self).__init__(stdscr, win.BrailleSquareScr_id)
         self._book = None
-
-        # self._txt = ""
         self._txtList = []
         self._curPost = 0
 

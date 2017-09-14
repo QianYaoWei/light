@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
-from win_ids import *
 
 BrailleSquare0_0 = {
     # 0,0

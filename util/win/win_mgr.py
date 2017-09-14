@@ -3,6 +3,7 @@
 from win_elem.braille_square import *
 from win_elem.line import *
 from win_elem.square_8x8 import *
+from win_elem.dail_panel import *
 
 from win_elem.braille_square_scr import BrailleSquareScr
 from win_elem.row_scr import RowScr
@@ -115,6 +116,19 @@ Wins = {
     RowScr_id: RowScr,
     BrailleSquareScr_id: BrailleSquareScr,
     X8x8Scr_id: X8x8Scr,
+
+    DailNum1_id: DailNum1,
+    DailNum2_id: DailNum2,
+    DailNum3_id: DailNum3,
+    DailNum4_id: DailNum4,
+    DailNum5_id: DailNum5,
+    DailNum6_id: DailNum6,
+    DailNum7_id: DailNum7,
+    DailNum8_id: DailNum8,
+    DailNum9_id: DailNum9,
+    DailNum0_id: DailNum0,
+    DailAsterisk_id: DailAsterisk,
+    DailSharp_id: DailSharp,
 }
 
 @singleton

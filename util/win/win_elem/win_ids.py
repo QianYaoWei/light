@@ -97,3 +97,16 @@ Line4_id = 93
 RowScr_id = 94
 BrailleSquareScr_id = 95
 X8x8Scr_id = 96
+
+DailNum1_id = 97
+DailNum2_id = 98
+DailNum3_id = 99
+DailNum4_id = 100
+DailNum5_id = 101
+DailNum6_id = 102
+DailNum7_id = 103
+DailNum8_id = 104
+DailNum9_id = 105
+DailNum0_id = 106
+DailAsterisk_id = 107
+DailSharp_id = 108
