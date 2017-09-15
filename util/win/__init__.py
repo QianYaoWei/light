@@ -8,3 +8,4 @@ from win_elem.win_ids import *
 from win_mgr import WinMgr
 from view import (View, view_clear)
 from win_event import *
+from operation import Operation

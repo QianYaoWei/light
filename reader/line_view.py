@@ -9,23 +9,7 @@ import os
 import util
 import util.win as win
 from util.conf import ReaderConf
-
-
-
-NoColor = 0
-
-Red = 1
-
-Green = 2
-
-Blue = 3
-
-def InitColor():
-    curses.init_pair(Red, curses.COLOR_RED, curses.COLOR_BLACK)
-
-    curses.init_pair(Green, curses.COLOR_GREEN, curses.COLOR_BLACK)
-
-    curses.init_pair(Blue, curses.COLOR_BLUE, curses.COLOR_BLACK)
+from common import *
 
 
 class LineInfo(object):
@@ -84,8 +68,8 @@ class BookInfo(LineInfo):
 class LineView(win.View):
     __rowCount = win.Line4_id - win.Line0_id + 1
 
-    def __init__(self, stdscr, dir):
-        super(LineView, self).__init__(stdscr, win.RowScr_id)
+    def __init__(self, dir, stdscr, sched=None):
+        super(LineView, self).__init__(stdscr, win.RowScr_id, sched)
         self._dirList = [dir, ]
         self._curLine = 0
         self._lineList = []
@@ -222,7 +206,7 @@ class LineView(win.View):
 def main(stdscr):
     InitColor()
     path = os.path.realpath(ReaderConf.ShelfPath)
-    view = LineView(stdscr, path)
+    view = LineView(path, stdscr)
     # print view .CurDir
 
     view.RefreshCurDir()
