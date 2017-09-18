@@ -21,3 +21,7 @@ def InitColor():
 
     curses.init_pair(Blue, curses.COLOR_BLUE, curses.COLOR_BLACK)
 
+
+LineView_id = 1
+
+TxtView_id = 2

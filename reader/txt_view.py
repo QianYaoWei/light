@@ -1,9 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-import sys
-sys.path.append("..")
-
+from common import *
 import curses
 import util
 import util.win as win
@@ -66,6 +64,11 @@ class TxtView(win.View):
         if self._curPost + num < len(self._txtList):
             self._curPost += num
         self.RefreshWin()
+
+    @win.view_clear
+    def _OnSwitch(self):
+        '''implement this func'''
+        self.ViewMgr.MoveToTop(LineView_id)
 
     def RefreshWin(self):
         for _, w in self.Win.SubWins.items():

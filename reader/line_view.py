@@ -1,15 +1,12 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-import sys
-sys.path.append("..")
-
 import curses
+from common import *
 import os
 import util
 import util.win as win
 from util.conf import ReaderConf
-from common import *
 from book import Book
 
 
@@ -203,6 +200,12 @@ class LineView(win.View):
         '''implement this func'''
         self.NextLine()
 
+    @win.view_clear
+    def _OnSwitch(self):
+        '''implement this func'''
+        view = self.ViewMgr.GetView(TxtView_id)
+        if view and view.Book:
+            self.ViewMgr.MoveToTop(TxtView_id)
 
 
 def main(stdscr):

@@ -101,6 +101,10 @@ class View(Operation):
                 self._curPosY = self._win.Y + ScreenConf.ScreenColumn - 1
         self._sched.enter(0, 1, KeyRight, (self, ))
 
+    def RefreshWin(self):
+        '''override this func'''
+        pass
+
     def _OnForward(self):
         '''override this func'''
         pass
@@ -114,5 +118,9 @@ class View(Operation):
         pass
 
     def _OnDown(self):
+        '''override this func'''
+        pass
+
+    def _OnSwitch(self):
         '''override this func'''
         pass

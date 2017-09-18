@@ -22,6 +22,7 @@ class Operation(object):
         reciever.MsgRegister('b', self._OnBackward)
         reciever.MsgRegister('u', self._OnUp)
         reciever.MsgRegister('d', self._OnDown)
+        reciever.MsgRegister('s', self._OnSwitch)
 
     def _OnKeyUp(self):
         '''override this func'''
@@ -63,3 +64,6 @@ class Operation(object):
         '''override this func'''
         pass
 
+    def _OnSwitch(self):
+        '''override this func'''
+        pass

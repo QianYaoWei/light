@@ -11,11 +11,6 @@ from util.conf import ReaderConf
 from line_view import LineView
 from txt_view import TxtView
 
-LineView_id = 1
-
-TxtView_id = 2
-
-
 class ReaderViewMgr(util.win.Operation):
     def __init__(self, stdscr, Sched=None):
         super(ReaderViewMgr, self).__init__()
@@ -35,6 +30,7 @@ class ReaderViewMgr(util.win.Operation):
         if index > 0:
             self._viewIDLayer[0], self._viewIDLayer[index] = \
                 self._viewIDLayer[index], self._viewIDLayer[0]
+            self._views[viewID].RefreshWin()
 
     @property
     def StdScr(self):
@@ -43,6 +39,9 @@ class ReaderViewMgr(util.win.Operation):
     @property
     def Sched(self):
         return self._sched
+
+    def GetView(self, id):
+        return self._views.get(id, None)
 
     def OpenBook(self, book):
         if book:
@@ -94,6 +93,10 @@ class ReaderViewMgr(util.win.Operation):
     def _OnClick(self):
         topID = self._viewIDLayer[0]
         self._views[topID]._OnClick()
+
+    def _OnSwitch(self):
+        topID = self._viewIDLayer[0]
+        self._views[topID]._OnSwitch()
 
 
 def main(stdscr):
