@@ -31,6 +31,8 @@ class View(Operation):
         self._curPosY = self._win.Y
         self._testID = 1
 
+        self._viewMgr = None
+
     def Show(self):
         if self._exit:
             return
@@ -58,6 +60,14 @@ class View(Operation):
     @property
     def Win(self):
         return self._win
+
+    @property
+    def ViewMgr(self):
+        return self._viewMgr
+
+    @ViewMgr.setter
+    def ViewMgr(self, mgr):
+        self._viewMgr = mgr
 
     @view_clear
     def _OnKeyUp(self):

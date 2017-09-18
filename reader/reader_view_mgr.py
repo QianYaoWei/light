@@ -44,6 +44,13 @@ class ReaderViewMgr(util.win.Operation):
     def Sched(self):
         return self._sched
 
+    def OpenBook(self, book):
+        if book:
+            book.Open()
+            self.MoveToTop(TxtView_id)
+            self._views[TxtView_id].Book = book
+            self._views[TxtView_id].RefreshWin()
+
     def Show(self):
         if self._exit:
             return
@@ -91,13 +98,14 @@ class ReaderViewMgr(util.win.Operation):
 
 def main(stdscr):
     g_reader = ReaderViewMgr(stdscr)
-
     view = LineView(ReaderConf.ShelfPath, stdscr, g_reader.Sched)
     view.RefreshCurDir()
     view.RefreshWin()
+    view.ViewMgr = g_reader
     g_reader.AddView(LineView_id, view)
 
     view = TxtView(stdscr, g_reader.Sched)
+    view.ViewMgr = g_reader
     g_reader.AddView(TxtView_id, view)
 
     InitColor()

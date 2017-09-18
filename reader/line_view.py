@@ -10,6 +10,7 @@ import util
 import util.win as win
 from util.conf import ReaderConf
 from common import *
+from book import Book
 
 
 class LineInfo(object):
@@ -23,7 +24,7 @@ class LineInfo(object):
     def Name(self):
         return self._name
 
-    def Open(self, view):
+    def OnClick(self, view):
         '''override this func'''
         pass
 
@@ -31,10 +32,11 @@ class LineInfo(object):
 class DirInfo(LineInfo):
     global Blue
     Color = Blue
+
     def __init__(self, name):
         super(DirInfo, self).__init__(name)
 
-    def Open(self, view):
+    def OnClick(self, view):
         '''override this func'''
         view.LowerDir(self._name)
         view.RefreshCurDir()
@@ -44,10 +46,11 @@ class DirInfo(LineInfo):
 class UpperDir(LineInfo):
     global Blue
     Color = Blue
+
     def __init__(self):
         super(UpperDir, self).__init__('..')
 
-    def Open(self, view):
+    def OnClick(self, view):
         '''override this func'''
         view.UpperDir()
         view.RefreshCurDir()
@@ -57,12 +60,15 @@ class UpperDir(LineInfo):
 class BookInfo(LineInfo):
     global NoColor
     Color = NoColor
+
     def __init__(self, name):
         super(BookInfo, self).__init__(name)
 
-    def Open(self, view):
+    def OnClick(self, view):
         '''override this func'''
-        pass
+        p = view.CurDir + os.path.sep + self._name
+        book = Book(1, path=p, cur_page=0)
+        view.ViewMgr.OpenBook(book)
 
 
 class LineView(win.View):
@@ -93,10 +99,9 @@ class LineView(win.View):
 
     @win.view_clear
     def __OnWinClick(self, pos):
-        print pos
         cp = self.CurPage
         if 0 <= pos < len(cp):
-            cp[pos].Open(self)
+            cp[pos].OnClick(self)
 
     @property
     def CurPage(self):
@@ -110,7 +115,6 @@ class LineView(win.View):
         return len(self._dirList) == 1
 
     def LowerDir(self, dir):
-        print dir
         self._dirList.append(dir)
 
     def UpperDir(self):
@@ -155,13 +159,11 @@ class LineView(win.View):
         self._curLine += 1
         self.RefreshWin()
 
-
     def PreLine(self):
         if self._curLine <= 0:
             return
         self._curLine -= 1
         self.RefreshWin()
-
 
     def NextPage(self):
         if len(self._lineList[self._curLine + self.__rowCount:]) < \

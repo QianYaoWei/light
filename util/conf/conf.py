@@ -24,8 +24,10 @@ class CommanderConf(object):
 
 class ReaderConf(object):
     ShelfPath = os.path.dirname(__file__) + "/../../"
+    ShelfPath = os.path.abspath(ShelfPath)
 
     DBPath = os.path.dirname(__file__) + "/../../sql/reader.db"
+    DBPath = os.path.abspath(DBPath)
 
 
 class BookConf(object):
