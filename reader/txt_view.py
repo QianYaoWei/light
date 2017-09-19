@@ -9,8 +9,8 @@ from book import Book
 
 
 class TxtView(win.View):
-    def __init__(self, stdscr, sched=None):
-        super(TxtView, self).__init__(stdscr, win.BrailleSquareScr_id, sched)
+    def __init__(self, stdscr, sch=None):
+        super(TxtView, self).__init__(stdscr, win.BrailleSquareScr_id, sch)
         self._book = None
         self._txtList = []
         self._curPost = 0

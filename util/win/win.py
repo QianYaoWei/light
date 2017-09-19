@@ -196,6 +196,15 @@ class Win(object):
                     self._stdscr.addch(self.X, self.Y, self._txt,
                             curses.color_pair(self._color) | curses.A_BOLD)
 
+    def DecodeDots(self, rx, ry, dots):
+        '''override this func'''
+        if dots:
+            for d in dots:
+                xy = d.split(',')
+                g_ps = ScreenDots(self._stdscr)
+                dot = g_ps.GetDot(int(xy[0]), int(xy[1]))
+                dot.RelativePos(rx, ry)
+                self.AddDot(dot)
 
     def Close(self):
         # TODO

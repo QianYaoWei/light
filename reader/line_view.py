@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-import curses
 from common import *
 import os
 import util
@@ -71,8 +70,8 @@ class BookInfo(LineInfo):
 class LineView(win.View):
     __rowCount = win.Line4_id - win.Line0_id + 1
 
-    def __init__(self, dir, stdscr, sched=None):
-        super(LineView, self).__init__(stdscr, win.RowScr_id, sched)
+    def __init__(self, dir, stdscr, sch=None):
+        super(LineView, self).__init__(stdscr, win.RowScr_id, sch)
         self._dirList = [dir, ]
         self._curLine = 0
         self._lineList = []

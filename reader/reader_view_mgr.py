@@ -12,10 +12,10 @@ from line_view import LineView
 from txt_view import TxtView
 
 class ReaderViewMgr(util.win.Operation):
-    def __init__(self, stdscr, Sched=None):
+    def __init__(self, stdscr, sch=None):
         super(ReaderViewMgr, self).__init__()
         self._stdscr = stdscr
-        self._sched = Sched if Sched else sched.scheduler(time.time, time.sleep)
+        self._sched = sch if sch else sched.scheduler(time.time, time.sleep)
         self._sched.enter(ScreenConf.RefreshInterval, 1, self.Show, ())
 
         self._views = {}

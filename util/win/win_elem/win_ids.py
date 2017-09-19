@@ -110,3 +110,5 @@ DailNum9_id = 105
 DailNum0_id = 106
 DailAsterisk_id = 107
 DailSharp_id = 108
+
+DailPanelScr_id = 109

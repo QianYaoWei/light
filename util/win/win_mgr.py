@@ -3,14 +3,19 @@
 from win_elem.braille_square import *
 from win_elem.line import *
 from win_elem.square_8x8 import *
-from win_elem.dail_panel import *
+from win_elem.dail_num import *
 
 from win_elem.braille_square_scr import BrailleSquareScr
 from win_elem.row_scr import RowScr
 from win_elem.x8x8_scr import X8x8Scr
+from win_elem.dail_panel_scr import DailPanelScr
+
 from braille_square_win import BrailleSquareWin
 from line_win import LineWin
 from x8x8_square_win import X8x8Win
+from dial_num_win import DialNumWin
+
+
 from win import Win
 from dot import *
 from win_event import *
@@ -116,19 +121,20 @@ Wins = {
     RowScr_id: RowScr,
     BrailleSquareScr_id: BrailleSquareScr,
     X8x8Scr_id: X8x8Scr,
+    DailPanelScr_id: DailPanelScr,
 
-    DailNum1_id: DailNum1,
-    DailNum2_id: DailNum2,
-    DailNum3_id: DailNum3,
-    DailNum4_id: DailNum4,
-    DailNum5_id: DailNum5,
-    DailNum6_id: DailNum6,
-    DailNum7_id: DailNum7,
-    DailNum8_id: DailNum8,
-    DailNum9_id: DailNum9,
-    DailNum0_id: DailNum0,
-    DailAsterisk_id: DailAsterisk,
-    DailSharp_id: DailSharp,
+    DailNum1_id: (DailNum1, DialNumWin),
+    DailNum2_id: (DailNum2, DialNumWin),
+    DailNum3_id: (DailNum3, DialNumWin),
+    DailNum4_id: (DailNum4, DialNumWin),
+    DailNum5_id: (DailNum5, DialNumWin),
+    DailNum6_id: (DailNum6, DialNumWin),
+    DailNum7_id: (DailNum7, DialNumWin),
+    DailNum8_id: (DailNum8, DialNumWin),
+    DailNum9_id: (DailNum9, DialNumWin),
+    DailNum0_id: (DailNum0, DialNumWin),
+    DailAsterisk_id: (DailAsterisk, DialNumWin),
+    DailSharp_id: (DailSharp, DialNumWin),
 }
 
 @singleton
@@ -169,12 +175,13 @@ class WinMgr(object):
                     subwin.X = subwin.OriginX + topWinPos[0]
                     subwin.Y = subwin.OriginY + topWinPos[1]
 
-            for p in winConf.get("dots", []):
-                xy = p.split(',')
-                g_ps = ScreenDots(stdscr)
-                dot = g_ps.GetDot(int(xy[0]), int(xy[1]))
-                dot.RelativePos(topWinPos[0], topWinPos[1])
-                w.AddDot(dot)
+            w.DecodeDots(topWinPos[0], topWinPos[1], winConf.get("dots", []))
+            # for p in winConf.get("dots", []):
+            #     xy = p.split(',')
+            #     g_ps = ScreenDots(stdscr)
+            #     dot = g_ps.GetDot(int(xy[0]), int(xy[1]))
+            #     dot.RelativePos(topWinPos[0], topWinPos[1])
+            #     w.AddDot(dot)
 
             for _, s in w.SubWins.items():
                 for k, p in s.Dots.items():

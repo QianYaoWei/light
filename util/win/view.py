@@ -18,10 +18,10 @@ def view_clear(func):
 
 
 class View(Operation):
-    def __init__(self, stdscr, winID=0, sched=None):
+    def __init__(self, stdscr, winID=0, sch=None):
         super(View, self).__init__()
 
-        self._sched = sched if sched else sched.scheduler(time.time, time.sleep)
+        self._sched = sch if sch else sched.scheduler(time.time, time.sleep)
         # self._sched.enter(ScreenConf.RefreshInterval, 1, self.Show, ())
         self._stdscr = stdscr
 
