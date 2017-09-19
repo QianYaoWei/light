@@ -66,7 +66,7 @@ class ReaderViewMgr(util.win.Operation):
         topID = self._viewIDLayer[0]
         self._views[topID]._OnKeyDown()
 
-    def __OnKeyLeft(self):
+    def _OnKeyLeft(self):
         topID = self._viewIDLayer[0]
         self._views[topID]._OnKeyLeft()
 

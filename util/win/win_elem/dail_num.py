@@ -3,7 +3,7 @@
 
 DailNum1 = {
     "x": 2,
-    "y": 17,
+    "y": 20,
     "height": 4,
     "width": 5,
 
@@ -15,95 +15,95 @@ DailNum1 = {
 
 DailNum2 = {
     "x": 6,
-    "y": 17,
+    "y": 20,
     "height": 4,
     "width": 5,
 
     "dots": "...O."
             ".O.O."
-            ".O.O."
             ".O..."
+            "OOOOO"
 }
 
 DailNum3 = {
     "x": 10,
-    "y": 17,
+    "y": 20,
     "height": 4,
     "width": 5,
 
     "dots": ".O.O."
             ".O.O."
-            ".O.O."
             "....."
+            "OOOOO"
 }
 
 DailNum4 = {
     "x": 2,
-    "y": 12,
+    "y": 14,
     "height": 4,
     "width": 5,
 
-    "dots": "OO..O"
-            "OO.O."
+    "dots": "O..OO"
+            "O.O.O"
             "....."
-            "OO.OO"
+            "OOOOO"
 }
 
 DailNum5 = {
     "x": 6,
-    "y": 12,
+    "y": 14,
     "height": 4,
     "width": 5,
 
     "dots": ".O..."
             ".O.O."
-            ".O.O."
             "...O."
+            "OOOOO"
 }
 
 DailNum6 = {
-    "x": 6,
-    "y": 12,
+    "x": 10,
+    "y": 14,
     "height": 4,
     "width": 5,
 
     "dots": "....."
             ".O.O."
-            ".O.O."
             "...O."
+            "OOOOO"
 }
 
 DailNum7 = {
     "x": 2,
-    "y": 7,
+    "y": 8,
     "height": 4,
     "width": 5,
     "dots": "OOOO."
             "OOOO."
             "....."
-            "OOOO."
+            "OOOOO"
 }
 
 DailNum8 = {
     "x": 6,
-    "y": 7,
+    "y": 8,
     "height": 4,
     "width": 5,
-    "dots": "..O.."
+    "dots": "....."
             ".O.O."
-            ".O.O."
-            "..O.."
+            "....."
+            "OOOOO"
 }
 
 DailNum9 = {
     "x": 10,
-    "y": 7,
+    "y": 8,
     "height": 4,
     "width": 5,
     "dots": "OO..."
             "OO.O."
-            "...O."
             "....."
+            "OOOOO"
 }
 
 DailNum0 = {
@@ -111,10 +111,10 @@ DailNum0 = {
     "y": 2,
     "height": 4,
     "width": 5,
-    "dots": "O...O"
+    "dots": "....."
             ".OOO."
-            ".OOO."
-            "O...O"
+            "....."
+            "OOOOO"
 }
 
 # *
@@ -125,8 +125,8 @@ DailAsterisk = {
     "width": 5,
     "dots": "OO.OO"
             "....."
-            "....."
             "OO.OO"
+            "OOOOO"
 }
 
 # #
@@ -137,6 +137,6 @@ DailSharp = {
     "width": 5,
     "dots": "O.O.O"
             "....."
-            "....."
             "O.O.O"
+            "OOOOO"
 }

@@ -22,7 +22,7 @@ class View(Operation):
         super(View, self).__init__()
 
         self._sched = sch if sch else sched.scheduler(time.time, time.sleep)
-        # self._sched.enter(ScreenConf.RefreshInterval, 1, self.Show, ())
+        self._sched.enter(ScreenConf.RefreshInterval, 1, self.Show, ())
         self._stdscr = stdscr
 
         g_scr = WinMgr(self._stdscr)
@@ -41,7 +41,7 @@ class View(Operation):
         self._stdscr.addch(self._curPosX, self._curPosY, '*')
 
         self._stdscr.refresh()
-        # self._sched.enter(ScreenConf.RefreshInterval, 1, self.Show, ())
+        self._sched.enter(ScreenConf.RefreshInterval, 1, self.Show, ())
 
     def _OnClick(self):
         def OnClick(self):

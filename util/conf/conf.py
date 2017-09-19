@@ -36,13 +36,12 @@ class BookConf(object):
 
 
 class WinConf(object):
-
     ShowWinBorder = False
 
     # 1 dot mode
     # 2 txt mode
-    ShowMode = 2
+    ShowMode = 1
 
     DotUp_Ch = '.'
 
-    DotDown_Ch = 'x'
+    DotDown_Ch = ' '

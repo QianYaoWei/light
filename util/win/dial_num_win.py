@@ -24,7 +24,7 @@ class DialNumWin(Win):
             for i in range(0, DotCoutANum / ColumnCount):
                 for j in range(0, ColumnCount):
                     g_ps = ScreenDots(self._stdscr)
-                    dot = g_ps.GetDot(rx + i, ry + j)
+                    dot = g_ps.GetDot(self.OriginX + i, self.OriginY + j)
                     dot.RelativePos(rx, ry)
                     self.AddDot(dot)
 
@@ -32,3 +32,10 @@ class DialNumWin(Win):
                         self._dotsStatus[dot.Key] = True
                     else:
                         self._dotsStatus[dot.Key] = False
+
+    def RefreshDots(self):
+        for k, status in self._dotsStatus.items():
+            if status:
+                self._dots[k].Activate()
+            else:
+                self._dots[k].Inactivate()
