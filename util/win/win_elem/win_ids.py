@@ -112,3 +112,4 @@ DailAsterisk_id = 107
 DailSharp_id = 108
 
 DailPanelScr_id = 109
+InputNumScr_id = 110

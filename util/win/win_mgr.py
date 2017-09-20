@@ -122,6 +122,7 @@ Wins = {
     BrailleSquareScr_id: BrailleSquareScr,
     X8x8Scr_id: X8x8Scr,
     DailPanelScr_id: DailPanelScr,
+    InputNumScr_id: DailPanelScr,
 
     DailNum1_id: (DailNum1, DialNumWin),
     DailNum2_id: (DailNum2, DialNumWin),

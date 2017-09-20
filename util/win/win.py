@@ -210,3 +210,7 @@ class Win(object):
         # TODO
         for _, w in self._subWins.items():
             w.Close()
+
+    def InactivateDots(self):
+        for k, d in self._dots.items():
+            d.Inactivate()
