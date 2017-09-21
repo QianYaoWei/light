@@ -17,14 +17,27 @@ class PhoneViewMgr(win.ViewMgr):
 
 def main(stdscr):
     g_phone = PhoneViewMgr(stdscr)
+    view = DailPanelView(stdscr, g_phone.Sched)
+    view.RefreshWin()
+    view.ViewMgr = g_phone
+    g_phone.AddView(DailPanelView_id, view)
+
     view = InputtedNumsView(stdscr, g_phone.Sched)
     view.ViewMgr = g_phone
     g_phone.AddView(InputtedNumsView_id, view)
 
-    view = DailPanelView(stdscr, g_phone.Sched)
-    view.ViewMgr = g_phone
-    g_phone.AddView(DailPanelView_id, view)
+    reciever = util.CommandReciever()
+    g_phone.Init(reciever)
+    reciever.start()
 
+
+    sender = util.CommandSender(stdscr)
+    sender.start()
+
+    g_phone.Sched.run()
+
+    reciever.join()
+    sender.join()
 
 if __name__ == "__main__":
     curses.wrapper(main)

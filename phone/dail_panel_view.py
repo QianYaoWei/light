@@ -72,8 +72,9 @@ class DailPanelView(win.View):
 
     def _OnSwitch(self):
         '''implement this func'''
-        # Dial TODO
-        pass
+        view = self.ViewMgr.GetView(InputtedNumsView_id)
+        view.Nums = self._inputtedNums
+        self.ViewMgr.MoveToTop(InputtedNumsView_id)
 
 
 def main(stdscr):
@@ -84,13 +85,13 @@ def main(stdscr):
     view.RefreshWin()
     reciever.start()
 
-    # sender = util.CommandSender(stdscr)
-    # sender.start()
+    sender = util.CommandSender(stdscr)
+    sender.start()
 
     view.Sched.run()
 
     reciever.join()
-    # sender.join()
+    sender.join()
 
 if __name__ == "__main__":
     curses.wrapper(main)

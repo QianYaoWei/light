@@ -45,23 +45,19 @@ class InputtedNumsView(win.View):
 
     def _OnSwitch(self):
         '''implement this func'''
-        # Dial TODO
-        # view = self.ViewMgr.GetView(DailPanelView_id)
-        # if view and view.Book:
-        #     self.ViewMgr.MoveToTop(TxtView_id)
-        pass
+        self.ViewMgr.MoveToTop(DailPanelView_id)
 
     def RefreshWin(self):
         '''implement this func'''
-
         l = len(self.Win.SubwinKeys)
         for i, num in enumerate(self._inputtedNums):
             if i >= l:
                 break
-            numWin = self._num2winIDMapping.get(i, None)
-            if numWin is None:
+            id = self._num2winIDMapping.get(num, None)
+            if id is None:
                 continue
 
+            numWin = self.Win.SubWins[id]
             k = self.Win.SubwinKeys[i]
             w = self.Win.SubWins[k]
             numWin.RefreshDots(w.DotsStatus)
