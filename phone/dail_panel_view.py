@@ -16,46 +16,47 @@ class DailPanelView(win.View):
 
     def __RegisterWinEvent(self):
         self.Win.SubWins[win.DailNum1_id].AddWinEvent(
-            win.WinEvent(win.eClickTheWin, self.__OnWinClick, '1'))
+            win.WinEvent(win.eClickTheWin, self.__OnWinClick, Num1))
 
         self.Win.SubWins[win.DailNum2_id].AddWinEvent(win.WinEvent(
-            win.eClickTheWin, self.__OnWinClick, '2'))
+            win.eClickTheWin, self.__OnWinClick, Num2))
 
         self.Win.SubWins[win.DailNum3_id].AddWinEvent(win.WinEvent(
-            win.eClickTheWin, self.__OnWinClick, '3'))
+            win.eClickTheWin, self.__OnWinClick, Num3))
 
         self.Win.SubWins[win.DailNum4_id].AddWinEvent(win.WinEvent(
-            win.eClickTheWin, self.__OnWinClick, '4'))
+            win.eClickTheWin, self.__OnWinClick, Num4))
 
         self.Win.SubWins[win.DailNum5_id].AddWinEvent(win.WinEvent(
-            win.eClickTheWin, self.__OnWinClick, '5'))
+            win.eClickTheWin, self.__OnWinClick, Num5))
 
         self.Win.SubWins[win.DailNum6_id].AddWinEvent(win.WinEvent(
-            win.eClickTheWin, self.__OnWinClick, '6'))
+            win.eClickTheWin, self.__OnWinClick, Num6))
 
         self.Win.SubWins[win.DailNum7_id].AddWinEvent(win.WinEvent(
-            win.eClickTheWin, self.__OnWinClick, '7'))
+            win.eClickTheWin, self.__OnWinClick, Num7))
 
         self.Win.SubWins[win.DailNum8_id].AddWinEvent(win.WinEvent(
-            win.eClickTheWin, self.__OnWinClick, '8'))
+            win.eClickTheWin, self.__OnWinClick, Num8))
 
         self.Win.SubWins[win.DailNum9_id].AddWinEvent(win.WinEvent(
-            win.eClickTheWin, self.__OnWinClick, '9'))
+            win.eClickTheWin, self.__OnWinClick, Num9))
 
         self.Win.SubWins[win.DailNum0_id].AddWinEvent(win.WinEvent(
-            win.eClickTheWin, self.__OnWinClick, '0'))
+            win.eClickTheWin, self.__OnWinClick, Num0))
 
         self.Win.SubWins[win.DailAsterisk_id].AddWinEvent(win.WinEvent(
-            win.eClickTheWin, self.__OnWinClick, '*'))
+            win.eClickTheWin, self.__OnWinClick, NumAsterisk))
 
         self.Win.SubWins[win.DailSharp_id].AddWinEvent(win.WinEvent(
-            win.eClickTheWin, self.__OnWinClick, '#'))
+            win.eClickTheWin, self.__OnWinClick, NumSharp))
 
     @win.view_clear
     def __OnWinClick(self, num):
         self._inputtedNums.append(num)
 
     def RefreshWin(self):
+        '''implement this func'''
         for _, w in self.Win.SubWins.items():
             w.RefreshDots()
 
@@ -70,7 +71,7 @@ class DailPanelView(win.View):
             self._inputtedNums.pop()
 
     def _OnSwitch(self):
-        '''override this func'''
+        '''implement this func'''
         # Dial TODO
         pass
 

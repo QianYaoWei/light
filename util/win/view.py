@@ -25,8 +25,8 @@ class View(Operation):
         self._sched.enter(ScreenConf.RefreshInterval, 1, self.Show, ())
         self._stdscr = stdscr
 
-        g_scr = WinMgr(self._stdscr)
-        self._win = g_scr.CreateWin(stdscr, winID)
+        g_winmgr = WinMgr(self._stdscr)
+        self._win = g_winmgr.CreateWin(stdscr, winID)
         self._curPosX = self._win.X
         self._curPosY = self._win.Y
         self._testID = 1

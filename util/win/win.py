@@ -55,6 +55,8 @@ class Win(object):
         self._subWinSortedKeys = []
         self._dotsSortedKeys = []
 
+        self._winMgr = None
+
     def __str__(self):
         return ",".join([str(self._x), str(self._y),
                          str(self._height), str(self._width)])
@@ -143,6 +145,14 @@ class Win(object):
     @property
     def SubWins(self):
         return self._subWins
+
+    @property
+    def WinMgr(self):
+        return self._winMgr
+
+    @WinMgr.setter
+    def WinMgr(self, mgr):
+        self._winMgr = mgr
 
     def OnMessage(self, msg):
         '''override it to update the dots status'''

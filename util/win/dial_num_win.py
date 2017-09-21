@@ -16,8 +16,12 @@ class DialNumWin(Win):
                                          oriY, height, width)
         self._dotsStatus = {}
 
+    @property
+    def DotsStatus(self):
+        return self._dotsStatus
+
     def DecodeDots(self, rx, ry, dots):
-        '''override'''
+        '''implement'''
         if dots:
             if len(dots) != DotCoutANum:
                 return
@@ -33,8 +37,9 @@ class DialNumWin(Win):
                     else:
                         self._dotsStatus[dot.Key] = False
 
-    def RefreshDots(self):
-        for k, status in self._dotsStatus.items():
+    def RefreshDots(self, dotsStatus=None):
+        ds = dotsStatus if dotsStatus else self._dotsStatus
+        for k, status in ds.items():
             if status:
                 self._dots[k].Activate()
             else:

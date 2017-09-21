@@ -9,3 +9,4 @@ from win_mgr import WinMgr
 from view import (View, view_clear)
 from win_event import *
 from operation import Operation
+from view_mgr import ViewMgr

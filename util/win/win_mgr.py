@@ -192,5 +192,7 @@ class WinMgr(object):
                 for we in winEventList:
                     if we.WinID == id:
                         w.AddWinEvent(we)
+
+            w.WinMgr = self
             w.Init()
             return w
