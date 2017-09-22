@@ -49,6 +49,7 @@ class InputtedNumsView(win.View):
 
     def RefreshWin(self):
         '''implement this func'''
+        self.Win.InactivateDots()
         l = len(self.Win.SubwinKeys)
         for i, num in enumerate(self._inputtedNums):
             if i >= l:
@@ -57,7 +58,10 @@ class InputtedNumsView(win.View):
             if id is None:
                 continue
 
-            numWin = self.Win.SubWins[id]
+            conf = self.Win.WinMgr.GetWinConf(id)
+            dots = conf['dots'] if conf else None
+            if conf is None:
+                continue
+
             k = self.Win.SubwinKeys[i]
-            w = self.Win.SubWins[k]
-            numWin.RefreshDots(w.DotsStatus)
+            self.Win.SubWins[k].RefreshDots(dots)

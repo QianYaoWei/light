@@ -148,14 +148,8 @@ class WinMgr(object):
         w = self._wins.get(id, None)
         if w:
             return w
-        global Wins
-        el = Wins.get(id, None)
-        WinCls = Win
-        if type(el) == tuple:
-            winConf = el[0]
-            WinCls =el[1]
-        elif type(el) == dict:
-            winConf = el
+        winConf = self.GetWinConf(id)
+        WinCls = self.GetWinClass(id)
         if winConf:
             if not topWinPos:
                 topWinPos = (winConf["x"], winConf["y"])
@@ -196,3 +190,23 @@ class WinMgr(object):
             w.WinMgr = self
             w.Init()
             return w
+
+    def GetWinConf(self, id):
+        global Wins
+        ret = Wins.get(id, None)
+        if ret is None:
+            return
+        if type(ret) == tuple:
+            return ret[0]
+        else:
+            return ret
+
+    def GetWinClass(self, id):
+        global Wins
+        ret = Wins.get(id, None)
+        if type(ret) != tuple:
+            return Win
+        return ret[1]
+
+    def GetWin(self, id):
+        return Wins.get(id, None)
