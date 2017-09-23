@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
+from win_ids import *
+
 X8x8Win = {
     "x": 10,
     "y": 10,

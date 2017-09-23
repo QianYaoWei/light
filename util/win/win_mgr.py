@@ -1,20 +1,11 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
-from win_elem.braille_square import *
-from win_elem.line import *
-from win_elem.square_8x8 import *
-from win_elem.dail_num import *
 
-from win_elem.braille_square_scr import BrailleSquareScr
-from win_elem.row_scr import RowScr
-from win_elem.x8x8_scr import X8x8Scr
-from win_elem.dail_panel_scr import DailPanelScr
-
+from win_elem import *
+from phone import *
 from braille_square_win import BrailleSquareWin
 from line_win import LineWin
 from x8x8_square_win import X8x8Win
-from dial_num_win import DialNumWin
-
 
 from win import Win
 from dot import *
@@ -123,6 +114,9 @@ Wins = {
     X8x8Scr_id: X8x8Scr,
     DailPanelScr_id: DailPanelScr,
     InputNumScr_id: DailPanelScr,
+    IncommingCallScr_id: IncommingCallScr,
+    BackWin_id: BackWin,
+    ForwardWin_id: ForwardWin,
 
     DailNum1_id: (DailNum1, DialNumWin),
     DailNum2_id: (DailNum2, DialNumWin),

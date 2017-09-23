@@ -51,9 +51,9 @@ class DailPanelView(win.View):
         self.Win.SubWins[win.DailSharp_id].AddWinEvent(win.WinEvent(
             win.eClickTheWin, self.__OnWinClick, NumSharp))
 
-    @win.view_clear
     def __OnWinClick(self, num):
         self._inputtedNums.append(num)
+        self.StdScr.clear()
 
     def RefreshWin(self):
         '''implement this func'''

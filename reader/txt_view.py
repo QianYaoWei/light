@@ -27,7 +27,6 @@ class TxtView(win.View):
         if msg:
             self._txtList.extend(list(msg))
 
-    @win.view_clear
     def _OnForward(self):
         '''implement this func'''
         msg = self.Book.PageNext()
@@ -36,8 +35,8 @@ class TxtView(win.View):
             self._curPost = 0
             self._txtList.extend(list(msg))
             self.RefreshWin()
+        self.StdScr.clear()
 
-    @win.view_clear
     def _OnBackward(self):
         '''implement this func'''
         msg = self.Book.PagePre()
@@ -46,8 +45,8 @@ class TxtView(win.View):
             self._curPost = 0
             self._txtList.extend(list(msg))
             self.RefreshWin()
+        self.StdScr.clear()
 
-    @win.view_clear
     def _OnUp(self):
         '''implement this func'''
         num = len(self.Win.SubWins)
@@ -56,16 +55,16 @@ class TxtView(win.View):
         else:
             self._curPost -= num
         self.RefreshWin()
+        self.StdScr.clear()
 
-    @win.view_clear
     def _OnDown(self):
         '''implement this func'''
         num = len(self.Win.SubWins)
         if self._curPost + num < len(self._txtList):
             self._curPost += num
         self.RefreshWin()
+        self.StdScr.clear()
 
-    @win.view_clear
     def _OnSwitch(self):
         '''implement this func'''
         self.ViewMgr.MoveToTop(LineView_id)

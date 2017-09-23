@@ -9,14 +9,6 @@ from ..conf import ScreenConf
 from ..win import WinMgr
 
 
-def view_clear(func):
-    @wraps(func)
-    def wrapper(self, *args):
-        self.StdScr.clear()
-        return func(self, *args)
-    return wrapper
-
-
 class View(Operation):
     def __init__(self, stdscr, winID=0, sch=None):
         super(View, self).__init__()
@@ -69,36 +61,36 @@ class View(Operation):
     def ViewMgr(self, mgr):
         self._viewMgr = mgr
 
-    @view_clear
     def _OnKeyUp(self):
         def OnKeyUp(self):
             self._curPosX -= 1
             if self._curPosX < self._win.X:
                 self._curPosX = self._win.X
+            self.StdScr.clear()
         self._sched.enter(0, 1, OnKeyUp, (self, ))
 
-    @view_clear
     def _OnKeyDown(self):
         def OnKeyDown(self):
             self._curPosX += 1
             if self._curPosX > self._win.X + ScreenConf.ScreenRow - 1:
                 self._curPosX = self._win.X + ScreenConf.ScreenRow - 1
+            self.StdScr.clear()
         self._sched.enter(0, 1, OnKeyDown, (self, ))
 
-    @view_clear
     def _OnKeyLeft(self):
         def KeyLeft(self):
             self._curPosY -= 1
             if self._curPosY < self._win.Y:
                 self._curPosY = self._win.Y
+            self.StdScr.clear()
         self._sched.enter(0, 1, KeyLeft, (self, ))
 
-    @view_clear
     def _OnKeyRight(self):
         def KeyRight(self):
             self._curPosY += 1
             if self._curPosY > self._win.Y + ScreenConf.ScreenColumn - 1:
                 self._curPosY = self._win.Y + ScreenConf.ScreenColumn - 1
+            self.StdScr.clear()
         self._sched.enter(0, 1, KeyRight, (self, ))
 
     def RefreshWin(self):

@@ -10,6 +10,8 @@ DailPanelView_id = 1
 
 InputtedNumsView_id = 2
 
+IncommingCallView_id = 3
+
 Num1 = '1'
 
 Num2 = '2'

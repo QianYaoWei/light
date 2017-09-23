@@ -57,6 +57,8 @@ class Win(object):
 
         self._winMgr = None
 
+        self._defDotsStatus = None
+
     def __str__(self):
         return ",".join([str(self._x), str(self._y),
                          str(self._height), str(self._width)])

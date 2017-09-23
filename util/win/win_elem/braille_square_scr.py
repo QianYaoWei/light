@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-from win_ids import *
+from ..win_ids import *
 
 BrailleSquareScr = {
     "x": 10,

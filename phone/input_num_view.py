@@ -42,6 +42,7 @@ class InputtedNumsView(win.View):
         '''implement this func'''
         if self._inputtedNums:
             self._inputtedNums.pop()
+        self.RefreshWin()
 
     def _OnSwitch(self):
         '''implement this func'''

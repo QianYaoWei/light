@@ -113,3 +113,7 @@ DailSharp_id = 108
 
 DailPanelScr_id = 109
 InputNumScr_id = 110
+IncommingCallScr_id = 111
+
+BackWin_id = 112
+ForwardWin_id = 113

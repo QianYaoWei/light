@@ -93,11 +93,11 @@ class LineView(win.View):
         self.Win.SubWins[win.Line4_id].AddWinEvent(win.WinEvent(
             win.eClickTheWin, self.__OnWinClick, 4))
 
-    @win.view_clear
     def __OnWinClick(self, pos):
         cp = self.CurPage
         if 0 <= pos < len(cp):
             cp[pos].OnClick(self)
+        self.StdScr.clear()
 
     @property
     def CurPage(self):
@@ -179,32 +179,32 @@ class LineView(win.View):
             self._curLine = 0
         self.RefreshWin()
 
-    @win.view_clear
     def _OnForward(self):
         '''implement this func'''
         self.NextPage()
+        self.StdScr.clear()
 
-    @win.view_clear
     def _OnBackward(self):
         '''implement this func'''
         self.PrePage()
+        self.StdScr.clear()
 
-    @win.view_clear
     def _OnUp(self):
         '''implement this func'''
         self.PreLine()
+        self.StdScr.clear()
 
-    @win.view_clear
     def _OnDown(self):
         '''implement this func'''
         self.NextLine()
+        self.StdScr.clear()
 
-    @win.view_clear
     def _OnSwitch(self):
         '''implement this func'''
         view = self.ViewMgr.GetView(TxtView_id)
         if view and view.Book:
             self.ViewMgr.MoveToTop(TxtView_id)
+        self.StdScr.clear()
 
 
 def main(stdscr):

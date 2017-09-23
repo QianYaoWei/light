@@ -8,6 +8,7 @@ import util
 import util.win as win
 from dail_panel_view import DailPanelView
 from input_num_view import InputtedNumsView
+from incomming_call_view import IncommingCallView
 
 
 class PhoneViewMgr(win.ViewMgr):
@@ -25,6 +26,11 @@ def main(stdscr):
     view = InputtedNumsView(stdscr, g_phone.Sched)
     view.ViewMgr = g_phone
     g_phone.AddView(InputtedNumsView_id, view)
+
+    import pudb; pudb.set_trace()  # XXX BREAKPOINT
+    view = IncommingCallView(stdscr, g_phone.Sched)
+    view.ViewMgr = g_phone
+    g_phone.AddView(IncommingCallScr_id, view)
 
     reciever = util.CommandReciever()
     g_phone.Init(reciever)
