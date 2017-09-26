@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
+from util.win import Win
+
 
 BackWin = {
     "x": 4,
@@ -31,4 +33,4 @@ ForwardWin = {
 class BackForwardWin(Win):
     def __init__(self, stdscr, name, oriX, oriY, height, width):
         super(BackForwardWin, self).__init__(stdscr, name, oriX,
-                                         oriY, height, width)
+                                             oriY, height, width)

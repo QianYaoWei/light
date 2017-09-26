@@ -7,9 +7,9 @@ BrailleSquare0_0 = {
     "y": 0,
     "height": 3,
     "width": 2,
-    "dots": ["0,0", "0,1",
-             "1,0", "1,1",
-             "2,0", "2,1"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare0_1 = {
@@ -18,9 +18,9 @@ BrailleSquare0_1 = {
     "y": 2,
     "height": 3,
     "width": 2,
-    "dots": ["0,2", "0,3",
-             "1,2", "1,3",
-             "2,2", "2,3"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare0_2 = {
@@ -29,9 +29,9 @@ BrailleSquare0_2 = {
     "y": 4,
     "height": 3,
     "width": 2,
-    "dots": ["0,4", "0,5",
-             "1,4", "1,5",
-             "2,4", "2,5"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare0_3 = {
@@ -40,9 +40,9 @@ BrailleSquare0_3 = {
     "y": 6,
     "height": 3,
     "width": 2,
-    "dots": ["0,6", "0,7",
-             "1,6", "1,7",
-             "2,6", "2,7"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare0_4 = {
@@ -51,9 +51,9 @@ BrailleSquare0_4 = {
     "y": 8,
     "height": 3,
     "width": 2,
-    "dots": ["0,8", "0,9",
-             "1,8", "1,9",
-             "2,8", "2,9"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare0_5 = {
@@ -62,9 +62,9 @@ BrailleSquare0_5 = {
     "y": 10,
     "height": 3,
     "width": 2,
-    "dots": ["0,10", "0,11",
-             "1,10", "1,11",
-             "2,10", "2,11"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare0_6 = {
@@ -73,9 +73,9 @@ BrailleSquare0_6 = {
     "y": 12,
     "height": 3,
     "width": 2,
-    "dots": ["0,12", "0,13",
-             "1,12", "1,13",
-             "2,12", "2,13"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare0_7 = {
@@ -84,9 +84,9 @@ BrailleSquare0_7 = {
     "y": 14,
     "height": 3,
     "width": 2,
-    "dots": ["0,14", "0,15",
-             "1,14", "1,15",
-             "2,14", "2,15"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare0_8 = {
@@ -95,9 +95,9 @@ BrailleSquare0_8 = {
     "y": 16,
     "height": 3,
     "width": 2,
-    "dots": ["0,16", "0,17",
-             "1,16", "1,17",
-             "2,16", "2,17"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare0_9 = {
@@ -106,9 +106,9 @@ BrailleSquare0_9 = {
     "y": 18,
     "height": 3,
     "width": 2,
-    "dots": ["0,18", "0,19",
-             "1,18", "1,19",
-             "2,18", "2,19"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare0_10 = {
@@ -117,9 +117,9 @@ BrailleSquare0_10 = {
     "y": 20,
     "height": 3,
     "width": 2,
-    "dots": ["0,20", "0,21",
-             "1,20", "1,21",
-             "2,20", "2,21"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare0_11 = {
@@ -128,9 +128,9 @@ BrailleSquare0_11 = {
     "y": 22,
     "height": 3,
     "width": 2,
-    "dots": ["0,22", "0,23",
-             "1,22", "1,23",
-             "2,22", "2,23"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare0_12 = {
@@ -139,9 +139,9 @@ BrailleSquare0_12 = {
     "y": 24,
     "height": 3,
     "width": 2,
-    "dots": ["0,24", "0,25",
-             "1,24", "1,25",
-             "2,24", "2,25"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare0_13 = {
@@ -150,9 +150,9 @@ BrailleSquare0_13 = {
     "y": 26,
     "height": 3,
     "width": 2,
-    "dots": ["0,26", "0,27",
-             "1,26", "1,27",
-             "2,26", "2,27"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare0_14 = {
@@ -161,9 +161,9 @@ BrailleSquare0_14 = {
     "y": 28,
     "height": 3,
     "width": 2,
-    "dots": ["0,28", "0,29",
-             "1,28", "1,29",
-             "2,28", "2,29"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare0_15 = {
@@ -172,9 +172,9 @@ BrailleSquare0_15 = {
     "y": 30,
     "height": 3,
     "width": 2,
-    "dots": ["0,30", "0,31",
-             "1,30", "1,31",
-             "2,30", "2,31"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 ###########################################
 
@@ -184,9 +184,9 @@ BrailleSquare1_0 = {
     "y": 0,
     "height": 3,
     "width": 2,
-    "dots": ["3,0", "3,1",
-             "4,0", "4,1",
-             "5,0", "5,1"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare1_1 = {
@@ -195,9 +195,9 @@ BrailleSquare1_1 = {
     "y": 2,
     "height": 3,
     "width": 2,
-    "dots": ["3,2", "3,3",
-             "4,2", "4,3",
-             "5,2", "5,3"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare1_2 = {
@@ -206,9 +206,9 @@ BrailleSquare1_2 = {
     "y": 4,
     "height": 3,
     "width": 2,
-    "dots": ["3,4", "3,5",
-             "4,4", "4,5",
-             "5,4", "5,5"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare1_3 = {
@@ -217,9 +217,9 @@ BrailleSquare1_3 = {
     "y": 6,
     "height": 3,
     "width": 2,
-    "dots": ["3,6", "3,7",
-             "4,6", "4,7",
-             "5,6", "5,7"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 
@@ -229,9 +229,9 @@ BrailleSquare1_4 = {
     "y": 8,
     "height": 3,
     "width": 2,
-    "dots": ["3,8", "3,9",
-             "4,8", "4,9",
-             "5,8", "5,9"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare1_5 = {
@@ -240,9 +240,9 @@ BrailleSquare1_5 = {
     "y": 10,
     "height": 3,
     "width": 2,
-    "dots": ["3,10", "3,11",
-             "4,10", "4,11",
-             "5,10", "5,11"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare1_6 = {
@@ -251,9 +251,9 @@ BrailleSquare1_6 = {
     "y": 12,
     "height": 3,
     "width": 2,
-    "dots": ["3,12", "3,13",
-             "4,12", "4,13",
-             "5,12", "5,13"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare1_7 = {
@@ -262,9 +262,9 @@ BrailleSquare1_7 = {
     "y": 14,
     "height": 3,
     "width": 2,
-    "dots": ["3,14", "3,15",
-             "4,14", "4,15",
-             "5,14", "5,15"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare1_8 = {
@@ -273,9 +273,9 @@ BrailleSquare1_8 = {
     "y": 16,
     "height": 3,
     "width": 2,
-    "dots": ["3,16", "3,17",
-             "4,16", "4,17",
-             "5,16", "5,17"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare1_9 = {
@@ -284,9 +284,9 @@ BrailleSquare1_9 = {
     "y": 18,
     "height": 3,
     "width": 2,
-    "dots": ["3,18", "3,19",
-             "4,18", "4,19",
-             "5,18", "5,19"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare1_10 = {
@@ -295,9 +295,9 @@ BrailleSquare1_10 = {
     "y": 20,
     "height": 3,
     "width": 2,
-    "dots": ["3,20", "3,21",
-             "4,20", "4,21",
-             "5,20", "5,21"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare1_11 = {
@@ -306,9 +306,9 @@ BrailleSquare1_11 = {
     "y": 22,
     "height": 3,
     "width": 2,
-    "dots": ["3,22", "3,23",
-             "4,22", "4,23",
-             "5,22", "5,23"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare1_12 = {
@@ -317,9 +317,9 @@ BrailleSquare1_12 = {
     "y": 24,
     "height": 3,
     "width": 2,
-    "dots": ["3,24", "3,25",
-             "4,24", "4,25",
-             "5,24", "5,25"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare1_13 = {
@@ -328,9 +328,9 @@ BrailleSquare1_13 = {
     "y": 26,
     "height": 3,
     "width": 2,
-    "dots": ["3,26", "3,27",
-             "4,26", "4,27",
-             "5,26", "5,27"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare1_14 = {
@@ -339,9 +339,9 @@ BrailleSquare1_14 = {
     "y": 28,
     "height": 3,
     "width": 2,
-    "dots": ["3,28", "3,29",
-             "4,28", "4,29",
-             "5,28", "5,29"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare1_15 = {
@@ -350,9 +350,9 @@ BrailleSquare1_15 = {
     "y": 30,
     "height": 3,
     "width": 2,
-    "dots": ["3,30", "3,31",
-             "4,30", "4,31",
-             "5,30", "5,31"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 ###########################################
 
@@ -362,9 +362,9 @@ BrailleSquare2_0 = {
     "y": 0,
     "height": 3,
     "width": 2,
-    "dots": ["6,0", "6,1",
-             "7,0", "7,1",
-             "8,0", "8,1"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare2_1 = {
@@ -373,9 +373,9 @@ BrailleSquare2_1 = {
     "y": 2,
     "height": 3,
     "width": 2,
-    "dots": ["6,2", "6,3",
-             "7,2", "7,3",
-             "8,2", "8,3"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare2_2 = {
@@ -384,9 +384,9 @@ BrailleSquare2_2 = {
     "y": 4,
     "height": 3,
     "width": 2,
-    "dots": ["6,4", "6,5",
-             "7,4", "7,5",
-             "8,4", "8,5"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare2_3 = {
@@ -395,9 +395,9 @@ BrailleSquare2_3 = {
     "y": 6,
     "height": 3,
     "width": 2,
-    "dots": ["6,6", "6,7",
-             "7,6", "7,7",
-             "8,6", "8,7"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare2_4 = {
@@ -406,9 +406,9 @@ BrailleSquare2_4 = {
     "y": 8,
     "height": 3,
     "width": 2,
-    "dots": ["6,8", "6,9",
-             "7,8", "7,9",
-             "8,8", "8,9"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare2_5 = {
@@ -417,9 +417,9 @@ BrailleSquare2_5 = {
     "y": 10,
     "height": 3,
     "width": 2,
-    "dots": ["6,10", "6,11",
-             "7,10", "7,11",
-             "8,10", "8,11"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare2_6 = {
@@ -428,9 +428,9 @@ BrailleSquare2_6 = {
     "y": 12,
     "height": 3,
     "width": 2,
-    "dots": ["6,12", "6,13",
-             "7,12", "7,13",
-             "8,12", "8,13"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare2_7 = {
@@ -439,9 +439,9 @@ BrailleSquare2_7 = {
     "y": 14,
     "height": 3,
     "width": 2,
-    "dots": ["6,14", "6,15",
-             "7,14", "7,15",
-             "8,14", "8,15"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare2_8 = {
@@ -450,9 +450,9 @@ BrailleSquare2_8 = {
     "y": 16,
     "height": 3,
     "width": 2,
-    "dots": ["6,16", "6,17",
-             "7,16", "7,17",
-             "8,16", "8,17"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare2_9 = {
@@ -461,9 +461,9 @@ BrailleSquare2_9 = {
     "y": 18,
     "height": 3,
     "width": 2,
-    "dots": ["6,18", "6,19",
-             "7,18", "7,19",
-             "8,18", "8,19"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare2_10 = {
@@ -472,9 +472,9 @@ BrailleSquare2_10 = {
     "y": 20,
     "height": 3,
     "width": 2,
-    "dots": ["6,20", "6,21",
-             "7,20", "7,21",
-             "8,20", "8,21"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare2_11 = {
@@ -483,9 +483,9 @@ BrailleSquare2_11 = {
     "y": 22,
     "height": 3,
     "width": 2,
-    "dots": ["6,22", "6,23",
-             "7,22", "7,23",
-             "8,22", "8,23"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare2_12 = {
@@ -494,9 +494,9 @@ BrailleSquare2_12 = {
     "y": 24,
     "height": 3,
     "width": 2,
-    "dots": ["6,24", "6,25",
-             "7,24", "7,25",
-             "8,24", "8,25"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare2_13 = {
@@ -505,9 +505,9 @@ BrailleSquare2_13 = {
     "y": 26,
     "height": 3,
     "width": 2,
-    "dots": ["6,26", "6,27",
-             "7,26", "7,27",
-             "8,26", "8,27"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare2_14 = {
@@ -516,9 +516,9 @@ BrailleSquare2_14 = {
     "y": 28,
     "height": 3,
     "width": 2,
-    "dots": ["6,28", "6,29",
-             "7,28", "7,29",
-             "8,28", "8,29"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare2_15 = {
@@ -527,9 +527,9 @@ BrailleSquare2_15 = {
     "y": 30,
     "height": 3,
     "width": 2,
-    "dots": ["6,30", "6,31",
-             "7,30", "7,31",
-             "8,30", "8,31"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 # ###########################################
 
@@ -539,9 +539,9 @@ BrailleSquare3_0 = {
     "y": 0,
     "height": 3,
     "width": 2,
-    "dots": ["9,0", "9,1",
-             "10,0", "10,1",
-             "11,0", "11,1"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare3_1 = {
@@ -550,9 +550,9 @@ BrailleSquare3_1 = {
     "y": 2,
     "height": 3,
     "width": 2,
-    "dots": ["9,2", "9,3",
-             "10,2", "10,3",
-             "11,2", "11,3"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare3_2 = {
@@ -561,9 +561,9 @@ BrailleSquare3_2 = {
     "y": 4,
     "height": 3,
     "width": 2,
-    "dots": ["9,4", "9,5",
-             "10,4", "10,5",
-             "11,4", "11,5"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare3_3 = {
@@ -572,9 +572,9 @@ BrailleSquare3_3 = {
     "y": 6,
     "height": 3,
     "width": 2,
-    "dots": ["9,6", "9,7",
-             "10,6", "10,7",
-             "11,6", "11,7"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 
@@ -584,9 +584,9 @@ BrailleSquare3_4 = {
     "y": 8,
     "height": 3,
     "width": 2,
-    "dots": ["9,8", "9,9",
-             "10,8", "10,9",
-             "11,8", "11,9"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare3_5 = {
@@ -595,9 +595,9 @@ BrailleSquare3_5 = {
     "y": 10,
     "height": 3,
     "width": 2,
-    "dots": ["9,10", "9,11",
-             "10,10", "10,11",
-             "11,10", "11,11"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare3_6 = {
@@ -606,9 +606,9 @@ BrailleSquare3_6 = {
     "y": 12,
     "height": 3,
     "width": 2,
-    "dots": ["9,12", "9,13",
-             "10,12", "10,13",
-             "11,12", "11,13"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare3_7 = {
@@ -617,9 +617,9 @@ BrailleSquare3_7 = {
     "y": 14,
     "height": 3,
     "width": 2,
-    "dots": ["9,14", "9,15",
-             "10,14", "10,15",
-             "11,14", "11,15"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare3_8 = {
@@ -628,9 +628,9 @@ BrailleSquare3_8 = {
     "y": 16,
     "height": 3,
     "width": 2,
-    "dots": ["9,16", "9,17",
-             "10,16", "10,17",
-             "11,16", "11,17"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare3_9 = {
@@ -639,9 +639,9 @@ BrailleSquare3_9 = {
     "y": 18,
     "height": 3,
     "width": 2,
-    "dots": ["9,18", "9,19",
-             "10,18", "10,19",
-             "11,18", "11,19"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare3_10 = {
@@ -650,9 +650,9 @@ BrailleSquare3_10 = {
     "y": 20,
     "height": 3,
     "width": 2,
-    "dots": ["9,20", "9,21",
-             "10,20", "10,21",
-             "11,20", "11,21"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare3_11 = {
@@ -661,9 +661,9 @@ BrailleSquare3_11 = {
     "y": 22,
     "height": 3,
     "width": 2,
-    "dots": ["9,22", "9,23",
-             "10,22", "10,23",
-             "11,22", "11,23"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare3_12 = {
@@ -672,9 +672,9 @@ BrailleSquare3_12 = {
     "y": 24,
     "height": 3,
     "width": 2,
-    "dots": ["9,24", "9,25",
-             "10,24", "10,25",
-             "11,24", "11,25"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare3_13 = {
@@ -683,9 +683,9 @@ BrailleSquare3_13 = {
     "y": 26,
     "height": 3,
     "width": 2,
-    "dots": ["9,26", "9,27",
-             "10,26", "10,27",
-             "11,26", "11,27"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare3_14 = {
@@ -694,9 +694,9 @@ BrailleSquare3_14 = {
     "y": 28,
     "height": 3,
     "width": 2,
-    "dots": ["9,28", "9,29",
-             "10,28", "10,29",
-             "11,28", "11,29"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare3_15 = {
@@ -705,9 +705,9 @@ BrailleSquare3_15 = {
     "y": 30,
     "height": 3,
     "width": 2,
-    "dots": ["9,30", "9,31",
-             "10,30", "10,31",
-             "11,30", "11,31"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 # ###########################################
 
@@ -717,9 +717,9 @@ BrailleSquare4_0 = {
     "y": 0,
     "height": 3,
     "width": 2,
-    "dots": ["12,0", "12,1",
-             "13,0", "13,1",
-             "14,0", "14,1"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare4_1 = {
@@ -728,9 +728,9 @@ BrailleSquare4_1 = {
     "y": 2,
     "height": 3,
     "width": 2,
-    "dots": ["12,2", "12,3",
-             "13,2", "13,3",
-             "14,2", "14,3"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare4_2 = {
@@ -739,9 +739,9 @@ BrailleSquare4_2 = {
     "y": 4,
     "height": 3,
     "width": 2,
-    "dots": ["12,4", "12,5",
-             "13,4", "13,5",
-             "14,4", "14,5"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare4_3 = {
@@ -750,9 +750,9 @@ BrailleSquare4_3 = {
     "y": 6,
     "height": 3,
     "width": 2,
-    "dots": ["12,6", "12,7",
-             "13,6", "13,7",
-             "14,6", "14,7"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 
@@ -762,9 +762,9 @@ BrailleSquare4_4 = {
     "y": 8,
     "height": 3,
     "width": 2,
-    "dots": ["12,8", "12,9",
-             "13,8", "13,9",
-             "14,8", "14,9"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare4_5 = {
@@ -773,9 +773,9 @@ BrailleSquare4_5 = {
     "y": 10,
     "height": 3,
     "width": 2,
-    "dots": ["12,10", "12,11",
-             "13,10", "13,11",
-             "14,10", "14,11"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare4_6 = {
@@ -784,9 +784,9 @@ BrailleSquare4_6 = {
     "y": 12,
     "height": 3,
     "width": 2,
-    "dots": ["12,12", "12,13",
-             "13,12", "13,13",
-             "14,12", "14,13"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare4_7 = {
@@ -795,9 +795,9 @@ BrailleSquare4_7 = {
     "y": 14,
     "height": 3,
     "width": 2,
-    "dots": ["12,14", "12,15",
-             "13,14", "13,15",
-             "14,14", "14,15"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare4_8 = {
@@ -806,9 +806,9 @@ BrailleSquare4_8 = {
     "y": 16,
     "height": 3,
     "width": 2,
-    "dots": ["12,16", "12,17",
-             "13,16", "13,17",
-             "14,16", "14,17"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare4_9 = {
@@ -817,9 +817,9 @@ BrailleSquare4_9 = {
     "y": 18,
     "height": 3,
     "width": 2,
-    "dots": ["12,18", "12,19",
-             "13,18", "13,19",
-             "14,18", "14,19"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare4_10 = {
@@ -828,9 +828,9 @@ BrailleSquare4_10 = {
     "y": 20,
     "height": 3,
     "width": 2,
-    "dots": ["12,20", "12,21",
-             "13,20", "13,21",
-             "14,20", "14,21"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare4_11 = {
@@ -839,9 +839,9 @@ BrailleSquare4_11 = {
     "y": 22,
     "height": 3,
     "width": 2,
-    "dots": ["12,22", "12,23",
-             "13,22", "13,23",
-             "14,22", "14,23"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare4_12 = {
@@ -850,9 +850,9 @@ BrailleSquare4_12 = {
     "y": 24,
     "height": 3,
     "width": 2,
-    "dots": ["12,24", "12,25",
-             "13,24", "13,25",
-             "14,24", "14,25"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare4_13 = {
@@ -861,9 +861,9 @@ BrailleSquare4_13 = {
     "y": 26,
     "height": 3,
     "width": 2,
-    "dots": ["12,26", "12,27",
-             "13,26", "13,27",
-             "14,26", "14,27"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare4_14 = {
@@ -872,9 +872,9 @@ BrailleSquare4_14 = {
     "y": 28,
     "height": 3,
     "width": 2,
-    "dots": ["12,28", "12,29",
-             "13,28", "13,29",
-             "14,28", "14,29"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }
 
 BrailleSquare4_15 = {
@@ -883,7 +883,7 @@ BrailleSquare4_15 = {
     "y": 30,
     "height": 3,
     "width": 2,
-    "dots": ["12,30", "12,31",
-             "13,30", "13,31",
-             "14,30", "14,31"]
+    "dots": "OO"
+            "OO"
+            "OO"
 }

@@ -209,14 +209,50 @@ class Win(object):
                             curses.color_pair(self._color) | curses.A_BOLD)
 
     def DecodeDots(self, rx, ry, dots):
-        '''override this func'''
-        if dots:
-            for d in dots:
-                xy = d.split(',')
+        '''implement'''
+        dotsStatus = self.GenerateDotsStatus(dots)
+        if dotsStatus is not None:
+            self._defDotsStatus = dotsStatus
+
+        for _, dot in self._dots.items():
+            dot.RelativePos(rx, ry)
+
+    def GenerateDotsStatus(self, dots):
+        if not dots or \
+           len(dots) != self._height * self._width:
+            return {}
+
+        dotsStatus = {}
+        for i in range(0, self._height):
+            for j in range(0, self._width):
                 g_ps = ScreenDots(self._stdscr)
-                dot = g_ps.GetDot(int(xy[0]), int(xy[1]))
-                dot.RelativePos(rx, ry)
+                dot = g_ps.GetDot(self.OriginX + i, self.OriginY + j)
                 self.AddDot(dot)
+                if dots[i * self._width + j] == '.':
+                    dotsStatus[dot.Key] = True
+                else:
+                    dotsStatus[dot.Key] = False
+        return dotsStatus
+
+    def RefreshDots(self, dots=None):
+        dotsStatus = self.GenerateDotsStatus(dots) if dots else self._defDotsStatus
+
+        ds = dotsStatus if dotsStatus else self._defDotsStatus
+        for k, status in ds.items():
+            if status:
+                self._dots[k].Activate()
+            else:
+                self._dots[k].Inactivate()
+
+    # def DecodeDots(self, rx, ry, dots):
+    #     '''override this func'''
+    #     if dots:
+    #         for d in dots:
+    #             xy = d.split(',')
+    #             g_ps = ScreenDots(self._stdscr)
+    #             dot = g_ps.GetDot(int(xy[0]), int(xy[1]))
+    #             dot.RelativePos(rx, ry)
+    #             self.AddDot(dot)
 
     def Close(self):
         # TODO
