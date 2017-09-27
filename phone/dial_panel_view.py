@@ -6,9 +6,9 @@ import util
 import util.win as win
 
 
-class DailPanelView(win.View):
+class DialPanelView(win.View):
     def __init__(self, stdscr, sch=None):
-        super(DailPanelView, self).__init__(stdscr, win.DailPanelScr_id, sch)
+        super(DialPanelView, self).__init__(stdscr, win.DailPanelScr_id, sch)
 
         self._inputtedNums = []
 
@@ -78,7 +78,7 @@ class DailPanelView(win.View):
 
 
 def main(stdscr):
-    view = DailPanelView(stdscr)
+    view = DialPanelView(stdscr)
 
     reciever = util.CommandReciever()
     view.Init(reciever)

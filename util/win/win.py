@@ -186,7 +186,7 @@ class Win(object):
         if not self._disable:
             if WinConf.ShowMode == 1:
                 # TODO
-                for k in self._dots:
+                for _, dot in self._dots.items():
                     if self.IsInRange(x, y):
                         if not self._cursorEntered:
                             self._cursorEntered = True
@@ -194,7 +194,7 @@ class Win(object):
                                 if we.EventID == eEnterTheWin:
                                     we.OnCallBack()
 
-                        self._dots[k].Draw()
+                        dot.Draw()
                     else:
                         if self._cursorEntered:
                             self._cursorEntered = False
@@ -202,7 +202,7 @@ class Win(object):
                                 if we.EventID == eLeaveTheWin:
                                     we.OnCallBack()
 
-                        self._dots[k].Draw()
+                        dot.Draw()
             elif WinConf.ShowMode == 2:
                 if self._txt:
                     self._stdscr.addch(self.X, self.Y, self._txt,

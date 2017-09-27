@@ -164,7 +164,7 @@ class WinMgr(object):
                     subwin.X = subwin.OriginX + topWinPos[0]
                     subwin.Y = subwin.OriginY + topWinPos[1]
 
-            w.DecodeDots(topWinPos[0], topWinPos[1], winConf.get("dots", []))
+            w.DecodeDots(topWinPos[0], topWinPos[1], winConf.get("dots", ""))
             # for p in winConf.get("dots", []):
             #     xy = p.split(',')
             #     g_ps = ScreenDots(stdscr)

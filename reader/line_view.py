@@ -139,8 +139,10 @@ class LineView(win.View):
                 continue
 
     def RefreshWin(self):
+        '''implement this func'''
         for _, w in self.Win.SubWins.items():
             w.OnMessage(None)
+            w.RefreshDots()
 
         for i, li in enumerate(self.CurPage):
             # TODO

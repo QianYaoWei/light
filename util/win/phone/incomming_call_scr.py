@@ -16,12 +16,3 @@ IncommingCallScr = {
         ForwardWin_id
     ]
 }
-
-
-# class IncommingCallWin(Win):
-#     def __init__(self, stdscr, name, oriX, oriY, height, width):
-#         super(IncommingCallWin, self).__init__(stdscr, name, oriX, oriY,
-#                                                height, width)
-#         self._name = ""
-#         self._phoneName = ""
-#         self._address = ""

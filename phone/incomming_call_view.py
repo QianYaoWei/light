@@ -11,3 +11,8 @@ class IncommingCallView(win.View):
         self._name = ""
         self._phoneName = ""
         self._address = ""
+
+    def RefreshWin(self):
+        '''implement this func'''
+        for _, w in self.Win.SubWins.items():
+            w.RefreshDots()
