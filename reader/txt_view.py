@@ -5,10 +5,11 @@ from common import *
 import curses
 import util
 import util.win as win
+import util.win.view as view
 from book import Book
 
 
-class TxtView(win.View):
+class TxtView(view.View):
     def __init__(self, stdscr, sch=None):
         super(TxtView, self).__init__(stdscr, win.BrailleSquareScr_id, sch)
         self._book = None
@@ -80,20 +81,20 @@ class TxtView(win.View):
 
 
 def main(stdscr):
-    view = TxtView(stdscr)
+    v = TxtView(stdscr)
     b = Book(1, path="blind_reader.py")
     b.Open()
-    view.Book = b
-    view.RefreshWin()
+    v.Book = b
+    v.RefreshWin()
 
     reciever = util.CommandReciever()
-    view.Init(reciever)
+    v.Init(reciever)
     reciever.start()
 
     sender = util.CommandSender(stdscr)
     sender.start()
 
-    view.Sched.run()
+    v.Sched.run()
 
     reciever.join()
     sender.join()

@@ -7,7 +7,5 @@ from win_ids import *
 # from line_win import LineWin
 from win import Win
 from win_mgr import WinMgr
-from view import View
 from win_event import *
 from operation import Operation
-from view_mgr import ViewMgr

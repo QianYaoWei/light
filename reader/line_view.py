@@ -5,6 +5,7 @@ from common import *
 import os
 import util
 import util.win as win
+import util.win.view as view
 from util.conf import ReaderConf
 from book import Book
 
@@ -20,7 +21,7 @@ class LineInfo(object):
     def Name(self):
         return self._name
 
-    def OnClick(self, view):
+    def OnClick(self, v):
         '''override this func'''
         pass
 
@@ -32,11 +33,11 @@ class DirInfo(LineInfo):
     def __init__(self, name):
         super(DirInfo, self).__init__(name)
 
-    def OnClick(self, view):
+    def OnClick(self, v):
         '''override this func'''
-        view.LowerDir(self._name)
-        view.RefreshCurDir()
-        view.RefreshWin()
+        v.LowerDir(self._name)
+        v.RefreshCurDir()
+        v.RefreshWin()
 
 
 class UpperDir(LineInfo):
@@ -46,11 +47,11 @@ class UpperDir(LineInfo):
     def __init__(self):
         super(UpperDir, self).__init__('..')
 
-    def OnClick(self, view):
+    def OnClick(self, v):
         '''override this func'''
-        view.UpperDir()
-        view.RefreshCurDir()
-        view.RefreshWin()
+        v.UpperDir()
+        v.RefreshCurDir()
+        v.RefreshWin()
 
 
 class BookInfo(LineInfo):
@@ -60,14 +61,14 @@ class BookInfo(LineInfo):
     def __init__(self, name):
         super(BookInfo, self).__init__(name)
 
-    def OnClick(self, view):
+    def OnClick(self, v):
         '''override this func'''
-        p = view.CurDir + os.path.sep + self._name
+        p = v.CurDir + os.path.sep + self._name
         book = Book(1, path=p, cur_page=0)
-        view.ViewMgr.OpenBook(book)
+        v.ViewMgr.OpenBook(book)
 
 
-class LineView(win.View):
+class LineView(view.View):
     __rowCount = win.Line4_id - win.Line0_id + 1
 
     def __init__(self, dir, stdscr, sch=None):
@@ -203,8 +204,8 @@ class LineView(win.View):
 
     def _OnSwitch(self):
         '''implement this func'''
-        view = self.ViewMgr.GetView(TxtView_id)
-        if view and view.Book:
+        v = self.ViewMgr.GetView(TxtView_id)
+        if v and v.Book:
             self.ViewMgr.MoveToTop(TxtView_id)
         self.StdScr.clear()
 
@@ -212,20 +213,20 @@ class LineView(win.View):
 def main(stdscr):
     InitColor()
     path = os.path.realpath(ReaderConf.ShelfPath)
-    view = LineView(path, stdscr)
-    # print view .CurDir
+    v = LineView(path, stdscr)
+    # print v .CurDir
 
-    view.RefreshCurDir()
-    view.RefreshWin()
+    v.RefreshCurDir()
+    v.RefreshWin()
 
     reciever = util.CommandReciever()
-    view.Init(reciever)
+    v.Init(reciever)
     reciever.start()
 
     sender = util.CommandSender(stdscr)
     sender.start()
 
-    view.Sched.run()
+    v.Sched.run()
 
     reciever.join()
     sender.join()

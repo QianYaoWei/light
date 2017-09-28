@@ -2,9 +2,10 @@
 # -*- coding:utf-8 -*-
 from common import *
 import util.win as win
+import util.win.view as view
 
 
-class InputtedNumsView(win.View):
+class InputtedNumsView(view.View):
     def __init__(self, stdscr, sch=None):
         super(InputtedNumsView, self).__init__(stdscr, win.InputNumScr_id, sch)
 

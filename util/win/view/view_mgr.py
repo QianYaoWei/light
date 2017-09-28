@@ -1,11 +1,9 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
-import curses
 import time
 import sched
-import util
 from operation import Operation
-from ..conf import ScreenConf
+from util.conf import ScreenConf
 
 
 class ViewMgr(Operation):

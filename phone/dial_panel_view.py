@@ -4,9 +4,10 @@
 from common import *
 import util
 import util.win as win
+import util.win.view as view
 
 
-class DialPanelView(win.View):
+class DialPanelView(view.View):
     def __init__(self, stdscr, sch=None):
         super(DialPanelView, self).__init__(stdscr, win.DailPanelScr_id, sch)
 
@@ -72,23 +73,23 @@ class DialPanelView(win.View):
 
     def _OnSwitch(self):
         '''implement this func'''
-        view = self.ViewMgr.GetView(InputtedNumsView_id)
-        view.Nums = self._inputtedNums
+        v = self.ViewMgr.GetView(InputtedNumsView_id)
+        v.Nums = self._inputtedNums
         self.ViewMgr.MoveToTop(InputtedNumsView_id)
 
 
 def main(stdscr):
-    view = DialPanelView(stdscr)
+    v = DialPanelView(stdscr)
 
     reciever = util.CommandReciever()
-    view.Init(reciever)
-    view.RefreshWin()
+    v.Init(reciever)
+    v.RefreshWin()
     reciever.start()
 
     sender = util.CommandSender(stdscr)
     sender.start()
 
-    view.Sched.run()
+    v.Sched.run()
 
     reciever.join()
     sender.join()

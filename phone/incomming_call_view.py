@@ -2,9 +2,10 @@
 # -*- coding:utf-8 -*-
 from common import *
 import util.win as win
+import util.win.view as view
 
 
-class IncommingCallView(win.View):
+class IncommingCallView(view.View):
     def __init__(self, stdscr, sch=None):
         super(IncommingCallView, self).__init__(stdscr,
                                                 win.IncommingCallScr_id, sch)

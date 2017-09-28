@@ -5,8 +5,8 @@ import time
 import sched
 from functools import wraps
 from operation import Operation
-from ..conf import ScreenConf
-from ..win import WinMgr
+from util.conf import ScreenConf
+from util.win import WinMgr
 
 
 class View(Operation):

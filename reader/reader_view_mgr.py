@@ -6,12 +6,13 @@ import time
 import sched
 import util
 import util.win as win
+import util.win.view as view
 from util.conf import ReaderConf
 from line_view import LineView
 from txt_view import TxtView
 
 
-class ReaderViewMgr(win.ViewMgr):
+class ReaderViewMgr(view.ViewMgr):
     def __init__(self, stdscr, sch=None):
         super(ReaderViewMgr, self).__init__(stdscr, sch)
 
@@ -24,15 +25,15 @@ class ReaderViewMgr(win.ViewMgr):
 
 def main(stdscr):
     g_reader = ReaderViewMgr(stdscr)
-    view = LineView(ReaderConf.ShelfPath, stdscr, g_reader.Sched)
-    view.RefreshCurDir()
-    view.RefreshWin()
-    view.ViewMgr = g_reader
-    g_reader.AddView(LineView_id, view)
+    v = LineView(ReaderConf.ShelfPath, stdscr, g_reader.Sched)
+    v.RefreshCurDir()
+    v.RefreshWin()
+    v.ViewMgr = g_reader
+    g_reader.AddView(LineView_id, v)
 
-    view = TxtView(stdscr, g_reader.Sched)
-    view.ViewMgr = g_reader
-    g_reader.AddView(TxtView_id, view)
+    v = TxtView(stdscr, g_reader.Sched)
+    v.ViewMgr = g_reader
+    g_reader.AddView(TxtView_id, v)
 
     InitColor()
 
