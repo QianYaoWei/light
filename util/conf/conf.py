@@ -40,7 +40,7 @@ class WinConf(object):
 
     # 1 dot mode
     # 2 txt mode
-    ShowMode = 1
+    ShowMode = 2
 
     DotUp_Ch = '.'
 

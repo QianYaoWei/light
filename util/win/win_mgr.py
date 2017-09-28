@@ -117,6 +117,7 @@ Wins = {
     IncommingCallScr_id: IncommingCallScr,
     BackWin_id: BackWin,
     ForwardWin_id: ForwardWin,
+    PhoneContactsWin_id: RowScr,
 
     DailNum1_id: DailNum1,
     DailNum2_id: DailNum2,

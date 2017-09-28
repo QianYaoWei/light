@@ -8,7 +8,7 @@ import util
 import util.win as win
 import util.win.view as view
 from util.conf import ReaderConf
-from line_view import LineView
+from content_view import ContentView
 from txt_view import TxtView
 
 
@@ -25,11 +25,11 @@ class ReaderViewMgr(view.ViewMgr):
 
 def main(stdscr):
     g_reader = ReaderViewMgr(stdscr)
-    v = LineView(ReaderConf.ShelfPath, stdscr, g_reader.Sched)
+    v = ContentView(ReaderConf.ShelfPath, stdscr, g_reader.Sched)
     v.RefreshCurDir()
     v.RefreshWin()
     v.ViewMgr = g_reader
-    g_reader.AddView(LineView_id, v)
+    g_reader.AddView(ContentView_id, v)
 
     v = TxtView(stdscr, g_reader.Sched)
     v.ViewMgr = g_reader

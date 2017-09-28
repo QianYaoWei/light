@@ -8,4 +8,3 @@ from win_ids import *
 from win import Win
 from win_mgr import WinMgr
 from win_event import *
-from operation import Operation

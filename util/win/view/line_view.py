@@ -8,7 +8,7 @@ import util.win as win
 class LineView(View):
     __rowCount = win.Line4_id - win.Line0_id + 1
 
-    def __init__(self, dir, stdscr, sch=None):
+    def __init__(self, stdscr, sch=None):
         super(LineView, self).__init__(stdscr, win.RowScr_id, sch)
         self._curLine = 0
         self._lineList = []
@@ -16,21 +16,21 @@ class LineView(View):
 
     def __RegisterWinEvent(self):
         self.Win.SubWins[win.Line0_id].AddWinEvent(
-            win.WinEvent(win.eClickTheWin, self.__OnWinClick, 0))
+            win.WinEvent(win.eClickTheWin, self._OnWinClick, 0))
 
         self.Win.SubWins[win.Line1_id].AddWinEvent(win.WinEvent(
-            win.eClickTheWin, self.__OnWinClick, 1))
+            win.eClickTheWin, self._OnWinClick, 1))
 
         self.Win.SubWins[win.Line2_id].AddWinEvent(win.WinEvent(
-            win.eClickTheWin, self.__OnWinClick, 2))
+            win.eClickTheWin, self._OnWinClick, 2))
 
         self.Win.SubWins[win.Line3_id].AddWinEvent(win.WinEvent(
-            win.eClickTheWin, self.__OnWinClick, 3))
+            win.eClickTheWin, self._OnWinClick, 3))
 
         self.Win.SubWins[win.Line4_id].AddWinEvent(win.WinEvent(
-            win.eClickTheWin, self.__OnWinClick, 4))
+            win.eClickTheWin, self._OnWinClick, 4))
 
-    def __OnWinClick(self, pos):
+    def _OnWinClick(self, pos):
         '''override this func'''
         pass
 

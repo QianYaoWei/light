@@ -117,3 +117,4 @@ IncommingCallScr_id = 111
 
 BackWin_id = 112
 ForwardWin_id = 113
+PhoneContactsWin_id = 114

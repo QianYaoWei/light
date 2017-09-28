@@ -68,41 +68,19 @@ class BookInfo(LineInfo):
         v.ViewMgr.OpenBook(book)
 
 
-class LineView(view.View):
+class ContentView(view.LineView):
     __rowCount = win.Line4_id - win.Line0_id + 1
 
     def __init__(self, dir, stdscr, sch=None):
-        super(LineView, self).__init__(stdscr, win.RowScr_id, sch)
+        super(ContentView, self).__init__(stdscr, sch)
         self._dirList = [dir, ]
-        self._curLine = 0
-        self._lineList = []
-        self.__RegisterWinEvent()
 
-    def __RegisterWinEvent(self):
-        self.Win.SubWins[win.Line0_id].AddWinEvent(
-            win.WinEvent(win.eClickTheWin, self.__OnWinClick, 0))
-
-        self.Win.SubWins[win.Line1_id].AddWinEvent(win.WinEvent(
-            win.eClickTheWin, self.__OnWinClick, 1))
-
-        self.Win.SubWins[win.Line2_id].AddWinEvent(win.WinEvent(
-            win.eClickTheWin, self.__OnWinClick, 2))
-
-        self.Win.SubWins[win.Line3_id].AddWinEvent(win.WinEvent(
-            win.eClickTheWin, self.__OnWinClick, 3))
-
-        self.Win.SubWins[win.Line4_id].AddWinEvent(win.WinEvent(
-            win.eClickTheWin, self.__OnWinClick, 4))
-
-    def __OnWinClick(self, pos):
+    def _OnWinClick(self, pos):
+        '''implement this func'''
         cp = self.CurPage
         if 0 <= pos < len(cp):
             cp[pos].OnClick(self)
         self.StdScr.clear()
-
-    @property
-    def CurPage(self):
-        return self._lineList[self._curLine:self._curLine + self.__rowCount]
 
     @property
     def CurDir(self):
@@ -139,69 +117,6 @@ class LineView(view.View):
                 self._lineList.append(info)
                 continue
 
-    def RefreshWin(self):
-        '''implement this func'''
-        for _, w in self.Win.SubWins.items():
-            w.OnMessage(None)
-            w.RefreshDots()
-
-        for i, li in enumerate(self.CurPage):
-            # TODO
-            txt = ','.join(list(li.Name))
-            for _, w in self.Win.SubWins[win.Line0_id + i].SubWins.items():
-                w.Color = li.Color
-            self.Win.SubWins[win.Line0_id + i].OnMessage(txt)
-
-    def NextLine(self):
-        if len(self._lineList[self._curLine + 1:]) < self.__rowCount:
-            return
-        self._curLine += 1
-        self.RefreshWin()
-
-    def PreLine(self):
-        if self._curLine <= 0:
-            return
-        self._curLine -= 1
-        self.RefreshWin()
-
-    def NextPage(self):
-        if len(self._lineList[self._curLine + self.__rowCount:]) < \
-           self.__rowCount:
-            if len(self._lineList) >= self.__rowCount:
-                self._curLine = len(self._lineList) - self.__rowCount
-            else:
-                self._curLine = 0
-        else:
-            self._curLine += self.__rowCount
-        self.RefreshWin()
-
-    def PrePage(self):
-        if self._curLine - self.__rowCount >= 0:
-            self._curLine -= self.__rowCount
-        else:
-            self._curLine = 0
-        self.RefreshWin()
-
-    def _OnForward(self):
-        '''implement this func'''
-        self.NextPage()
-        self.StdScr.clear()
-
-    def _OnBackward(self):
-        '''implement this func'''
-        self.PrePage()
-        self.StdScr.clear()
-
-    def _OnUp(self):
-        '''implement this func'''
-        self.PreLine()
-        self.StdScr.clear()
-
-    def _OnDown(self):
-        '''implement this func'''
-        self.NextLine()
-        self.StdScr.clear()
-
     def _OnSwitch(self):
         '''implement this func'''
         v = self.ViewMgr.GetView(TxtView_id)
@@ -213,7 +128,7 @@ class LineView(view.View):
 def main(stdscr):
     InitColor()
     path = os.path.realpath(ReaderConf.ShelfPath)
-    v = LineView(path, stdscr)
+    v = ContentView(path, stdscr)
     # print v .CurDir
 
     v.RefreshCurDir()

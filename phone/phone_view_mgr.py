@@ -37,7 +37,6 @@ def main(stdscr):
     g_phone.Init(reciever)
     reciever.start()
 
-
     sender = util.CommandSender(stdscr)
     sender.start()
 
